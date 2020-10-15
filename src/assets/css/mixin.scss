@@ -1,0 +1,21 @@
+@mixin maxWidth {
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 0 30px;
+    @media screen and (max-width: 750px) {
+        max-width: 750px;
+    }
+}
+
+@mixin afterLine($bg) {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 9px;
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    margin-top: -3.5px;
+    background: $bg;
+}
+
