@@ -22,7 +22,7 @@ body {
   font-weight: normal;
 }
 img {
-  margin-bottom: -19px;
+  margin-bottom: -5px;
 }
 li {
   list-style-type: none;
@@ -34,5 +34,8 @@ ul {
 }
 a {
   text-decoration: none;
+}
+p{
+  margin-block-end: 0;
 }
 </style>

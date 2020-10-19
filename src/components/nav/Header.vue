@@ -24,7 +24,7 @@
               :key="index"
               class="nav-menu-box"
             >
-              <el-link :underline="false"
+              <el-link :href="item.link" :underline="false"
                 ><span>{{ item.name }}</span></el-link
               >
               <div class="sub-menu">
@@ -53,7 +53,7 @@ export default {
         },
         {
           name: "医院概况",
-          link: "/",
+          link: "/about",
           // subMenu: [
           //   {
           //     name: "医院简介",
@@ -75,7 +75,7 @@ export default {
         },
         {
           name: "专家介绍",
-          link: "/",
+          link: "/introduce",
           // subMenu: [
           //   {
           //     name: "医院专家介绍",

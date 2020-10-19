@@ -10,7 +10,7 @@
 }
 @mixin width800 {
     width: 800px;
-    margin:auto
+    margin: auto;
 }
 
 @mixin afterLine($bg) {
@@ -25,3 +25,13 @@
     background: $bg;
 }
 
+@mixin decorateBg($flex,$w,$h) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $flex;
+    > div {
+        width: $w;
+        height: $h;
+        background-color: #416948;
+    }
+}
