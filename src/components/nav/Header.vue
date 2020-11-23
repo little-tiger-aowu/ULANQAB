@@ -11,32 +11,34 @@
         </div>
       </div>
       <!-- 菜单 -->
-      <el-row :gutter="20">
-        <el-col :span="3" :offset="3">
-          <div class="nav-logo">
-            <img src="@/assets/images/logo.png" width="100%" />
-          </div>
-        </el-col>
-        <el-col :span="15">
-          <div class="nav-menu">
-            <div
-              v-for="(item, index) in menuList"
-              :key="index"
-              class="nav-menu-box"
-            >
-              <el-link :href="item.link" :underline="false"
-                ><span>{{ item.name }}</span></el-link
+      <el-row type="flex" justify="center">
+        <el-col :span="16">
+          <el-col :span="5">
+            <div class="nav-logo">
+              <img src="@/assets/images/logo.png" width="100%" />
+            </div>
+          </el-col>
+          <el-col :span="19">
+            <div class="nav-menu">
+              <div
+                v-for="(item, index) in menuList"
+                :key="index"
+                class="nav-menu-box"
               >
-              <div class="sub-menu">
-                <el-link
-                  v-for="(item2, index2) in item.subMenu"
-                  :key="index2"
-                  :underline="false"
-                  >{{ item2.name }}</el-link
+                <el-link :href="'/#'+item.link" :underline="false"
+                  ><span>{{ item.name }}</span></el-link
                 >
+                <div class="sub-menu">
+                  <el-link
+                    v-for="(item2, index2) in item.subMenu"
+                    :key="index2"
+                    :underline="false"
+                    >{{ item2.name }}</el-link
+                  >
+                </div>
               </div>
             </div>
-          </div>
+          </el-col>
         </el-col>
       </el-row>
     </div>
@@ -93,7 +95,7 @@ export default {
         },
         {
           name: "新闻中心",
-          link: "/",
+          link: "/news",
           // subMenu: [
           //   {
           //     name: "学术新闻",
@@ -114,20 +116,25 @@ export default {
           // ],
         },
         {
-          name: "医学教育",
-          link: "/",
+          name: "党建工作",
+          link: "/party",
         },
         {
           name: "科研天地",
-          link: "/",
+          link: "/research",
         },
         {
-          name: "党建工作",
-          link: "/",
+          name: "医学教育",
+          link: "/educate",
         },
+        {
+          name: "护理园地",
+          link: "/nursing",
+        },
+        
         {
           name: "医院公告",
-          link: "/",
+          link: "/notice",
         },
       ],
     };
@@ -139,8 +146,8 @@ export default {
 @import "@/assets/css/mixin.scss";
 .header {
   color: $color-1;
-  .el-row{
-    margin:0 !important
+  .el-row {
+    margin: 0 !important;
   }
   .nav {
     .nav-right {
@@ -170,7 +177,7 @@ export default {
       img {
         background-color: $color-1;
         box-sizing: border-box;
-        padding: 10px;  
+        padding: 10px;
       }
     }
     .nav-menu {

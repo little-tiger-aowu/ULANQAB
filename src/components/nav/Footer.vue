@@ -62,8 +62,9 @@ export default {
 @import "@/assets/css/base.scss";
 @import "@/assets/css/mixin.scss";
 .footer {
-  @include maxWidth;
   position: relative;
+  @include maxWidth;
+
   margin-top: 70px;
   .footer-nav {
     border-top: 1px solid $color-6;
