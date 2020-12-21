@@ -11,21 +11,47 @@
         </div>
       </div>
       <!-- 菜单 -->
-      <el-row type="flex" justify="center">
+      <div class="nav-top">
+        <div class="nav-top-box">
+          <div class="logo-img">
+            <img src="@/assets/images/logo.jpg" width="100%" />
+          </div>
+          <div class="nav-menu">
+            <div>
+              <div v-for="(item, index) in menuList" :key="index" class="nav-menu-box">
+                <el-link
+                  :class="nowRoutePath == item.link ? 'active' : ''"
+                  :href="'/#' + item.link"
+                  :underline="false"
+                  ><span>{{ item.name }}</span></el-link
+                >
+                <div class="sub-menu">
+                  <el-link
+                    v-for="(item2, index2) in item.subMenu"
+                    :key="index2"
+                    :underline="false"
+                    >{{ item2.name }}</el-link
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <el-row type="flex" justify="center">
         <el-col :span="16">
-          <el-col :span="5">
+          <el-col :span="3">
             <div class="nav-logo">
               <img src="@/assets/images/logo.png" width="100%" />
             </div>
           </el-col>
-          <el-col :span="19">
+          <el-col :span="21">
             <div class="nav-menu">
-              <div
-                v-for="(item, index) in menuList"
-                :key="index"
-                class="nav-menu-box"
-              >
-                <el-link :href="'/#'+item.link" :underline="false"
+              <div v-for="(item, index) in menuList" :key="index" class="nav-menu-box">
+                <el-link
+                  :class="nowRoutePath == item.link ? 'active' : ''"
+                  :href="'/#' + item.link"
+                  :underline="false"
                   ><span>{{ item.name }}</span></el-link
                 >
                 <div class="sub-menu">
@@ -40,7 +66,7 @@
             </div>
           </el-col>
         </el-col>
-      </el-row>
+      </el-row> -->
     </div>
   </div>
 </template>
@@ -131,13 +157,24 @@ export default {
           name: "护理园地",
           link: "/nursing",
         },
-        
+
         {
           name: "医院公告",
           link: "/notice",
         },
       ],
+      nowRoutePath: "/",
     };
+  },
+  mounted() {
+    // console.log(this.$route.path);
+    this.nowRoutePath = this.$route.path;
+  },
+  watch: {
+    "$route.path"(newVal) {
+      console.log(newVal);
+      this.nowRoutePath = newVal;
+    },
   },
 };
 </script>
@@ -150,8 +187,10 @@ export default {
     margin: 0 !important;
   }
   .nav {
+    min-height: 120px;
     .nav-right {
       background-color: $color-3;
+      min-width: 960px;
 
       > div {
         @include maxWidth;
@@ -174,6 +213,7 @@ export default {
     .nav-logo {
       box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.18);
       margin-top: -49px;
+      min-width: 100px;
       img {
         background-color: $color-1;
         box-sizing: border-box;
@@ -185,12 +225,15 @@ export default {
       display: -webkit-flex;
       justify-content: space-around;
       margin-top: 1%;
+      min-width: 730px;
       .nav-menu-box {
         position: relative;
         height: 100%;
 
         .el-link {
-          padding-top: 20px;
+          padding-top: 10px;
+          margin-top: 10px;
+          font-size: 16px;
           span {
             padding: 5px 10px;
           }
@@ -198,13 +241,27 @@ export default {
             background-image: url(~@/assets/images/icon-down.png);
             background-repeat: no-repeat;
             background-position: top center;
+            background-size: 11px 8px;
 
             span {
-              box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
-              color: #ffc600;
-              text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
-              border-bottom: 2px solid #689674;
+              // box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+              color: #689674;
+              // text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.7);
+              // border-bottom: 2px solid #689674;
             }
+          }
+        }
+        .active {
+          background-image: url(~@/assets/images/icon-down.png);
+          background-repeat: no-repeat;
+          background-position: top center;
+          background-size: 11px 8px;
+
+          span {
+            // box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+            color: #689674;
+            // text-shadow: .5px .5px .5px rgba($color: #000000, $alpha: 0.7);
+            // border-bottom: 2px solid #689674;
           }
         }
         .sub-menu {
@@ -220,6 +277,40 @@ export default {
         }
         &:hover .sub-menu {
           display: block;
+        }
+      }
+    }
+  }
+  .nav-top {
+    // display: flex;
+    //   display: inline-flex;
+    //   flex-direction: row;
+    display: flex;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    .nav-top-box {
+      display: flex;
+      display: inline-flex;
+      flex-direction: row;
+      .logo-img {
+        width: 150px;
+        box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.18);
+        margin-top: -49px;
+        min-width: 100px;
+        height: 150px;
+        overflow: hidden;
+      }
+      .nav-menu {
+        height: 90px;
+        div {
+          display: flex;
+          display: inline-flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-top: -10px;
         }
       }
     }

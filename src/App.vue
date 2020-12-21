@@ -20,6 +20,7 @@ body {
   font-size: 14px;
   margin: 0;
   font-weight: normal;
+  min-width: 1080px;
 }
 img {
   margin-bottom: -5px;
@@ -37,5 +38,8 @@ a {
 }
 p{
   margin-block-end: 0;
+}
+.el-pager li.active,.el-pager li:hover,.el-pagination button:hover{
+  color: #689674 !important;
 }
 </style>

@@ -8,6 +8,10 @@ import Research from '../views/Research'
 import Notice from '../views/Notice'
 import Nursing from '../views/Nursing'
 import Party from '../views/Party'
+import Detail from '../views/Detail'
+import List from '../views/List'
+import Doctor from '../views/Doctor'
+import Swiper from '../views/Swiper'
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,6 +63,26 @@ const routes = [
     path: '/party',
     name: 'Party',
     component: Party
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail
+  },
+  {
+    path: '/list',
+    name: 'List',
+    component: List
+  },
+  {
+    path: '/doctor',
+    name: 'Doctor',
+    component: Doctor
+  },
+  {
+    path: '/swiper',
+    name: 'Swiper',
+    component: Swiper
   }
 
 ]

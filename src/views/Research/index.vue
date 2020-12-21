@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- 正文 -->
-    <el-row type="flex" justify="center" class="item-1">
+    <!-- <el-row type="flex" justify="center" class="item-1">
       <el-col :span="16">
         <el-col :span="7" class="box-1">
           <div style="height: 100%">
@@ -39,7 +39,8 @@
           </div>
         </el-col>
       </el-col>
-    </el-row>
+    </el-row> -->
+    <div class="build">正在建设中...</div>
   </div>
 </template>
 <style lang="scss">
@@ -89,5 +90,10 @@
       }
     }
   }
+}
+.build{
+  text-align: center;
+  line-height: 300px;
+  font-size: 25px;
 }
 </style>

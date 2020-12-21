@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- 正文 -->
-    <el-row type="flex" justify="center" class="item-1">
+    <!-- <el-row type="flex" justify="center" class="item-1">
       <el-col :span="16">
         <el-col :span="8">
           <div class="box-1">
@@ -58,9 +58,9 @@
           </div>
         </el-col>
       </el-col>
-    </el-row>
+    </el-row> -->
     <!-- 护理诊疗设备 -->
-    <div class="item-2">
+    <!-- <div class="item-2">
       <div style="text-align: right">
         <img src="@/assets/images/nursing/k1.png" width="50" />
       </div>
@@ -70,9 +70,9 @@
             <div class="title">护理诊疗设备</div>
 
             <el-col :span="18" class="content" :offset="6">
-              <img src="@/assets/images/nursing/img4.png" width="100%" />
-              <div class="more-left">查看更多</div>
-            </el-col>
+              <img src="@/assets/images/nursing/img4.png" width="100%" /> -->
+              <!-- <div class="more-left">查看更多</div> -->
+            <!-- </el-col>
           </el-col>
           <el-col :span="12" class="box-1">
             <div>
@@ -85,9 +85,9 @@
           </el-col>
         </el-col>
       </el-row>
-    </div>
+    </div> -->
     <!-- 医院护理文化 -->
-    <div class="item-2">
+    <!-- <div class="item-2">
       <el-row type="flex" justify="center">
         <el-col :span="16" class="contant">
           <el-col :span="12" class="box-1">
@@ -100,16 +100,17 @@
             <div class="title">医院护理文化</div>
 
             <el-col :span="18" class="content">
-              <img src="@/assets/images/nursing/img5.png" width="100%" />
-              <div class="more-right">查看更多</div>
-            </el-col>
+              <img src="@/assets/images/nursing/img5.png" width="100%" /> -->
+              <!-- <div class="more-right">查看更多</div> -->
+            <!-- </el-col>
           </el-col>
         </el-col>
       </el-row>
       <div>
         <img src="@/assets/images/nursing/k2.png" width="100" />
       </div>
-    </div>
+    </div> -->
+    <div class="build">正在建设中...</div>
   </div>
 </template>
 <style lang="scss">
@@ -211,5 +212,10 @@
       }
     }
   }
+}
+.build{
+  text-align: center;
+  line-height: 300px;
+  font-size: 25px;
 }
 </style>
