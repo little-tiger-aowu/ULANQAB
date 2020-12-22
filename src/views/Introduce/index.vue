@@ -29,11 +29,39 @@
         </el-col>
       </el-row>
     </div>
-
-    <!-- 列表 非手术科室 -->
-    <el-row type="flex" justify="center" v-show="introduceId == 1 || introduceId == ''">
+    <!-- 科室定位按钮 -->
+    <el-row
+      type="flex"
+      justify="center"
+      v-show="
+        introduceId == '' ||
+        introduceId == 'all1' ||
+        introduceId == 'all2' ||
+        introduceId == 'all3'
+      "
+    >
       <el-col :span="18">
-        <div class="class-title">非手术科室</div>
+        <div class="deleft">
+          <a href="#introduce?id=all1" class="a1">非手术科室</a>
+          <a href="#introduce?id=all2" class="a2">手术科室</a>
+          <a href="#introduce?id=all3" class="a3">诊断相关科室</a>
+        </div>
+      </el-col>
+    </el-row>
+    <!-- 列表 非手术科室 -->
+    <el-row
+      type="flex"
+      justify="center"
+      v-show="
+        introduceId == 1 ||
+        introduceId == '' ||
+        introduceId == 'all1' ||
+        introduceId == 'all2' ||
+        introduceId == 'all3'
+      "
+    >
+      <el-col :span="18">
+        <div class="class-title" id="introduce?id=all1">非手术科室</div>
         <el-row :gutter="10">
           <el-col
             :span="8"
@@ -90,6 +118,15 @@
                       </router-link>
                     </el-tooltip>
                   </el-col>
+                  <el-col
+                    :span="8"
+                    :data-length-n="item.physicians.length"
+                    v-show="item.physicians.length > 5"
+                  >
+                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                      <span style="color: #416948; font-size: 12px"> 更多>> </span>
+                    </router-link>
+                  </el-col>
                 </el-row>
               </div>
             </el-card>
@@ -99,9 +136,19 @@
     </el-row>
 
     <!-- 列表 手术科室 -->
-    <el-row type="flex" justify="center" v-show="introduceId == 2 || introduceId == ''">
+    <el-row
+      type="flex"
+      justify="center"
+      v-show="
+        introduceId == 2 ||
+        introduceId == '' ||
+        introduceId == 'all1' ||
+        introduceId == 'all2' ||
+        introduceId == 'all3'
+      "
+    >
       <el-col :span="18">
-        <div class="class-title">手术科室</div>
+        <div class="class-title" id="introduce?id=all2">手术科室</div>
         <el-row :gutter="10">
           <el-col
             :span="8"
@@ -158,6 +205,15 @@
                       </router-link>
                     </el-tooltip>
                   </el-col>
+                  <el-col
+                    :span="8"
+                    :data-length-n="item.physicians.length"
+                    v-show="item.physicians.length > 5"
+                  >
+                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                      <span style="color: #416948; font-size: 12px"> 更多>> </span>
+                    </router-link>
+                  </el-col>
                 </el-row>
               </div>
             </el-card>
@@ -167,9 +223,19 @@
     </el-row>
 
     <!-- 列表 诊断相关科室 -->
-    <el-row type="flex" justify="center" v-show="introduceId == 3 || introduceId == ''">
+    <el-row
+      type="flex"
+      justify="center"
+      v-show="
+        introduceId == 3 ||
+        introduceId == '' ||
+        introduceId == 'all1' ||
+        introduceId == 'all2' ||
+        introduceId == 'all3'
+      "
+    >
       <el-col :span="18">
-        <div class="class-title">医技、辅助科室</div>
+        <div class="class-title" id="introduce?id=all3">医技、辅助科室</div>
         <el-row :gutter="10">
           <el-col
             :span="8"
@@ -225,6 +291,15 @@
                         </span>
                       </router-link>
                     </el-tooltip>
+                  </el-col>
+                  <el-col
+                    :span="8"
+                    :data-length-n="item.physicians.length"
+                    v-show="item.physicians.length > 5"
+                  >
+                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                      <span style="color: #416948; font-size: 12px"> 更多>> </span>
+                    </router-link>
                   </el-col>
                 </el-row>
               </div>
@@ -345,7 +420,7 @@ export default {
 
   //   banenr
   .banner-txt {
-    margin-top: 10px;
+    // margin-top: 10px;
     position: relative;
     .link-txt {
       position: absolute;
@@ -387,15 +462,19 @@ export default {
   // 列表
   .class-title {
     display: inline-block;
-    background-color: #609a70;
-    color: #fff;
-    margin: 20px 0;
-    padding: 8px 15px;
-    border-radius: 5px;
+    // background-color: #609a70;
+    // border-radius: 5px;
+    // color: #fff;
+    margin: 20px 0 10px;
+    // padding: 8px 15px;
+    padding: 8px 0;
+    font-size: 20px;
+    color: #474747;
+    font-weight: bold;
   }
   .box-title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     color: #416948;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -435,5 +514,28 @@ export default {
   padding-bottom: 133%;
   background-color: #eee;
   background-size: cover;
+}
+.deleft a {
+  display: inline-block;
+  width: 148px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  margin-right: 10px;
+}
+.deleft {
+  margin-top: 50px;
+}
+.deleft .a1 {
+  background: #528eb5;
+}
+.deleft .a2 {
+  background: #55a5aa;
+}
+.deleft .a3 {
+  background: #e5ca8f;
 }
 </style>

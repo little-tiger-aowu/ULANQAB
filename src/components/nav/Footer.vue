@@ -139,7 +139,7 @@ export default {
       // height: 300px;
       position: relative;
       // padding-bottom: 14%;
-      height: 180px;
+      height: 217px;
       background-image: url(~@/assets/images/footer/footer-bg.png);
       background-size: cover;
       background-position: center;
@@ -172,19 +172,24 @@ export default {
         }
       }
       .nav-ewm {
-        margin-top: 15px;
+        margin-top: 45px;
         color: #fff;
-        font-size: 12px; 
+        font-size: 12px;
         a {
           color: #fff;
         }
         p{
           margin:0
         }
+        h2 {
+          margin-block-start:0
+        }
         img {
-          height: 100px;
+          height: 72px;
           background-color: #fff;
           padding: 3px;
+          display: inline-block;
+          margin-top: 2px;
         }
         
       }

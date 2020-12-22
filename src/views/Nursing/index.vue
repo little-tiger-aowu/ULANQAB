@@ -119,7 +119,6 @@
 .nursing {
   @include maxWidth;
   .banner-txt {
-    margin-top: 10px;
     position: relative;
     .link-txt {
       position: absolute;

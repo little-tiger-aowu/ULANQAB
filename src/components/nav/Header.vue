@@ -11,32 +11,42 @@
         </div>
       </div>
       <!-- 菜单 -->
-      <div class="nav-top">
-        <div class="nav-top-box">
-          <div class="logo-img">
-            <img src="@/assets/images/logo.jpg" width="100%" />
-          </div>
-          <div class="nav-menu">
-            <div>
-              <div v-for="(item, index) in menuList" :key="index" class="nav-menu-box">
-                <el-link
-                  :class="nowRoutePath == item.link ? 'active' : ''"
-                  :href="'/#' + item.link"
-                  :underline="false"
-                  ><span>{{ item.name }}</span></el-link
-                >
-                <div class="sub-menu">
-                  <el-link
-                    v-for="(item2, index2) in item.subMenu"
-                    :key="index2"
-                    :underline="false"
-                    >{{ item2.name }}</el-link
-                  >
+      <div class="aa">
+        <el-row type="flex" justify="center">
+          <el-col :span="16">
+            <div class="nav-top">
+              <div class="nav-top-box">
+                <div class="logo-img">
+                  <img src="@/assets/images/logo.jpg" width="100%" />
+                </div>
+                <div class="nav-menu">
+                  <div class="nav-menu-a">
+                    <div
+                      v-for="(item, index) in menuList"
+                      :key="index"
+                      class="nav-menu-box"
+                    >
+                      <el-link
+                        :class="nowRoutePath == item.link ? 'active' : ''"
+                        :href="'/#' + item.link"
+                        :underline="false"
+                        ><span>{{ item.name }}</span></el-link
+                      >
+                      <div class="sub-menu">
+                        <el-link
+                          v-for="(item2, index2) in item.subMenu"
+                          :key="index2"
+                          :underline="false"
+                          >{{ item2.name }}</el-link
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </el-col>
+        </el-row>
       </div>
       <!-- <el-row type="flex" justify="center">
         <el-col :span="16">
@@ -224,8 +234,7 @@ export default {
       display: flex;
       display: -webkit-flex;
       justify-content: space-around;
-      margin-top: 1%;
-      min-width: 730px;
+      // min-width: 730px;
       .nav-menu-box {
         position: relative;
         height: 100%;
@@ -235,7 +244,7 @@ export default {
           margin-top: 10px;
           font-size: 16px;
           span {
-            padding: 5px 10px;
+            padding: 5px 0;
           }
           &:hover {
             background-image: url(~@/assets/images/icon-down.png);
@@ -281,36 +290,43 @@ export default {
       }
     }
   }
+  .aa {
+    @include maxWidth;
+  }
   .nav-top {
-    // display: flex;
-    //   display: inline-flex;
-    //   flex-direction: row;
     display: flex;
     display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
     width: 100%;
     .nav-top-box {
+      width: 100%;
       display: flex;
       display: inline-flex;
-      flex-direction: row;
+      justify-content: space-around;
       .logo-img {
         width: 150px;
         box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.18);
         margin-top: -49px;
-        min-width: 100px;
-        height: 150px;
-        overflow: hidden;
+        min-width: 130px;
+        height: 130px;
+        margin-right: 20px;
       }
       .nav-menu {
-        height: 90px;
-        div {
+        height: 70px;
+        width: 100%;
+        .nav-menu-a {
+          width: 100%;
           display: flex;
           display: inline-flex;
           flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          margin-top: -10px;
+          justify-content: space-between;
+          margin-top: -5px;
+          > div {
+            display: flex;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
     }
