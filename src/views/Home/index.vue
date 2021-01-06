@@ -4,17 +4,28 @@
     <img src="@/assets/images/about/banner.png" width="100%" />
 
     <!-- search -->
-    <!-- <div class="search">
-      <el-row>
-        <el-col :span="14" :offset="2">
-          <el-input v-model="inputSearch" placeholder="搜索"></el-input>
-        </el-col>
-        <el-col :span="3" :offset="3">
-          <el-button>马上查询</el-button>
-        </el-col>
-      </el-row>
-    </div> -->
-    <div style="height: 50px"></div>
+    <el-row type="flex" justify="center">
+      <el-col :span="16">
+        <div class="search">
+          <el-row>
+            <el-col :span="15" :offset="2">
+              <el-input
+                v-model="inputSearch"
+                placeholder="医生姓名/关键字/科室名"
+                size="small"
+              ></el-input>
+              <div class="error" v-show="errorSearch">内容不能为空！</div>
+            </el-col>
+            <el-col :span="3" :offset="2">
+              <el-button size="small" icon="el-icon-search" @click="searchData"
+                >立即查询</el-button
+              >
+            </el-col>
+          </el-row>
+        </div>
+      </el-col>
+    </el-row>
+    <div style="height: 40px"></div>
     <!-- 医院特色 -->
     <div class="home-item-1">
       <el-row>
@@ -25,11 +36,13 @@
           <!-- 1 -->
           <ul class="box-1">
             <li>
-              <div @click="open">
-                <img src="@/assets/images/index/icon-yisheng.png" />
-                <p>预约挂号</p>
-                <span>Make an Appointment</span>
-              </div>
+              <router-link to="/table">
+                <div>
+                  <img src="@/assets/images/index/icon-yisheng.png" />
+                  <p>挂号指南</p>
+                  <span>Make an Appointment</span>
+                </div>
+              </router-link>
             </li>
             <li>
               <router-link to="/detail?id=14">
@@ -236,6 +249,7 @@ export default {
   name: "Home",
   data() {
     return {
+      errorSearch:false,
       mapIcon,
       inputSearch: "",
       swiperOptions: {
@@ -320,6 +334,16 @@ export default {
       this.center.lng = e.point.lng;
       this.center.lat = e.point.lat;
     },
+    searchData() {
+      console.log(this.inputSearch);
+      if (this.inputSearch) {
+        this.$router.push("/table?keyWord="+this.inputSearch);
+        this.errorSearch = false
+      } else {
+        console.log("object");
+        this.errorSearch = true
+      }
+    },
   },
 };
 </script>
@@ -337,25 +361,30 @@ export default {
   @include maxWidth;
 
   .search {
-    @include width800;
     position: relative;
     z-index: 2;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     background-color: #fff;
-    padding: 10px;
-    margin-top: -15px;
-    border-bottom: 5px solid #609a70;
+    padding: 20px 10px;
+    margin-top: -35px;
+    border-bottom: 5px solid $color-9;
     box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: 0.3);
+    color: #333;
+    .error {
+      position: absolute;
+      bottom: -18px;
+      left: 10%;
+      color: RED;
+      font-size: 12px;
+    }
     .el-button {
-      background-image: url(~@/assets/images/index/icon-search.png);
       background-repeat: no-repeat;
       background-size: 30px;
       background-position: 10px center;
-      padding-left: 40px;
       border: 0;
       color: #fff;
-      background-color: #62b479;
-      box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
+      background-color: $color-9;
+      // box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
       border-radius: 5px;
     }
   }
@@ -375,7 +404,7 @@ export default {
         text-align: center;
         padding: 30px 0;
         transition: 0.2s transform;
-        span {  
+        span {
           font-size: 12px;
           color: #fff;
         }
@@ -403,10 +432,10 @@ export default {
           }
         }
         &:nth-child(odd) {
-          background-color: #416948;
+          background-color: $color-9;
         }
         &:nth-child(even) {
-          background-color: #768d55;
+          background-color: $color-3;
         }
       }
     }
@@ -416,17 +445,17 @@ export default {
       .item-box {
         color: #333;
         padding: 20px 0;
-        border-bottom: 1px solid rgba($color: #416948, $alpha: 0.3);
+        border-bottom: 1px solid rgba($color: $color-3, $alpha: 0.3);
         display: flex;
         display: -webkit-flex;
         flex-direction: row;
         transition: 0.2s all;
 
         &:hover {
-          box-shadow: 0 0 5px rgba($color: #758d54, $alpha: 0.5);
-          border-right: 3px solid #758d54;
+          box-shadow: 0 0 5px rgba($color: $color-9, $alpha: 0.5);
+          border-right: 3px solid $color-9;
           img {
-            box-shadow: 0 0 5px rgba($color: #758d54, $alpha: 0.8);
+            box-shadow: 0 0 5px rgba($color: $color-9, $alpha: 0.8);
           }
         }
 
@@ -469,7 +498,7 @@ export default {
         font-weight: bold;
       }
       .content {
-        background-color: #325b3d;
+        background-color: $color-9;
         color: #fff;
         font-size: 12px;
         text-align: left;

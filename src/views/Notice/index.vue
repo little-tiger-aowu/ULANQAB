@@ -17,7 +17,7 @@
         <div class="box-1">
           <div class="contant" v-if="listData.length > 0">
             <router-link
-              :to="'/detail?id=' + item.id"
+              :to="'/detail?id=' + item.id + '&menu=notice'"
               v-for="item in listData"
               :key="item.id"
             >

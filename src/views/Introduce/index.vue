@@ -15,16 +15,18 @@
     <div>
       <el-row type="flex" justify="center">
         <el-col :span="18" class="search">
-          <el-col :span="10">
+          <el-col :span="8" :offset="3">
             科室选择：
             <input type="text" v-model="officeStr" />
           </el-col>
-          <el-col :span="10">
+          <el-col :span="8">
             医生姓名：
             <input type="text" v-model="doctorName" />
           </el-col>
           <el-col :span="3">
-            <el-button size="small" @click="searchData">马上查询</el-button>
+            <el-button size="small" @click="searchData" icon="el-icon-search"
+              >马上查询</el-button
+            >
           </el-col>
         </el-col>
       </el-row>
@@ -71,7 +73,11 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
-                <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                <router-link
+                  :to="
+                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
+                  "
+                >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
                 <el-button
@@ -111,7 +117,9 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link :to="'/detail?doctorId=' + item2.id">
+                      <router-link
+                        :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
+                      >
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -123,7 +131,13 @@
                     :data-length-n="item.physicians.length"
                     v-show="item.physicians.length > 5"
                   >
-                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                    <router-link
+                      :to="
+                        '/doctor?current=1&size=16&officeStr=' +
+                        item.name +
+                        '&menu=introduce'
+                      "
+                    >
                       <span style="color: #416948; font-size: 12px"> 更多>> </span>
                     </router-link>
                   </el-col>
@@ -158,7 +172,11 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
-                <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                <router-link
+                  :to="
+                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
+                  "
+                >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
                 <el-button
@@ -198,7 +216,9 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link :to="'/detail?doctorId=' + item2.id">
+                      <router-link
+                        :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
+                      >
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -210,7 +230,13 @@
                     :data-length-n="item.physicians.length"
                     v-show="item.physicians.length > 5"
                   >
-                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                    <router-link
+                      :to="
+                        '/doctor?current=1&size=16&officeStr=' +
+                        item.name +
+                        '&menu=introduce'
+                      "
+                    >
                       <span style="color: #416948; font-size: 12px"> 更多>> </span>
                     </router-link>
                   </el-col>
@@ -245,7 +271,11 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
-                <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                <router-link
+                  :to="
+                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
+                  "
+                >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
                 <el-button
@@ -285,7 +315,9 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link :to="'/detail?doctorId=' + item2.id">
+                      <router-link
+                        :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
+                      >
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -297,7 +329,13 @@
                     :data-length-n="item.physicians.length"
                     v-show="item.physicians.length > 5"
                   >
-                    <router-link :to="'/doctor?current=1&size=16&officeStr=' + item.name">
+                    <router-link
+                      :to="
+                        '/doctor?current=1&size=16&officeStr=' +
+                        item.name +
+                        '&menu=introduce'
+                      "
+                    >
                       <span style="color: #416948; font-size: 12px"> 更多>> </span>
                     </router-link>
                   </el-col>
@@ -387,7 +425,8 @@ export default {
         "/doctor?current=1&size=16&doctorName=" +
           this.doctorName +
           "&officeStr=" +
-          this.officeStr
+          this.officeStr +
+          "&menu=introduce"
       );
       this.getSearchData();
     },
@@ -440,23 +479,24 @@ export default {
     margin: -30px auto 0;
     background-color: #fff;
     padding: 10px;
-    border-bottom: 5px solid #609a70;
+    border-bottom: 5px solid $color-3;
     box-shadow: 0px -4px 18px rgba($color: #999, $alpha: 0.7);
     .el-button {
-      background-image: url(~@/assets/images/index/icon-search.png);
+      // background-image: url(~@/assets/images/index/icon-search.png);
       background-repeat: no-repeat;
       background-size: 20px;
       background-position: 10px center;
-      padding-left: 40px;
+      // padding-left: 40px;
       border: 0;
       color: #fff;
-      background-color: #62b479;
-      box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
+      background-color: $color-9;
+      // box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
       border-radius: 5px;
     }
     input {
       height: 25px;
       border: solid 1px #494949;
+      width: 60%;
     }
   }
   // 列表
@@ -475,7 +515,7 @@ export default {
   .box-title {
     font-weight: bold;
     font-size: 18px;
-    color: #416948;
+    color: $color-9;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

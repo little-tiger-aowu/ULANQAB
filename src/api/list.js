@@ -54,3 +54,28 @@ export function physicianInfo(id) {
         method: 'GET'
     })
 }
+
+// 获取专题列表
+export function specialList() {
+    return request({
+        url: `/special/list`,
+        method: 'GET'
+    })
+}
+
+// 获取专题的新闻内容
+export function specialNewsList(id) {
+    return request({
+        url: `/special/news_list?id=${id}`,
+        method: 'GET'
+    })
+}
+
+// 获取专题的新闻内容
+export function searchOutCall(params) {
+    return request({
+        url: `/outCall/search_outCall`,
+        method: 'GET',
+        params: params
+    })
+}

@@ -27,7 +27,11 @@
                       class="nav-menu-box"
                     >
                       <el-link
-                        :class="nowRoutePath == item.link ? 'active' : ''"
+                        :class="
+                          nowRoutePath == item.link || nowPathMenu == item.link
+                            ? 'active'
+                            : ''
+                        "
                         :href="'/#' + item.link"
                         :underline="false"
                         ><span>{{ item.name }}</span></el-link
@@ -88,6 +92,16 @@ export default {
         {
           name: "首页",
           link: "/",
+        },
+        {
+          name: "患者服务",
+          link: "/serve",
+          subMenu: [
+            {
+              name: "健康科普",
+              link: "/",
+            },
+          ],
         },
         {
           name: "医院概况",
@@ -174,16 +188,21 @@ export default {
         },
       ],
       nowRoutePath: "/",
+      nowPathMenu: "",
     };
   },
   mounted() {
-    // console.log(this.$route.path);
+    console.log(this.$route.query);
     this.nowRoutePath = this.$route.path;
+    this.nowPathMenu = "/" + this.$route.query.menu;
+    // console.log(this.nowPathMenu);
   },
   watch: {
     "$route.path"(newVal) {
-      console.log(newVal);
+      // console.log("1:" + this.$route.query);
+      // console.log("1:" + newVal);
       this.nowRoutePath = newVal;
+      this.nowPathMenu = "/" + this.$route.query.menu;
     },
   },
 };
@@ -212,7 +231,7 @@ export default {
           position: relative;
           cursor: pointer;
           &.active {
-            color: $color-5;
+            color: $color-3;
           }
           &:after {
             @include afterLine($color-7);
@@ -240,49 +259,54 @@ export default {
         height: 100%;
 
         .el-link {
-          padding-top: 10px;
-          margin-top: 10px;
           font-size: 16px;
           span {
             padding: 5px 0;
+            min-width: 64px;
+            display: inline-block;
+            margin-top: 20px;
+
+            text-align: center;
           }
           &:hover {
-            background-image: url(~@/assets/images/icon-down.png);
-            background-repeat: no-repeat;
-            background-position: top center;
-            background-size: 11px 8px;
-
             span {
-              // box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
-              color: #689674;
-              // text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.7);
-              // border-bottom: 2px solid #689674;
+              background-image: url(~@/assets/images/icon-down.png);
+              background-repeat: no-repeat;
+              background-position: top center;
+              background-size: 11px 8px;
+              color: $color-9;
+              padding: 15px 0;
             }
           }
         }
         .active {
-          background-image: url(~@/assets/images/icon-down.png);
-          background-repeat: no-repeat;
-          background-position: top center;
-          background-size: 11px 8px;
-
           span {
-            // box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
-            color: #689674;
-            // text-shadow: .5px .5px .5px rgba($color: #000000, $alpha: 0.7);
-            // border-bottom: 2px solid #689674;
+            background-image: url(~@/assets/images/icon-down.png);
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: 11px 8px;
+            color: $color-9;
+            padding: 15px 0;
           }
         }
         .sub-menu {
           overflow: hidden;
           position: absolute;
-          left: -30%;
-          width: 100px;
-          background-color: #c0c0c0;
+
+          z-index: 999;
+          // left: -30%;
+          top: 70px;
+          width: 100%;
+          background-color: #fff;
+          box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
           // height: 0px;
           transition: 0.3s all;
           display: none;
+          .el-link {
+            font-size: 13px;
+            line-height: 30px;
+          }
         }
         &:hover .sub-menu {
           display: block;

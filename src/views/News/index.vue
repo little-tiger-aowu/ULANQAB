@@ -12,83 +12,55 @@
         </div>
       </div>
       <!-- 正文 -->
-      <!-- 专题中心 -->
-      <div class="box-1">
-        <div style="text-align: right">
-          <img src="@/assets/images/news/kuai.png" height="100" />
-        </div>
-        <div class="item-1">
-          <div class="title">医院院报</div>
-
-          <el-row type="flex" justify="center">
-            <el-col :span="16" class="content">
-              <div>
-                <el-col :span="8" v-for="item in listData" :key="item.id">
-                  <a :href="item.content" target="_blank">
-                    <div class="list">
-                      <div
-                        class="img"
-                        :style="{
-                          backgroundImage: 'url(' + item.imageUrl + ')',
-                        }"
-                      ></div>
-                      <div class="txt">
-                        <div>{{ item.title }}</div>
-                      </div>
+      <div class="new-box">
+        <el-row type="flex" justify="center" :gutter="20">
+          <el-col :span="18" class="content">
+            <div class="title">专题专栏</div>
+            <div>
+              <el-col :span="8" v-for="item in listData" :key="item.id">
+                <router-link
+                  :to="'/news/list?id=' + item.id + '&name=' + item.name + '&menu=news'"
+                >
+                  <div class="list">
+                    <div
+                      class="img"
+                      :style="{
+                        backgroundImage: 'url(' + item.imagUrl + ')',
+                      }"
+                    ></div>
+                    <div class="txt">
+                      <!-- <div>{{ item.name }}<i class="el-icon-caret-top"></i></div> -->
+                      <div>{{ item.name }}</div>
                     </div>
-                  </a>
-                </el-col>
-              </div>
-              <!-- <div class="more">查看更多</div> -->
-            </el-col>
-          </el-row>
-        </div>
-        <div style="text-align: center; margin-top: 20px">
-          <el-pagination
-            :hide-on-single-page="true"
-            @current-change="handleCurrentChange"
-            :current-page.sync="page.current"
-            :page-size="page.size"
-            layout="prev, pager, next"
-            :total="total"
-          >
-          </el-pagination>
-        </div>
+                  </div>
+                </router-link>
+              </el-col>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { newsList } from "@/api/list.js";
+import { specialList } from "@/api/list.js";
 export default {
   name: "news",
   data() {
     return {
       listData: [],
-      page: {
-        current: 1,
-        size: 6,
-        type: 7,
-      },
-      total: 1,
     };
   },
   mounted() {
-    this.getNewsList();
+    this.getSpecialList();
   },
   methods: {
-    getNewsList() {
-      newsList(this.page).then((res) => {
-        console.log(res);
+    getSpecialList() {
+      specialList().then((res) => {
         if (res.code == 200) {
-          this.total = res.data.total;
-          this.listData = res.data.records;
+          this.listData = res.data;
         }
       });
-    },
-    handleCurrentChange(val) {
-      this.page.current = val;
-      this.getNewsList();
     },
   },
 };
@@ -111,57 +83,77 @@ export default {
       }
     }
   }
-  //   正文
+  //   正
 
-  .item-1 {
-    background-image: url(~@/assets/images/news/bg1.png);
-    background-size: cover;
-    padding: 20px 0;
+  // 最新新闻
+  .new-box {
+    padding: 50px 0 100px;
+    // background-color: #f0f0f0;
     .title {
-      text-align: center;
+      // text-align: center;
       font-size: 20px;
       margin-bottom: 30px;
       font-weight: bold;
+      padding-left: 10px;
     }
     .content {
-      background-color: rgba($color: #fff, $alpha: 0.5);
-      padding: 20px 10px 10px;
       position: relative;
-
       .list {
-        padding: 0 10px;
+        // padding: 0 10px;
+        &:hover {
+          .img {
+            // border: 1px solid #416948;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
+          }
+          .txt > div {
+            background-color: rgba($color: #fff, $alpha: 1);
+            box-shadow: 0 -3px 12px 0 rgba(0, 0, 0, 0.3);
+            // border-bottom: 1px solid #416948;
+            i {
+              color: #416948;
+            }
+          }
+        }
         margin-bottom: 10px;
         position: relative;
         .img {
-          background-color: #eee;
-          padding-bottom: 133%;
+          // background-color: #eee;
+          padding-bottom: 75%;
           background-size: cover;
+          background-position-x: center;
+          background-repeat: no-repeat;
+          transition: 0.2s all;
+          border: 1px solid transparent;
         }
         .txt {
-          position: absolute;
-          width: 100%;
-          bottom: 0;
-          left: 0;
           color: #333;
+          font-weight: bold;
           > div {
+            position: relative;
             text-align: center;
-            font-size: 12px;
+            font-size: 16px;
             width: 70%;
-            margin: 0 auto;
-            padding: 0 10px;
-            background-color: rgba($color: #fff, $alpha: 0.7);
-            line-height: 30px;
+            margin: -20px auto 20px;
+            background-color: rgba($color: #fff, $alpha: 1);
+            transition: 0.3s all;
+            // background-color: #fff;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+            line-height: 40px;
             overflow: hidden; //超出的文本隐藏
             text-overflow: ellipsis; //溢出用省略号显示
             white-space: nowrap; //溢出不换行
+
+            i {
+              display: block;
+              position: absolute;
+              width: 100%;
+              font-size: 20px;
+              bottom: -7px;
+              color: transparent;
+              // transition: 0.1s all;
+            }
           }
         }
-      }
-      .more {
-        position: absolute;
-        right: -60px;
-        bottom: 0;
-        font-size: 12px;
       }
     }
   }

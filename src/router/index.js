@@ -12,10 +12,12 @@ import Detail from '../views/Detail'
 import List from '../views/List'
 import Doctor from '../views/Doctor'
 import Swiper from '../views/Swiper'
+import Table from '../views/Table'
+import Serve from '../views/Serve'
 Vue.use(VueRouter)
 
 const routes = [
-  
+
   {
     path: '/',
     name: 'Home',
@@ -24,10 +26,12 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About')
+  },
+  {
+    path: '/serve',
+    name: 'Serve',
+    component: Serve
   },
   {
     path: '/introduce',
@@ -43,6 +47,11 @@ const routes = [
     path: '/news',
     name: 'News',
     component: News
+  },
+  {
+    path: '/news/list',
+    name: 'newslist',
+    component: () => import(/* webpackChunkName: "about" */ '../views/News/list')
   },
   {
     path: '/research',
@@ -83,6 +92,11 @@ const routes = [
     path: '/swiper',
     name: 'Swiper',
     component: Swiper
+  },
+  {
+    path: '/table',
+    name: 'Table',
+    component: Table
   }
 
 ]

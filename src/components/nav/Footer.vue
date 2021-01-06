@@ -134,7 +134,7 @@ export default {
   }
   .buttom-nav {
     font-size: 12px;
-    background-color: #2c4f2d;
+    background-color: $color-9;
     .max-nav {
       // height: 300px;
       position: relative;

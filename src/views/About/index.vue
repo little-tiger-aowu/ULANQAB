@@ -1,7 +1,15 @@
 <template>
   <div class="about">
-    <!-- <img src="@/assets/images/nopic/banner.jpg" width="100%" /> -->
-    <img src="@/assets/images/about/banner.png" width="100%" />
+    <!-- banner -->
+    <div class="banner-txt">
+      <div class="link-txt">
+        <el-link type="info" href="/" :underline="false">首页></el-link>
+        <el-link type="info" :underline="false">医院概况</el-link>
+      </div>
+      <div>
+        <img src="@/assets/images/about/banner-about.png" width="100%" />
+      </div>
+    </div>
     <!-- 医院概况 -->
     <div class="about-box-1">
       <div class="title">医院概况</div>
@@ -114,6 +122,20 @@ export default {
 @import "@/assets/css/mixin.scss";
 .about {
   @include maxWidth;
+  //   banenr
+  .banner-txt {
+    // margin-top: 10px;
+    position: relative;
+    .link-txt {
+      position: absolute;
+      left: 15%;
+      top: 20px;
+      z-index: 1;
+      a {
+        color: #fff;
+      }
+    }
+  }
   .about-box-1 {
     max-width: 1800px;
     min-width: 960px;
