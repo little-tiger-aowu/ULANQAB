@@ -11,8 +11,9 @@
       </div>
     </div>
     <!-- 正文 -->
+    <div class="build">正在建设中...</div>
     <!-- 综合教育 -->
-    <el-row type="flex" justify="center" class="item-1">
+    <!-- <el-row type="flex" justify="center" class="item-1">
       <el-col :span="16" class="contant">
         <el-col :span="11" class="box-1">
           <div>
@@ -27,22 +28,22 @@
             </div>
             <div class="caret-right">
               <i class="el-icon-caret-right"></i>
-            </div>
-            <div class="more-right">查看更多</div>
-          </div>
+            </div> -->
+            <!-- <div class="more-right">查看更多</div> -->
+          <!-- </div>
         </el-col>
         <el-col :span="13" class="img">
           <img src="@/assets/images/educate/img2.png" width="100%" />
         </el-col>
       </el-col>
-    </el-row>
+    </el-row> -->
     <!-- 顺序设置 -->
-    <div class="item-2">
+    <!-- <div class="item-2">
       <el-row type="flex" justify="center">
         <el-col :span="16" class="contant">
           <el-col :span="12" class="box-1">
             <div>
-              则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。经验证明,这些优点有利于保证教学质量。但这种教学模式以学科为基础，致使课程门数过多，内容往往重复，学生负担过重；各学科界限分明，基础课与临床课截然分开，不利于医学生早期接触医学、早期接触病人，早日接触社会。
+              则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。经验证明,这些优点有利于保证教学质量。但这种教学模式以学科为基础，致使课程门数过多，内容往往重复，学生负担过重；各学科界限分明，基础课与临床课截然分开，不利于医学生早期接触医学、早期接触病人，早日接触社会。<br>
               则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。
             </div>
           </el-col>
@@ -51,7 +52,6 @@
 
             <el-col :span="18" class="content">
               <img src="@/assets/images/educate/img1.png" width="100%" />
-              <div class="more-right">查看更多</div>
             </el-col>
           </el-col>
         </el-col>
@@ -59,10 +59,10 @@
       <div>
         <img src="@/assets/images/educate/k1.png" width="50" />
       </div>
-    </div>
+    </div> -->
 
     <!-- 学术新闻 -->
-    <el-row type="flex" justify="center" class="item-1">
+    <!-- <el-row type="flex" justify="center" class="item-1">
       <el-col :span="16" class="contant">
         <el-col :span="13" class="img">
           <img src="@/assets/images/educate/img3.png" width="100%" />
@@ -81,14 +81,13 @@
             <div class="caret-left">
               <i class="el-icon-caret-left"></i>
             </div>
-            <div class="more-left">查看更多</div>
           </div>
         </el-col>
       </el-col>
-    </el-row>
+    </el-row> -->
 
     <!-- 临床医学院教育发展专项基金 -->
-    <div class="item-2">
+    <!-- <div class="item-2">
       <el-row type="flex" justify="center">
         <el-col :span="16" class="contant">
           <el-col :span="12" class="box-2">
@@ -96,12 +95,11 @@
 
             <el-col :span="18" class="content" :offset="6">
               <img src="@/assets/images/educate/img4.png" width="100%" />
-              <div class="more-left">查看更多</div>
             </el-col>
           </el-col>
           <el-col :span="12" class="box-1">
             <div>
-              则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。经验证明,这些优点有利于保证教学质量。但这种教学模式以学科为基础，致使课程门数过多，内容往往重复，学生负担过重；各学科界限分明，基础课与临床课截然分开，不利于医学生早期接触医学、早期接触病人，早日接触社会。
+              则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。经验证明,这些优点有利于保证教学质量。但这种教学模式以学科为基础，致使课程门数过多，内容往往重复，学生负担过重；各学科界限分明，基础课与临床课截然分开，不利于医学生早期接触医学、早期接触病人，早日接触社会。<br>
               则根据各学科之间的内在联系加以安排。学生获得的知识较为系统、完整，教学形式与中学相似，学生易于适应；教师的业务专长与所担负的课程一致,教材易于编写。
             </div>
           </el-col>
@@ -110,7 +108,7 @@
       <div style="text-align: right">
         <img src="@/assets/images/educate/k2.png" width="50" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <style lang="scss" scoped>
@@ -121,7 +119,6 @@
 
   //   banenr
   .banner-txt {
-    margin-top: 10px;
     position: relative;
     .link-txt {
       position: absolute;
@@ -248,5 +245,10 @@
       }
     }
   }
+}
+.build{
+  text-align: center;
+  line-height: 300px;
+  font-size: 25px;
 }
 </style>

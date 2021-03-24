@@ -1,134 +1,168 @@
 <template>
   <div class="home">
     <!-- banner -->
-    <img src="@/assets/images/banner1.jpg" width="100%" />
+    <img src="@/assets/images/about/banner.png" width="100%" />
 
     <!-- search -->
-    <div class="search">
-      <el-row>
-        <el-col :span="14" :offset="2">
-          <el-input v-model="inputSearch" placeholder="搜索"></el-input>
-        </el-col>
-        <el-col :span="3" :offset="3">
-          <el-button>马上查询</el-button>
-        </el-col>
-      </el-row>
-    </div>
-
+    <el-row type="flex" justify="center">
+      <el-col :span="16">
+        <div class="search">
+          <el-row>
+            <el-col :span="15" :offset="2">
+              <el-input
+                v-model="inputSearch"
+                placeholder="医生姓名/关键字/科室名"
+                size="small"
+              ></el-input>
+              <div class="error" v-show="errorSearch">内容不能为空！</div>
+            </el-col>
+            <el-col :span="3" :offset="2">
+              <el-button size="small" icon="el-icon-search" @click="searchData"
+                >立即查询</el-button
+              >
+            </el-col>
+          </el-row>
+        </div>
+      </el-col>
+    </el-row>
+    <div style="height: 40px"></div>
     <!-- 医院特色 -->
     <div class="home-item-1">
       <el-row>
         <el-col :span="4">
-          <img
-            src="@/assets/images/index/bg1.png"
-            width="100%"
-            style="margin-top: 100px"
-          />
+          <div class="left-bg-1"></div>
         </el-col>
         <el-col :span="16">
           <!-- 1 -->
           <ul class="box-1">
             <li>
-              <img src="@/assets/images/index/icon-yisheng.png" />
-              <p>预约挂号</p>
-              <span>Make an Appointment</span>
+              <router-link to="/table">
+                <div>
+                  <img src="@/assets/images/index/icon-yisheng.png" />
+                  <p>挂号指南</p>
+                  <span>Make an Appointment</span>
+                </div>
+              </router-link>
             </li>
             <li>
-              <img src="@/assets/images/index/icon-yibaozhenliaoxiangmu.png" />
-              <p>就诊指南</p>
-              <span>Patien & Visitor Guide</span>
+              <router-link to="/detail?id=14">
+                <div>
+                  <img src="@/assets/images/index/icon-yibaozhenliaoxiangmu.png" />
+                  <p>就诊指南</p>
+                  <span>Patien & Visitor Guide</span>
+                </div>
+              </router-link>
             </li>
             <li>
-              <img src="@/assets/images/index/icon-yibaofuwu.png" />
-              <p>医保服务</p>
-              <span>Patien & Visitor Guide</span>
+              <router-link to="/list">
+                <div>
+                  <img src="@/assets/images/index/icon-yibaofuwu.png" />
+                  <p>医保服务</p>
+                  <span>Patien & Visitor Guide</span>
+                </div>
+              </router-link>
             </li>
             <li>
-              <img src="@/assets/images/index/icon-wenti.png" />
-              <p>常见问题</p>
-              <span>FAQ</span>
+              <div @click="open">
+                <img src="@/assets/images/index/icon-wenti.png" />
+                <p>常见问题</p>
+                <span>FAQ</span>
+              </div>
             </li>
           </ul>
           <!-- 2 -->
           <el-col :span="10" class="box-2">
-            <div class="item-box">
-              <div class="img">
-                <img src="@/assets/images/index/icon-yao.png" width="100%" />
+            <router-link to="/introduce?id=3">
+              <div class="item-box">
+                <div class="img">
+                  <img src="@/assets/images/index/icon-yao.png" width="100%" />
+                </div>
+                <div class="content">
+                  <p>医技、辅助科室</p>
+                  <span>Medical Technology & Auxiliary Department</span>
+                </div>
               </div>
-              <div class="content">
-                <p>医技、辅助科室</p>
-                <span>Medical Technology & Auxiliary Department</span>
+            </router-link>
+
+            <router-link to="/introduce?id=2">
+              <div class="item-box">
+                <div class="img">
+                  <img src="@/assets/images/index/icon-shoushu.png" width="100%" />
+                </div>
+                <div class="content">
+                  <p>手术科室</p>
+                  <span>Surgical Departments</span>
+                </div>
               </div>
-            </div>
-            <div class="item-box">
-              <div class="img">
-                <img
-                  src="@/assets/images/index/icon-shoushu.png"
-                  width="100%"
-                />
-              </div>
-              <div class="content">
-                <p>手术科室</p>
-                <span>Surgical Departments</span>
-              </div>
-            </div>
+            </router-link>
           </el-col>
           <el-col :span="10" :offset="2" class="box-2">
-            <div class="item-box">
-              <div class="img">
-                <img src="@/assets/images/index/icon-keshi.png" width="100%" />
+            <router-link to="/introduce?id=1">
+              <div class="item-box">
+                <div class="img">
+                  <img src="@/assets/images/index/icon-keshi.png" width="100%" />
+                </div>
+                <div class="content">
+                  <p>非手术科室</p>
+                  <span>Non-Surgical Departments</span>
+                </div>
               </div>
-              <div class="content">
-                <p>非手术科室</p>
-                <span>Non-Surgical Departments</span>
+            </router-link>
+            <router-link to="/introduce">
+              <div class="item-box">
+                <div class="img">
+                  <img src="@/assets/images/index/icon-daohang.png" width="100%" />
+                </div>
+
+                <div class="content">
+                  <p>科室导航</p>
+                  <span>Department Navigation</span>
+                </div>
               </div>
-            </div>
-            <div class="item-box">
-              <div class="img">
-                <img
-                  src="@/assets/images/index/icon-daohang.png"
-                  width="100%"
-                />
-              </div>
-              <div class="content">
-                <p>科室导航</p>
-                <span>Department Navigation</span>
-              </div>
-            </div>
+            </router-link>
           </el-col>
         </el-col>
         <el-col :span="20" class="box-3">
-          <swiper ref="mySwiper" :options="swiperOptions">
-            <swiper-slide>
-              <div>
-                <div class="max-title">医疗特色</div>
-                <ul class="content">
-                  <li class="title">致敬劳动，情系盛夏</li>
-                  <li>
-                    <p>【新冠肺炎系列科普视频】生活中生活中...</p>
-                    <span>2020.02.13</span>
-                  </li>
-                  <li>
-                    <p>【新冠肺炎系列科普视频】生活中...</p>
-                    <span>2020.02.13</span>
-                  </li>
-                  <li>
-                    <p>【新冠肺炎系列科普视频】生活中...</p>
-                    <span>2020.02.13</span>
-                  </li>
-                  <li class="more">
-                    <router-link to="/">查看更多</router-link>
-                  </li>
-                </ul>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/index/item-img-2.png" width="100%" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/images/index/item-img-2.png" width="100%" />
-            </swiper-slide>
-          </swiper>
+          <el-col :span="8">
+            <div @click="open">
+              <div class="max-title">医疗特色</div>
+              <swiper ref="mySwiper" :options="swiperOptions">
+                <swiper-slide>
+                  <div>
+                    <ul class="content">
+                      <li class="title">致敬劳动，情系盛夏</li>
+                      <li>
+                        <p>【正在建设】正在建设...</p>
+                        <span>2020.02.13</span>
+                      </li>
+                      <li>
+                        <p>【正在建设】正在建设...</p>
+                        <span>2020.02.13</span>
+                      </li>
+                      <li>
+                        <p>【正在建设】正在建设...</p>
+                        <span>2020.02.13</span>
+                      </li>
+                      <li class="more">
+                        <router-link to="/">查看更多</router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </swiper-slide>
+              </swiper>
+            </div>
+          </el-col>
+
+          <el-col :span="24">
+            <div class="box-img">
+              <el-col :span="11" :offset="6">
+                <img src="@/assets/images/img-2.jpg" width="100%" />
+              </el-col>
+              <el-col :span="7">
+                <img src="@/assets/images/img-6.jpg" width="100%" class="img" />
+              </el-col>
+            </div>
+          </el-col>
         </el-col>
       </el-row>
 
@@ -139,21 +173,23 @@
       <div class="box-4">
         <el-row>
           <el-col :span="8" :offset="4">
-            <img src="@/assets/images/index/item-img-3.png" width="100%" />
+            <!-- <img src="@/assets/images/nopic/img1.jpg" width="100%" /> -->
+            <img src="@/assets/images/img-3.jpg" width="100%" />
           </el-col>
           <el-col :span="8">
             <div class="content">
               <div>
-                <span class="title">学术研讨</span>
-                <span class="more">查看更多</span>
+                <span class="title">医疗设备</span>
+                <router-link to="/about">
+                  <span class="more">查看更多</span>
+                </router-link>
               </div>
-              <div class="min-title">
-                我院生物治疗国家重点实验室在NATURE 杂志发表重
-              </div>
+              <div class="min-title">医院医疗设施先进，医疗设备齐全</div>
               <div class="txt">
-                我院肝脏外科曾勇教授、吴泓教授课题组在CELL
-                DE,男科学研究室袁久洪教授团队多项研究成果被欧美临床指南.神经外科方芳教授、内分泌代谢科谭惠文副教授共同在DI,曾勇教授、吴泓教授课题组在MOLECULAR
-                CAN.我院蛋白质组学和代谢组学研究室程惊秋教授、杨浩副研究...
+                拥有飞利浦Ingenia3.0TCX全数字磁共振系统、西门子Force开源CT、GE公司全息数字PET/CT
+                Discovery MI,双向数字平板心血管造影机、64排128层螺旋CT,
+                瑞典医科达直线加速器、奥林巴斯CV290电子胃肠镜系统和EU-ME2
+                Plus超声内镜诊断仪，以及先进的彩色多普勒超声诊断仪等高精医疗设备300余台件，为医院可持续发展奠定了良好的硬件基础。
               </div>
             </div>
           </el-col>
@@ -162,21 +198,20 @@
           <el-col :span="8" :offset="4">
             <div class="content">
               <div>
-                <span class="title">学术研讨</span>
-                <span class="more">查看更多</span>
+                <span class="title">医疗服务</span>
+                <router-link to="/about">
+                  <span class="more">查看更多</span>
+                </router-link>
               </div>
-              <div class="min-title">
-                我院生物治疗国家重点实验室在NATURE 杂志发表重
-              </div>
+              <div class="min-title">医院学科设置齐全，医疗服务到位</div>
               <div class="txt">
-                我院肝脏外科曾勇教授、吴泓教授课题组在CELL
-                DE,男科学研究室袁久洪教授团队多项研究成果被欧美临床指南.神经外科方芳教授、内分泌代谢科谭惠文副教授共同在DI,曾勇教授、吴泓教授课题组在MOLECULAR
-                CAN.我院蛋白质组学和代谢组学研究室程惊秋教授、杨浩副研究...
+                设有临床科室59个，医技科室28个。其中康复医学科是自治区临床医学重点学科。建院以来，特别是近年来，医院始终坚持并笃定实施“科技兴院”“人才强院”发展战略，重视加强学科建设和医疗技术水平的提高，现已形成了自己独有的医疗特色与优势。心脏大血管外科是医院的传统优势学科，在自治区处于领先地位，享有很高的知名度；老年医学科设备先进，人才梯队合理，技术全面，正向着自治区先进行列迈进；心血管内科在自治区较早开展了心脑血管疾病的介入治疗，疗效显著；血液、内分泌、呼吸系统，头颈部、胸腹部肿瘤等疾病的诊断和治疗，创伤类、骨科疾病、产妇及婴幼儿危重症疾病的救治能力均处于自治区先进水平；关节置换、间盘疾病手术治疗经验丰富、效果极佳；血液净化、肾脏疾病的诊治，消化糸统疾病诊治及内镜下治疗，重症创伤性疾病救治系统完善，技术先进；妇科、泌尿外科所有疾病及肝胆、胃肠、乳腺疾病广泛采用微创手术治疗，患者痛苦小，疗效好；中蒙医专科建设体系完善，设备先进，服务优良。目前，医院各学科建设均处于快速发展期，许多学科的多项技术在本地区处于领先水平。
               </div>
             </div>
           </el-col>
           <el-col :span="8">
-            <img src="@/assets/images/index/item-img-3.png" width="100%" />
+            <!-- <img src="@/assets/images/nopic/img1.jpg" width="100%" /> -->
+            <img src="@/assets/images/img-1.jpg" width="100%" />
           </el-col>
         </el-row>
       </div>
@@ -191,7 +226,7 @@
         :center="center"
         :zoom="zoom"
         @ready="handler"
-        style="width: 100%; height: 400px"
+        style="width: 100%; height: 300px"
         @click="getClickInfo"
         :scroll-wheel-zoom="true"
       >
@@ -209,13 +244,15 @@
 </template>
 
 <script>
+import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   name: "Home",
   data() {
     return {
+      errorSearch:false,
+      mapIcon,
       inputSearch: "",
       swiperOptions: {
-        slidesPerView: 3,
         spaceBetween: 0,
         // centeredSlides: true,
         autoHeight: true, //高度随内容变化
@@ -227,8 +264,8 @@ export default {
         // Some Swiper option/callback...
       },
       // map
-      center: { lng: 109.45744048529967, lat: 36.49771311230842 },
-      zoom: 12,
+      center: { lng: 113.120003, lat: 41.036747 },
+      zoom: 15,
     };
   },
   computed: {
@@ -241,11 +278,16 @@ export default {
     this.swiper.slideTo(3, 1000, false);
   },
   methods: {
+    open() {
+      this.$alert("正在建设...", "提示", {
+        confirmButtonText: "确定",
+      });
+    },
     // map
     handler({ BMap, map }) {
       // 初始化地图,设置中心点坐标
-      var point = new BMap.Point(121.483974, 31.216048);
-      map.centerAndZoom(point, 15);
+      var point = new BMap.Point(113.120003, 41.036747);
+      map.centerAndZoom(point, 17);
 
       // 添加鼠标滚动缩放
       map.enableScrollWheelZoom();
@@ -264,18 +306,18 @@ export default {
       map.addControl(new BMap.MapTypeControl());
       //
       //设置标注的图标
-      var icon = new BMap.Icon("./assets/logo.png", new BMap.Size(100, 100));
+      var icon = new BMap.Icon(mapIcon, new BMap.Size(20, 25));
       //设置标注的经纬度
-      var marker = new BMap.Marker(new BMap.Point(121.160724, 31.173277), {
+      var marker = new BMap.Marker(new BMap.Point(113.120003, 41.036747), {
         icon: icon,
       });
       //把标注添加到地图上
       map.addOverlay(marker);
       var content = "<table>";
-      content = content + "<tr><td> 编号：001</td></tr>";
+      content = content + "<tr><td>乌兰察布中心医院</td></tr>";
       content =
-        content + "<tr><td> 地点：上海汉得信息技术股份有限公司</td></tr>";
-      content = content + "<tr><td> 时间：2018-1-3</td></tr>";
+        content + "<tr><td> 地点：内蒙古自治区乌兰察布市集宁区解放大街157号</td></tr>";
+      content = content + "<tr><td></td></tr>";
       content += "</table>";
       var infowindow = new BMap.InfoWindow(content);
       // 图标点击的时候显示标注
@@ -283,14 +325,24 @@ export default {
         this.openInfoWindow(infowindow);
       });
       // 标注默认显示
-      // var infoWindow = new BMap.InfoWindow(content) // 创建信息窗口对象
-      // map.openInfoWindow(infoWindow, point)
+      var infoWindow = new BMap.InfoWindow(content); // 创建信息窗口对象
+      map.openInfoWindow(infoWindow, point);
     },
     getClickInfo(e) {
       console.log(e.point.lng);
       console.log(e.point.lat);
       this.center.lng = e.point.lng;
       this.center.lat = e.point.lat;
+    },
+    searchData() {
+      console.log(this.inputSearch);
+      if (this.inputSearch) {
+        this.$router.push("/table?keyWord="+this.inputSearch);
+        this.errorSearch = false
+      } else {
+        console.log("object");
+        this.errorSearch = true
+      }
     },
   },
 };
@@ -309,26 +361,30 @@ export default {
   @include maxWidth;
 
   .search {
-    @include width800;
     position: relative;
     z-index: 2;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     background-color: #fff;
-    padding: 10px;
-    margin-top: -15px;
-    border-bottom: 5px solid #609a70;
+    padding: 20px 10px;
+    margin-top: -35px;
+    border-bottom: 5px solid $color-9;
     box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: 0.3);
+    color: #333;
+    .error {
+      position: absolute;
+      bottom: -18px;
+      left: 10%;
+      color: RED;
+      font-size: 12px;
+    }
     .el-button {
-      background-image: url(~@/assets/images/index/icon-search.png);
       background-repeat: no-repeat;
       background-size: 30px;
       background-position: 10px center;
-      padding-left: 40px;
       border: 0;
       color: #fff;
-      background-color: #62b479;
-      box-shadow: 0px 2px 3px 0px #416948,
-        inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
+      background-color: $color-9;
+      // box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
       border-radius: 5px;
     }
   }
@@ -350,10 +406,12 @@ export default {
         transition: 0.2s transform;
         span {
           font-size: 12px;
+          color: #fff;
         }
         p {
           margin-top: 30px;
           margin-bottom: 10px;
+          color: #fff;
         }
         img {
           height: 60px;
@@ -374,10 +432,10 @@ export default {
           }
         }
         &:nth-child(odd) {
-          background-color: #416948;
+          background-color: $color-9;
         }
         &:nth-child(even) {
-          background-color: #768d55;
+          background-color: $color-3;
         }
       }
     }
@@ -385,18 +443,19 @@ export default {
       margin-top: 20px;
 
       .item-box {
+        color: #333;
         padding: 20px 0;
-        border-bottom: 1px solid rgba($color: #416948, $alpha: 0.3);
+        border-bottom: 1px solid rgba($color: $color-3, $alpha: 0.3);
         display: flex;
         display: -webkit-flex;
         flex-direction: row;
         transition: 0.2s all;
 
         &:hover {
-          box-shadow: 0 0 5px rgba($color: #758d54, $alpha: 0.5);
-          border-right: 3px solid #758d54;
+          box-shadow: 0 0 5px rgba($color: $color-9, $alpha: 0.5);
+          border-right: 3px solid $color-9;
           img {
-            box-shadow: 0 0 5px rgba($color: #758d54, $alpha: 0.8);
+            box-shadow: 0 0 5px rgba($color: $color-9, $alpha: 0.8);
           }
         }
 
@@ -431,6 +490,7 @@ export default {
     .box-3 {
       margin-top: 150px;
       margin-bottom: 50px;
+      position: relative;
       .max-title {
         font-size: 20px;
         text-align: left;
@@ -438,12 +498,12 @@ export default {
         font-weight: bold;
       }
       .content {
-        background-color: #325b3d;
+        background-color: $color-9;
         color: #fff;
         font-size: 12px;
         text-align: left;
         padding: 10px 50px;
-        width: 210px;
+        // width: 210px;
         box-sizing: content-box;
         p {
           overflow: hidden; //超出的文本隐藏
@@ -455,9 +515,20 @@ export default {
         }
         .more {
           text-align: right;
+          color: #333;
         }
         a {
           color: #fff;
+        }
+      }
+      .box-img {
+        // position: absolute;
+        // top: 25px;
+        position: relative;
+        margin-top: -23%;
+        .img {
+          margin-top: 40px;
+          opacity: 0.6;
         }
       }
     }
@@ -474,7 +545,7 @@ export default {
           color: #023a94;
           font-size: 16px;
           line-height: 50px;
-          overflow: hidden; //超出的文本隐藏
+          overflow: hidden; //  超出的文本隐藏
           text-overflow: ellipsis; //用省略号显示
           white-space: nowrap; //不换行
         }
@@ -482,6 +553,7 @@ export default {
           float: right;
           padding-top: 10px;
           font-size: 12px;
+          color: #666;
         }
         .txt {
           font-size: 13px;
@@ -491,43 +563,38 @@ export default {
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 3;
+          -webkit-line-clamp: 5;
         }
       }
     }
   }
 
   // swiper
-  .swiper-container {
-    // width: 100%;
-    // height: 100%;
-    // overflow-x: hidden; overflow-y: visible;
-  }
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
+  // .swiper-slide {
+  //   text-align: center;
+  //   font-size: 18px;
+  //   background: #fff;
 
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    transition: 300ms;
-    transform: scale(0.8);
-  }
-  .swiper-slide-active,
-  .swiper-slide-duplicate-active {
-    transform: scale(1);
-  }
+  //   /* Center slide text vertically */
+  //   display: -webkit-box;
+  //   display: -ms-flexbox;
+  //   display: -webkit-flex;
+  //   display: flex;
+  //   -webkit-box-pack: center;
+  //   -ms-flex-pack: center;
+  //   -webkit-justify-content: center;
+  //   justify-content: center;
+  //   -webkit-box-align: center;
+  //   -ms-flex-align: center;
+  //   -webkit-align-items: center;
+  //   align-items: center;
+  //   transition: 300ms;
+  //   transform: scale(0.8);
+  // }
+  // .swiper-slide-active,
+  // .swiper-slide-duplicate-active {
+  //   transform: scale(1);
+  // }
 }
 
 /* 地图标注圆角显示 */
@@ -611,5 +678,25 @@ export default {
     line-height: 60px;
     border-top: 2px solid #7ca792;
   }
+}
+
+// 小图标
+.left-bg-1 {
+  background-image: url(~@/assets/images/index/bg1.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+  height: 530px;
+  margin-top: 130px;
+}
+</style>
+<style lang="scss">
+.BMap_noprint {
+  // background: url(http://cdn.synconize.com/yihua-icon-fill.png) !important;
+  background-size: auto 100% !important;
+  background-repeat: no-repeat !important;
+  // width: 30px !important;
+  // height: 30px !important;
 }
 </style>
