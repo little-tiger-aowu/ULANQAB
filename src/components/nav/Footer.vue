@@ -63,7 +63,7 @@ export default {
 @import "@/assets/css/mixin.scss";
 .footer {
   position: relative;
-  @include maxWidth;
+  // @include maxWidth;
 
   margin-top: 70px;
   .footer-nav {
