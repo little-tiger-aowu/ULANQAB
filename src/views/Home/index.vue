@@ -35,7 +35,7 @@
         <el-col :span="16">
           <!-- 1 -->
           <ul class="box-1">
-            <li>
+            <li class="bg">
               <router-link to="/table">
                 <div>
                   <img src="@/assets/images/index/icon-yisheng.png" />
@@ -226,7 +226,7 @@
         :center="center"
         :zoom="zoom"
         @ready="handler"
-        style="width: 100%; height: 300px"
+        style="width: 100%; height: 370px"
         @click="getClickInfo"
         :scroll-wheel-zoom="true"
       >
@@ -383,8 +383,8 @@ export default {
       background-position: 10px center;
       border: 0;
       color: #fff;
-      background-color: $color-9;
-      // box-shadow: 0px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.45);
+      background-color: $color-3;
+      box-shadow: 2px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.3);
       border-radius: 5px;
     }
   }
@@ -404,14 +404,25 @@ export default {
         text-align: center;
         padding: 30px 0;
         transition: 0.2s transform;
+        &.bg {
+          background-image: url(~@/assets/images/index/bg-2.png);
+          background-size: cover;
+          background-position: bottom center;
+        }
+        &.bg:hover {
+          background-image: url(~@/assets/images/index/bg-2-1.png);
+          background-size: cover;
+          background-position: bottom center;
+        }
         span {
           font-size: 12px;
           color: #fff;
         }
         p {
           margin-top: 30px;
-          margin-bottom: 10px;
+          margin-bottom: 0px;
           color: #fff;
+          font-size: 21px;
         }
         img {
           height: 60px;
@@ -422,7 +433,7 @@ export default {
           background-repeat: no-repeat;
           background-size: 100%;
           background-position: bottom center;
-          &:nth-child(odd) {
+          &:nth-child(3) {
             box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.5);
             background-image: url(~@/assets/images/index/box-1-bg-1.png);
           }
@@ -431,7 +442,7 @@ export default {
             background-image: url(~@/assets/images/index/box-1-bg-2.png);
           }
         }
-        &:nth-child(odd) {
+        &:nth-child(3) {
           background-color: $color-9;
         }
         &:nth-child(even) {
