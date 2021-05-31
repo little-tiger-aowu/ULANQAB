@@ -77,13 +77,13 @@ export default {
         },
         {
           name: "患者服务",
-          link: "serve",
-          subMenu: [
-            {
-              name: "健康科普",
-              link: "health",
-            },
-          ],
+          link: "serve/health",
+          // subMenu: [
+          //   {
+          //     name: "健康科普",
+          //     link: "health",
+          //   },
+          // ],
         },
         {
           name: "新闻中心",

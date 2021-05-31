@@ -4,7 +4,7 @@
     <div class="banner-txt">
       <div class="link-txt">
         <el-link type="info" href="/" :underline="false">首页></el-link>
-        <el-link type="info" :underline="false">科研天地</el-link>
+        <el-link type="info" :underline="false">医院公告</el-link>
       </div>
       <div>
         <img src="@/assets/images/notice/banner.png" width="100%" />
@@ -29,7 +29,7 @@
                     </div>
                   </el-col>
                   <el-col :span="5" :offset="3">
-                    <div class="time">2020-05-11</div>
+                    <div class="time">{{item.issueTime | formatDate}}</div>
                   </el-col>
                 </el-row>
               </div>
