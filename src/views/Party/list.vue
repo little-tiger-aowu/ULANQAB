@@ -17,7 +17,7 @@
 
       <!-- 院报 -->
 
-      <div class="box-1" v-if="id == 2">
+      <div class="box-1">
         <div style="text-align: right">
           <!-- <img src="@/assets/images/news/kuai.png" height="100" /> -->
         </div>
@@ -28,7 +28,7 @@
             <el-col :span="16" class="content">
               <div>
                 <el-col :span="8" v-for="item in listData" :key="item.id">
-                  <a :href="item.content" target="_blank">
+                  <router-link :to="'/detail?id=' + item.id + '&menu=party'">
                     <div class="list">
                       <div
                         class="img"
@@ -40,7 +40,7 @@
                         <div>{{ item.title }}</div>
                       </div>
                     </div>
-                  </a>
+                  </router-link>
                 </el-col>
               </div>
               <!-- <div class="more">查看更多</div> -->
@@ -59,31 +59,11 @@
           </el-pagination>
         </div> -->
       </div>
-
-      <!-- 列表 -->
-      <div v-else>
-        <el-row type="flex" justify="center">
-          <el-col :span="16" class="content">
-            <ul class="box">
-              <router-link
-                v-for="item in listData"
-                :key="item.id"
-                :to="'/detail?id=' + item.id + '&menu=news'"
-              >
-                <li>
-                  <span class="txt">{{ item.title }}</span>
-                  <span>{{ item.issueTime | formatDate }}</span>
-                </li>
-              </router-link>
-            </ul>
-          </el-col>
-        </el-row>
-      </div>
     </div>
   </div>
 </template>
 <script>
-import { specialNewsList } from "@/api/list.js";
+import { newsList } from "@/api/list.js";
 import { formatDate } from "@/utils/time.js";
 export default {
   name: "newsList",
@@ -95,6 +75,12 @@ export default {
       id: this.$route.query.id,
       //   专题列表
       listData: [],
+      page: {
+        current: 1,
+        size: 6,
+        type: 2,
+      },
+      total: 1,
     };
   },
   //过滤
@@ -105,15 +91,16 @@ export default {
     },
   },
   mounted() {
-    this.getSpecialNewsList();
+    this.getNewsList();
   },
 
   methods: {
-    getSpecialNewsList() {
-      specialNewsList(this.id).then((res) => {
+    getNewsList() {
+      newsList(this.page).then((res) => {
+        console.log(res);
         if (res.code == 200) {
-          this.listData = res.data;
-          console.log(this.listData);
+          this.total = res.data.total;
+          this.listData = res.data.records;
         }
       });
     },
@@ -155,7 +142,7 @@ export default {
       font-weight: bold;
       transition: 0.5s all;
       &:hover {
-        color: $color-9;
+        color: #689674;
       }
       span:last-child {
         float: right;
@@ -174,7 +161,7 @@ export default {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          border: 3px solid $color-9;
+          border: 3px solid #689674;
           position: absolute;
           top: 30px;
           left: 20px;

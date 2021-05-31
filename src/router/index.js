@@ -13,13 +13,18 @@ import List from '../views/List'
 import Doctor from '../views/Doctor'
 import Swiper from '../views/Swiper'
 import Table from '../views/Table'
-import Serve from '../views/Serve'
+import Health from '../views/Serve/health'
 Vue.use(VueRouter)
 
 const routes = [
-
   {
     path: '/',
+    //redirect 是重新定向  
+    redirect: '/home'
+  },
+
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -29,9 +34,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About')
   },
   {
-    path: '/serve',
-    name: 'Serve',
-    component: Serve
+    path: '/serve/health',
+    name: 'Health',
+    component: Health
   },
   {
     path: '/introduce',
@@ -72,6 +77,11 @@ const routes = [
     path: '/party',
     name: 'Party',
     component: Party
+  },
+  {
+    path: '/party/list',
+    name: 'partylist',
+    component: () => import('../views/Party/list')
   },
   {
     path: '/detail',

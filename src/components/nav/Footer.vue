@@ -178,11 +178,11 @@ export default {
         a {
           color: #fff;
         }
-        p{
-          margin:0
+        p {
+          margin: 0;
         }
         h2 {
-          margin-block-start:0
+          margin-block-start: 0;
         }
         img {
           height: 72px;
@@ -191,19 +191,21 @@ export default {
           display: inline-block;
           margin-top: 2px;
         }
-        
       }
     }
     .min-nav {
       font-size: 12px;
       color: #fff;
       line-height: 36px;
+      a {
+        color: #fff;
+      }
     }
   }
   .center {
     text-align: center;
-    p{
-      margin-top:10px !important
+    p {
+      margin-top: 10px !important;
     }
   }
 }

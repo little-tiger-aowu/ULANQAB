@@ -4,10 +4,7 @@
       <!-- nav右侧 -->
       <div class="nav-right">
         <div>
-          <span>公众版</span>
-          <!-- <span class="active">公众版</span>
-        <span>员工/学生版</span>
-        <span>EN</span> -->
+          <!-- <span>公众版</span> -->
         </div>
       </div>
       <!-- 菜单 -->
@@ -26,20 +23,25 @@
                       :key="index"
                       class="nav-menu-box"
                     >
-                      <el-link
-                        :class="
-                          nowRoutePath == item.link || nowPathMenu == item.link
-                            ? 'active'
-                            : ''
-                        "
-                        :href="'/#' + item.link"
+                      <!-- <el-link
+                        :class="[{ active: nowPathMenu.indexOf(item.link) != -1 }]"
+                        :href="'/#/' + item.link"
                         :underline="false"
-                        ><span>{{ item.name }}</span></el-link
+                      > -->
+                      <el-link
+                        :class="[{ active: nowPathMenu.indexOf(item.link) != -1 }]"
+                        :href="item.subMenu ? '' : '/#/' + item.link"
+                        :underline="false"
+                        :disabled="item.subMenu ? disabled == false : disabled == true"
+                      >
+                        <span>{{ item.name }}</span></el-link
                       >
                       <div class="sub-menu">
                         <el-link
+                          :class="[{ active: nowPathMenu.indexOf(item2.link) != -1 }]"
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
+                          :href="'/#/' + item.link + '/' + item2.link"
                           :underline="false"
                           >{{ item2.name }}</el-link
                         >
@@ -52,35 +54,6 @@
           </el-col>
         </el-row>
       </div>
-      <!-- <el-row type="flex" justify="center">
-        <el-col :span="16">
-          <el-col :span="3">
-            <div class="nav-logo">
-              <img src="@/assets/images/logo.png" width="100%" />
-            </div>
-          </el-col>
-          <el-col :span="21">
-            <div class="nav-menu">
-              <div v-for="(item, index) in menuList" :key="index" class="nav-menu-box">
-                <el-link
-                  :class="nowRoutePath == item.link ? 'active' : ''"
-                  :href="'/#' + item.link"
-                  :underline="false"
-                  ><span>{{ item.name }}</span></el-link
-                >
-                <div class="sub-menu">
-                  <el-link
-                    v-for="(item2, index2) in item.subMenu"
-                    :key="index2"
-                    :underline="false"
-                    >{{ item2.name }}</el-link
-                  >
-                </div>
-              </div>
-            </div>
-          </el-col>
-        </el-col>
-      </el-row> -->
     </div>
   </div>
 </template>
@@ -88,103 +61,54 @@
 export default {
   data() {
     return {
+      disabled: false,
       menuList: [
         {
           name: "首页",
-          link: "/",
+          link: "home",
+        },
+        {
+          name: "医院概况",
+          link: "about",
+        },
+        {
+          name: "专家介绍",
+          link: "introduce",
         },
         {
           name: "患者服务",
-          link: "/serve",
+          link: "serve",
           subMenu: [
             {
               name: "健康科普",
-              link: "/",
+              link: "health",
             },
           ],
         },
         {
-          name: "医院概况",
-          link: "/about",
-          // subMenu: [
-          //   {
-          //     name: "医院简介",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "组织机构",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "科室导航",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "历/现任领导",
-          //     link: "/",
-          //   },
-          // ],
-        },
-        {
-          name: "专家介绍",
-          link: "/introduce",
-          // subMenu: [
-          //   {
-          //     name: "医院专家介绍",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "专家搜索",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "专家详情",
-          //     link: "/",
-          //   },
-          // ],
-        },
-        {
           name: "新闻中心",
-          link: "/news",
-          // subMenu: [
-          //   {
-          //     name: "学术新闻",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "医疗新技术",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "综合新闻",
-          //     link: "/",
-          //   },
-          //   {
-          //     name: "专题专栏",
-          //     link: "/",
-          //   },
-          // ],
+          link: "news",
         },
         {
           name: "党建工作",
-          link: "/party",
+          link: "party",
         },
         {
           name: "科研天地",
-          link: "/research",
+          link: "research",
         },
         {
           name: "医学教育",
-          link: "/educate",
+          link: "educate",
         },
         {
           name: "护理园地",
-          link: "/nursing",
+          link: "nursing",
         },
 
         {
           name: "医院公告",
-          link: "/notice",
+          link: "notice",
         },
       ],
       nowRoutePath: "/",
@@ -192,17 +116,19 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route.query);
+    console.log(this.$route);
+    console.log(this.$route.path);
     this.nowRoutePath = this.$route.path;
-    this.nowPathMenu = "/" + this.$route.query.menu;
+    this.nowPathMenu = this.$route.fullPath;
     // console.log(this.nowPathMenu);
   },
   watch: {
     "$route.path"(newVal) {
       // console.log("1:" + this.$route.query);
       // console.log("1:" + newVal);
+      console.log(newVal);
       this.nowRoutePath = newVal;
-      this.nowPathMenu = "/" + this.$route.query.menu;
+      this.nowPathMenu = this.$route.fullPath;
     },
   },
 };
@@ -292,11 +218,10 @@ export default {
         .sub-menu {
           overflow: hidden;
           position: absolute;
-
           z-index: 999;
           // left: -30%;
           top: 70px;
-          width: 100%;
+          width: 180%;
           background-color: #fff;
           box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
@@ -304,8 +229,14 @@ export default {
           transition: 0.3s all;
           display: none;
           .el-link {
-            font-size: 13px;
-            line-height: 30px;
+            font-size: 15px;
+            line-height: 40px;
+            &:hover {
+              color: #308594;
+            }
+          }
+          .active {
+            color: #308594;
           }
         }
         &:hover .sub-menu {
@@ -355,5 +286,11 @@ export default {
       }
     }
   }
+}
+.el-link.el-link--default.is-disabled {
+  color: #606266;
+}
+.el-link.is-disabled {
+  cursor: pointer;
 }
 </style>

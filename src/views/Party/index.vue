@@ -45,8 +45,8 @@
             <div class="box-1">
               <div>
                 <!-- <img src="@/assets/images/party/img2.png" width="100%" /> -->
-                <ul>
-                  <li v-for="(item,index)  in listData.slice(0,3)" :key="index">
+                <!-- <ul>
+                  <li v-for="(item, index) in listData.slice(0, 3)" :key="index">
                     <img :src="item.imageUrl" width="100%" v-if="index == 0" />
                     <div>
                       <el-row>
@@ -56,28 +56,32 @@
                           </div>
                         </el-col>
                         <el-col :span="5" :offset="3">
-                          <span>{{item.issueTime|formatDate}}</span>
+                          <span>{{ item.issueTime | formatDate }}</span>
                         </el-col>
                       </el-row>
                     </div>
                   </li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           </el-col>
           <el-col :span="10">
             <div class="box-2">
               <div class="content">
-                <el-row v-for="(item,index)  in listData.slice(3,5)" :key="index" class="list">
+                <el-row
+                  v-for="(item, index) in listData.slice(3, 5)"
+                  :key="index"
+                  class="list"
+                >
                   <el-col :span="12">
                     <img :src="item.imageUrl" width="90%" />
                     <!-- <img src="@/assets/images/party/img3.png" width="90%" /> -->
                   </el-col>
                   <el-col :span="12">
                     <div class="txt-1">
-                       {{item.title}}
+                      {{ item.title }}
                     </div>
-                    <div class="txt-2">{{item.issueTime|formatDate}}</div>
+                    <div class="txt-2">{{ item.issueTime | formatDate }}</div>
                   </el-col>
                 </el-row>
               </div>
@@ -98,8 +102,10 @@
         <el-col :span="7"> <div class="title">理论学习</div> </el-col>
         <el-col :span="17">
           <div class="contant">
-            <div v-for="item in 10" :key="item" class="list">
-              正在建设
+            <div v-for="item in listData" :key="item.id" class="list">
+              <router-link :to="'/detail?id=' + item.id + '&menu=party'">{{
+                item.title
+              }}</router-link>
             </div>
           </div>
         </el-col>
@@ -263,6 +269,9 @@ export default {
       line-height: 40px;
       color: #ffff;
       padding: 0 10px;
+      a {
+        color: #fff;
+      }
 
       &::-webkit-scrollbar {
         /*滚动条整体样式*/

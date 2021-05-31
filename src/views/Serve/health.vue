@@ -8,7 +8,7 @@
           <el-link type="info" :underline="false">健康科普</el-link>
         </div>
         <div>
-          <img src="@/assets/images/news/banner.png" width="100%" />
+          <img src="@/assets/images/serve/health-banner.png" width="100%" />
         </div>
       </div>
 
@@ -24,7 +24,7 @@
             <router-link
               v-for="item in listData"
               :key="item.id"
-              :to="'/detail?id=' + item.id + '&menu=news'"
+              :to="'/detail?id=' + item.id + '&menu=serve&submenu=health'"
             >
               <li>
                 <span class="txt">{{ item.title }}</span>
@@ -98,6 +98,7 @@ export default {
 @import "@/assets/css/mixin.scss";
 .news {
   @include maxWidth;
+  min-height: 70vh;
   //   banenr
   .banner-txt {
     position: relative;
@@ -128,7 +129,7 @@ export default {
       font-weight: bold;
       transition: 0.5s all;
       &:hover {
-        color: #689674;
+        color: $color-9;
       }
       span:last-child {
         float: right;
@@ -147,7 +148,7 @@ export default {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          border: 3px solid #689674;
+          border: 3px solid $color-9;
           position: absolute;
           top: 30px;
           left: 20px;
