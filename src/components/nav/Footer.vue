@@ -39,7 +39,7 @@
           <el-col :span="6" :offset="1">网站地图 / 法律声明 / 联系我们</el-col>
           <el-col :span="16">
             Copyright © 2018 乌兰察布市中心医院网站. All Rights Reserved
-            蒙ICP备10000414号-1
+           <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#fff">蒙ICP备19003220号-2</a> 
             <!-- 网站建设：北京分形科技 -->
           </el-col>
         </el-row>
