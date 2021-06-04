@@ -18,7 +18,7 @@
             </el-col>
             <el-col :span="3" :offset="2">
               <el-button size="small" icon="el-icon-search" @click="searchData"
-                >马上查询</el-button
+                >立即查询</el-button
               >
             </el-col>
           </el-row>
@@ -39,7 +39,7 @@
               <router-link to="/table">
                 <div>
                   <img src="@/assets/images/index/icon-yisheng.png" />
-                  <p>预约挂号</p>
+                  <p>挂号指南</p>
                   <span>Make an Appointment</span>
                 </div>
               </router-link>
@@ -47,11 +47,9 @@
             <li>
               <router-link to="/detail?id=14">
                 <div>
-                  <img
-                    src="@/assets/images/index/icon-yibaozhenliaoxiangmu.png"
-                  />
-                  <p>门诊出诊表</p>
-                  <span>Outpatient call form</span>
+                  <img src="@/assets/images/index/icon-yibaozhenliaoxiangmu.png" />
+                  <p>就诊指南</p>
+                  <span>Patien & Visitor Guide</span>
                 </div>
               </router-link>
             </li>
@@ -59,16 +57,16 @@
               <router-link to="/list">
                 <div>
                   <img src="@/assets/images/index/icon-yibaofuwu.png" />
-                  <p>就诊指南</p>
-                  <span>Clinic guide</span>
+                  <p>医保服务</p>
+                  <span>Patien & Visitor Guide</span>
                 </div>
               </router-link>
             </li>
             <li>
               <div @click="open">
                 <img src="@/assets/images/index/icon-wenti.png" />
-                <p>医保服务</p>
-                <span>Medical Insurance Service</span>
+                <p>常见问题</p>
+                <span>FAQ</span>
               </div>
             </li>
           </ul>
@@ -89,10 +87,7 @@
             <router-link to="/introduce?id=2">
               <div class="item-box">
                 <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-shoushu.png"
-                    width="100%"
-                  />
+                  <img src="@/assets/images/index/icon-shoushu.png" width="100%" />
                 </div>
                 <div class="content">
                   <p>手术科室</p>
@@ -105,10 +100,7 @@
             <router-link to="/introduce?id=1">
               <div class="item-box">
                 <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-keshi.png"
-                    width="100%"
-                  />
+                  <img src="@/assets/images/index/icon-keshi.png" width="100%" />
                 </div>
                 <div class="content">
                   <p>非手术科室</p>
@@ -119,10 +111,7 @@
             <router-link to="/introduce">
               <div class="item-box">
                 <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-daohang.png"
-                    width="100%"
-                  />
+                  <img src="@/assets/images/index/icon-daohang.png" width="100%" />
                 </div>
 
                 <div class="content">
@@ -260,7 +249,7 @@ export default {
   name: "Home",
   data() {
     return {
-      errorSearch: false,
+      errorSearch:false,
       mapIcon,
       inputSearch: "",
       swiperOptions: {
@@ -327,13 +316,12 @@ export default {
       var content = "<table>";
       content = content + "<tr><td>乌兰察布中心医院</td></tr>";
       content =
-        content +
-        "<tr><td> 地点：内蒙古自治区乌兰察布市集宁区解放大街157号</td></tr>";
+        content + "<tr><td> 地点：内蒙古自治区乌兰察布市集宁区解放大街157号</td></tr>";
       content = content + "<tr><td></td></tr>";
       content += "</table>";
       var infowindow = new BMap.InfoWindow(content);
       // 图标点击的时候显示标注
-      marker.addEventListener("click", function() {
+      marker.addEventListener("click", function () {
         this.openInfoWindow(infowindow);
       });
       // 标注默认显示
@@ -349,11 +337,11 @@ export default {
     searchData() {
       console.log(this.inputSearch);
       if (this.inputSearch) {
-        this.$router.push("/table?keyWord=" + this.inputSearch);
-        this.errorSearch = false;
+        this.$router.push("/table?keyWord="+this.inputSearch);
+        this.errorSearch = false
       } else {
         console.log("object");
-        this.errorSearch = true;
+        this.errorSearch = true
       }
     },
   },
@@ -396,8 +384,7 @@ export default {
       border: 0;
       color: #fff;
       background-color: $color-3;
-      box-shadow: 2px 2px 3px 0px #416948,
-        inset 0px -1px 5px 0px rgba(45, 45, 45, 0.3);
+      box-shadow: 2px 2px 3px 0px #416948, inset 0px -1px 5px 0px rgba(45, 45, 45, 0.3);
       border-radius: 5px;
     }
   }
@@ -411,19 +398,14 @@ export default {
       display: flex;
       display: -webkit-flex;
       flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-
       li {
-        width: 23%;
+        width: 25%;
         color: #fff;
         text-align: center;
         padding: 30px 0;
         transition: 0.2s transform;
-        // margin: 10px;
         &.bg {
-          // background-image: url(~@/assets/images/index/bg-2.png);
-          background-color: #ffffff;
+          background-image: url(~@/assets/images/index/bg-2.png);
           background-size: cover;
           background-position: bottom center;
         }
