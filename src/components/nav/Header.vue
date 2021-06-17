@@ -41,7 +41,7 @@
                           :class="[{ active: nowPathMenu.indexOf(item2.link) != -1 }]"
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
-                          :href="'/#/' + item.link + '/' + item2.link"
+                          :href="'/#/' + `${item.link == 0 ? '':item.link}` + `${item.link === 0 ? '':'/'}` + item2.link"
                           :underline="false"
                           >{{ item2.name }}</el-link
                         >
@@ -72,29 +72,49 @@ export default {
           link: "about",
         },
         {
+          name: "患者服务",
+          link: 0,
+          subMenu: [
+            {
+              name: "健康科普",
+              link: "serve/health",
+            },{
+              name: "预约挂号",
+              link: "research",
+            },
+            {
+              name: "门诊出诊",
+              link: "research",
+            }
+          ],
+        },
+        {
+          name: "科室导航",
+          link: "introduce",
+        },
+        {
           name: "专家介绍",
           link: "introduce",
         },
         {
-          name: "患者服务",
-          link: "serve/health",
-          // subMenu: [
-          //   {
-          //     name: "健康科普",
-          //     link: "health",
-          //   },
-          // ],
-        },
-        {
           name: "新闻中心",
-          link: "news",
+          link: 0,
+           subMenu: [
+            {
+              name: "新闻中心",
+              link: "news",
+            }, {
+              name: "医院公告",
+              link: "notice",
+            },
+          ],
         },
         {
           name: "党建工作",
           link: "party",
         },
         {
-          name: "科研天地",
+          name: "科研成果",
           link: "research",
         },
         {
@@ -102,14 +122,9 @@ export default {
           link: "educate",
         },
         {
-          name: "护理园地",
+          name: "护理风采",
           link: "nursing",
-        },
-
-        {
-          name: "医院公告",
-          link: "notice",
-        },
+        }
       ],
       nowRoutePath: "/",
       nowPathMenu: "",

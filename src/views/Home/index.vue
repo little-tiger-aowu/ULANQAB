@@ -2,10 +2,9 @@
   <div class="home">
     <!-- banner -->
     <img src="@/assets/images/about/banner.png" width="100%" />
-
     <!-- search -->
     <el-row type="flex" justify="center">
-      <el-col :span="16">
+      <el-col :span="18">
         <div class="search">
           <el-row>
             <el-col :span="15" :offset="2">
@@ -29,23 +28,18 @@
     <!-- 医院特色 -->
     <div class="home-item-1">
       <el-row>
-        <el-col :span="4">
-          <div class="left-bg-1"></div>
-        </el-col>
-        <el-col :span="16">
+        <el-col :span="18" :offset="3">
           <!-- 1 -->
           <ul class="box-1">
-            <li class="bg">
-              <router-link to="/table">
-                <div>
-                  <img src="@/assets/images/index/icon-yisheng.png" />
-                  <p>预约挂号</p>
-                  <span>Make an Appointment</span>
-                </div>
-              </router-link>
+            <li class="bg" @click="open">
+              <div>
+                <img src="@/assets/images/index/icon-yisheng.png" />
+                <p style="color:#646464">预约挂号</p>
+                <span style="color:#646464">Make an Appointment</span>
+              </div>
             </li>
             <li>
-              <router-link to="/detail?id=14">
+              <router-link to="/table">
                 <div>
                   <img
                     src="@/assets/images/index/icon-yibaozhenliaoxiangmu.png"
@@ -56,7 +50,7 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/list">
+              <router-link to="/detail?id=14">
                 <div>
                   <img src="@/assets/images/index/icon-yibaofuwu.png" />
                   <p>就诊指南</p>
@@ -72,189 +66,306 @@
               </div>
             </li>
           </ul>
-          <!-- 2 -->
-          <el-col :span="10" class="box-2">
-            <router-link to="/introduce?id=3">
-              <div class="item-box">
-                <div class="img">
-                  <img src="@/assets/images/index/icon-yao.png" width="100%" />
-                </div>
-                <div class="content">
-                  <p>医技、辅助科室</p>
-                  <span>Medical Technology & Auxiliary Department</span>
-                </div>
-              </div>
-            </router-link>
-
-            <router-link to="/introduce?id=2">
-              <div class="item-box">
-                <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-shoushu.png"
-                    width="100%"
-                  />
-                </div>
-                <div class="content">
-                  <p>手术科室</p>
-                  <span>Surgical Departments</span>
-                </div>
-              </div>
-            </router-link>
-          </el-col>
-          <el-col :span="10" :offset="2" class="box-2">
-            <router-link to="/introduce?id=1">
-              <div class="item-box">
-                <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-keshi.png"
-                    width="100%"
-                  />
-                </div>
-                <div class="content">
-                  <p>非手术科室</p>
-                  <span>Non-Surgical Departments</span>
-                </div>
-              </div>
-            </router-link>
-            <router-link to="/introduce">
-              <div class="item-box">
-                <div class="img">
-                  <img
-                    src="@/assets/images/index/icon-daohang.png"
-                    width="100%"
-                  />
-                </div>
-
-                <div class="content">
-                  <p>科室导航</p>
-                  <span>Department Navigation</span>
-                </div>
-              </div>
-            </router-link>
-          </el-col>
-        </el-col>
-        <el-col :span="20" class="box-3">
-          <el-col :span="8">
-            <div @click="open">
-              <div class="max-title">医疗特色</div>
-              <swiper ref="mySwiper" :options="swiperOptions">
-                <swiper-slide>
-                  <div>
-                    <ul class="content">
-                      <li class="title">致敬劳动，情系盛夏</li>
-                      <li>
-                        <p>【正在建设】正在建设...</p>
-                        <span>2020.02.13</span>
-                      </li>
-                      <li>
-                        <p>【正在建设】正在建设...</p>
-                        <span>2020.02.13</span>
-                      </li>
-                      <li>
-                        <p>【正在建设】正在建设...</p>
-                        <span>2020.02.13</span>
-                      </li>
-                      <li class="more">
-                        <router-link to="/">查看更多</router-link>
-                      </li>
-                    </ul>
-                  </div>
-                </swiper-slide>
-              </swiper>
-            </div>
-          </el-col>
-
-          <el-col :span="24">
-            <div class="box-img">
-              <el-col :span="11" :offset="6">
-                <img src="@/assets/images/img-2.jpg" width="100%" />
-              </el-col>
-              <el-col :span="7">
-                <img src="@/assets/images/img-6.jpg" width="100%" class="img" />
-              </el-col>
-            </div>
-          </el-col>
         </el-col>
       </el-row>
-
-      <!-- 3 -->
-      <div class="decorate-bg-1">
-        <div></div>
-      </div>
-      <div class="box-4">
-        <el-row>
-          <el-col :span="8" :offset="4">
-            <!-- <img src="@/assets/images/nopic/img1.jpg" width="100%" /> -->
-            <img src="@/assets/images/img-3.jpg" width="100%" />
-          </el-col>
-          <el-col :span="8">
-            <div class="content">
-              <div>
-                <span class="title">医疗设备</span>
-                <router-link to="/about">
-                  <span class="more">查看更多</span>
-                </router-link>
-              </div>
-              <div class="min-title">医院医疗设施先进，医疗设备齐全</div>
-              <div class="txt">
-                拥有飞利浦Ingenia3.0TCX全数字磁共振系统、西门子Force开源CT、GE公司全息数字PET/CT
-                Discovery MI,双向数字平板心血管造影机、64排128层螺旋CT,
-                瑞典医科达直线加速器、奥林巴斯CV290电子胃肠镜系统和EU-ME2
-                Plus超声内镜诊断仪，以及先进的彩色多普勒超声诊断仪等高精医疗设备300余台件，为医院可持续发展奠定了良好的硬件基础。
-              </div>
+      <!-- 2 -->
+      <el-row :gutter="20" style="margin-top:60px">
+        <el-col :span="6" :offset="3">
+          <el-card :body-style="{ padding: '0px' }" class="proList">
+            <img src="@/assets/images/index/proIndex1.png" class="image" />
+            <div style="height:20px"></div>
+            <span class="proTitle">医院公告</span>
+            <router-link to="/notice">
+              <el-button type="text" class="button"
+                >更多》</el-button
+              ></router-link
+            >
+            <div style="padding: 14px;">
+              <router-link to="/notice">
+                <ul class="list">
+                  乌兰察布市中心医院2021年公开招聘神经外科类紧缺医学专业人才的公告
+                </ul>
+              </router-link>
+              <router-link to="/notice">
+                <ul class="list">
+                  蒙速办"APP"健康码申领步骤
+                </ul>
+              </router-link>
+              <router-link to="/notice">
+                <ul class="list">
+                  乌兰察布市中心医院门诊就诊流程
+                </ul>
+              </router-link>
             </div>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="8" :offset="4">
-            <div class="content">
-              <div>
-                <span class="title">医疗服务</span>
-                <router-link to="/about">
-                  <span class="more">查看更多</span>
-                </router-link>
-              </div>
-              <div class="min-title">医院学科设置齐全，医疗服务到位</div>
-              <div class="txt">
-                设有临床科室59个，医技科室28个。其中康复医学科是自治区临床医学重点学科。建院以来，特别是近年来，医院始终坚持并笃定实施“科技兴院”“人才强院”发展战略，重视加强学科建设和医疗技术水平的提高，现已形成了自己独有的医疗特色与优势。心脏大血管外科是医院的传统优势学科，在自治区处于领先地位，享有很高的知名度；老年医学科设备先进，人才梯队合理，技术全面，正向着自治区先进行列迈进；心血管内科在自治区较早开展了心脑血管疾病的介入治疗，疗效显著；血液、内分泌、呼吸系统，头颈部、胸腹部肿瘤等疾病的诊断和治疗，创伤类、骨科疾病、产妇及婴幼儿危重症疾病的救治能力均处于自治区先进水平；关节置换、间盘疾病手术治疗经验丰富、效果极佳；血液净化、肾脏疾病的诊治，消化糸统疾病诊治及内镜下治疗，重症创伤性疾病救治系统完善，技术先进；妇科、泌尿外科所有疾病及肝胆、胃肠、乳腺疾病广泛采用微创手术治疗，患者痛苦小，疗效好；中蒙医专科建设体系完善，设备先进，服务优良。目前，医院各学科建设均处于快速发展期，许多学科的多项技术在本地区处于领先水平。
-              </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '0px' }" class="proList">
+            <img src="@/assets/images/index/proIndex2.png" class="image" />
+            <div style="height:20px"></div>
+            <span class="proTitle">医院动态</span>
+            <router-link to="/news">
+              <el-button type="text" class="button"
+                >更多》</el-button
+              ></router-link
+            >
+            <div style="padding: 14px;">
+              <router-link to="/news">
+                <ul class="list">
+                  院报2020年第一期
+                </ul>
+              </router-link>
+              <router-link to="/news">
+                <ul class="list">
+                  院报2020年第八期
+                </ul>
+              </router-link>
+              <router-link to="/news">
+                <ul class="list">
+                  院报2020年第七期
+                </ul>
+              </router-link>
             </div>
-          </el-col>
-          <el-col :span="8">
-            <!-- <img src="@/assets/images/nopic/img1.jpg" width="100%" /> -->
-            <img src="@/assets/images/img-1.jpg" width="100%" />
-          </el-col>
-        </el-row>
-      </div>
-      <div class="decorate-bg-2">
-        <div></div>
-      </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '0px' }" class="proList">
+            <img src="@/assets/images/index/proIndex3.png" class="image" />
+            <div style="height:20px"></div>
+            <span class="proTitle">媒体摘要</span>
+            <router-link to="/news">
+              <el-button type="text" class="button"
+                >更多》</el-button
+              ></router-link
+            >
+            <div style="padding: 14px;">
+              <router-link to="/news">
+                <ul class="list">
+                  新冠病毒疫苗接种知识问答
+                </ul>
+              </router-link>
+              <router-link to="/news">
+                <ul class="list">
+                  国务院联防联控机制就重点人群新冠病毒疫苗接种工作举行发布会（实录全文）
+                </ul>
+              </router-link>
+              <router-link to="/news">
+                <ul class="list">
+                  乌兰察布市中心医院门诊出诊医师一览表
+                </ul>
+              </router-link>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
-
-    <!-- 地图 -->
-    <div class="footer-map">
-      <baidu-map
-        :center="center"
-        :zoom="zoom"
-        @ready="handler"
-        style="width: 100%; height: 370px"
-        @click="getClickInfo"
-        :scroll-wheel-zoom="true"
-      >
-        <div class="map-box">
-          <div class="title">联系市中心医院</div>
-          <ul class="map-list">
-            <li>乌兰察布中心医院</li>
-          </ul>
-          <div>地址：内蒙古自治区乌兰察布市集宁区解放大街157号</div>
-          <div class="map-txt">市中医蒙医医院（分院）</div>
-        </div>
-      </baidu-map>
+    <!-- 科室导航 -->
+    <div style="margin-top:60px">
+      <el-row class="department-content" :gutter="20">
+        <el-col :span="21" :offset="3"><h1>科室导航</h1></el-col>
+        <el-col :span="6" :offset="3">
+          <img src="@/assets/images/index/Department.png" class="leftImg" />
+        </el-col>
+        <el-col :span="12">
+          <el-row :gutter="20">
+            <el-col :span="6">
+              <span
+                class="iconKeshi"
+                style="background:#538eb6"
+                v-show="keType != 1"
+                @mouseenter="_getphysicianInfo(1)"
+                >非手术科室</span
+              >
+              <img
+                src="@/assets/images/index/Department1.png"
+                class="leftImg"
+                v-show="keType == 1"
+              />
+            </el-col>
+            <el-col :span="6">
+              <span
+                class="iconKeshi"
+                style="background:#56a5aa"
+                v-show="keType != 2"
+                @mouseenter="_getphysicianInfo(2)"
+                >手术科室</span
+              >
+              <img
+                src="@/assets/images/index/Department2.png"
+                class="leftImg"
+                v-show="keType == 2"
+              />
+            </el-col>
+            <el-col :span="6">
+              <span
+                class="iconKeshi"
+                style="background:#e7ca90"
+                v-show="keType != 3"
+                @mouseenter="_getphysicianInfo(3)"
+                >诊断相关科室</span
+              >
+              <img
+                src="@/assets/images/index/Department3.png"
+                class="leftImg"
+                v-show="keType == 3"
+              />
+            </el-col>
+            <el-col :span="6">
+              <!-- <img
+                src="@/assets/images/index/Department4.png"
+                class="leftImg"
+              /> -->
+              <router-link to="/introduce">
+                <span class="iconKeshi">更多科室介绍</span>
+              </router-link>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20">
+            <el-col :span="6" v-for="(item, index) in listDataA" :key="item.id">
+              <router-link
+                :to="
+                  '/doctor?current=1&size=16&officeStr=' +
+                    item.name +
+                    '&menu=introduce'
+                "
+                v-if="index < 16"
+              >
+                <p class="depList">{{ item.name }}</p></router-link
+              >
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
+    <!---->
+    <div style="margin-top:80px">
+      <el-row class="zhongxin">
+        <el-col :span="18" :offset="3">
+          <div class="indexbu">
+            <ul>
+              <img src="@/assets/images/index/indexXin1.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexXin2.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexXin3.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexXin4.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexXin5.png" @click="open" />
+            </ul>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <div style="margin-top:80px">
+      <el-row class="zhongxin2">
+        <el-col :span="18" :offset="3">
+          <div class="indexbu">
+            <ul>
+              <img src="@/assets/images/index/indexKe1.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexKe2.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexKe3.png" @click="open" />
+            </ul>
+            <ul>
+              <img src="@/assets/images/index/indexKe4.png" @click="open" />
+            </ul>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <!--右边icon-->
+    <div class="iconLink">
+      <ul>
+        <li @click="open">
+          <span class="s1">
+            <img src="@/assets/images/index/indexIocn1.png" />
+          </span>
+          <span class="s2">
+            预约挂号
+          </span>
+        </li>
+        <li>
+          <router-link to="/table">
+            <span class="s1">
+              <img src="@/assets/images/index/indexIocn2.png" />
+            </span>
+            <span class="s2">
+              门诊出诊
+            </span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/introduce">
+            <span class="s1">
+              <img src="@/assets/images/index/indexIocn3.png" />
+            </span>
+            <span class="s2">
+              特色科室
+            </span>
+          </router-link>
+        </li>
+        <li @click="open">
+          <span class="s1">
+            <img src="@/assets/images/index/indexIocn4.png" />
+          </span>
+          <span class="s2">
+            远程医疗
+          </span>
+        </li>
+        <li @click="open">
+          <span class="s1">
+            <img src="@/assets/images/index/indexIocn5.png" />
+          </span>
+          <span class="s2">
+            报告查询
+          </span>
+        </li>
+        <li>
+          <span class="s1">
+            <img src="@/assets/images/index/indexIocn6.png" />
+          </span>
+          <span class="s2">
+            暂无
+          </span>
+        </li>
+        <li>
+          <el-popover placement="left" :width="150" trigger="hover">
+            <template #reference>
+              <span class="s3">
+                <img src="@/assets/images/index/indexIocn7.png" />
+              </span>
+            </template>
+            <div class="popover-img">
+              <img
+                src="@/assets/images/footer/footer-ewm.png"
+                style="width:150px;height: auto;"
+              />
+            </div>
+          </el-popover>
+        </li>
+        <li>
+          <span class="s1">
+            <img src="@/assets/images/index/indexIocn8.png" />
+          </span>
+          <span class="s2">
+            暂无
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
+import { physicianInfo } from "@/api/list.js";
 import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   name: "Home",
@@ -263,6 +374,8 @@ export default {
       errorSearch: false,
       mapIcon,
       inputSearch: "",
+      listDataA: [],
+      keType: 1,
       swiperOptions: {
         spaceBetween: 0,
         // centeredSlides: true,
@@ -280,15 +393,24 @@ export default {
     };
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
-    },
+    // swiper() {
+    //   return this.$refs.mySwiper.$swiper;
+    // },
   },
   mounted() {
     console.log("Current Swiper instance object", this.swiper);
-    this.swiper.slideTo(3, 1000, false);
+    this._getphysicianInfo(1);
+    // this.swiper.slideTo(3, 1000, false);
   },
   methods: {
+    _getphysicianInfo(type) {
+      this.keType = type;
+      physicianInfo(type).then((res) => {
+        if (res.code == 200) {
+          this.listDataA = res.data;
+        }
+      });
+    },
     open() {
       this.$alert("正在建设...", "提示", {
         confirmButtonText: "确定",
@@ -363,6 +485,158 @@ export default {
 @import "@/assets/css/base.scss";
 @import "@/assets/css/mixin.scss";
 .home {
+  .iconKeshi {
+    text-align: center;
+    color: #fff;
+    height: 40px;
+    font-size: 20px;
+    width: 100%;
+    background-color: #00763a;
+    display: block;
+    border-radius: 5px;
+    line-height: 40px;
+    cursor: pointer;
+  }
+  .iconLink {
+    z-index: 20000;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    span {
+      display: block;
+    }
+    li {
+      cursor: pointer;
+      width: 65px;
+      height: 65px;
+      position: relative;
+    }
+    .s1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 65px;
+      height: 65px;
+      img {
+        width: 65px;
+        height: auto;
+      }
+    }
+    .s1:hover {
+      opacity: 0;
+    }
+    .s2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      color: #fff;
+      width: 51px;
+      height: 51px;
+      margin: 7px;
+      font-size: 12px;
+      vertical-align: middle;
+      line-height: 56px;
+      text-align: center;
+      background-color: #00763a;
+      border-radius: 5px;
+      word-wrap: break-word;
+    }
+    .s3 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 65px;
+      height: 65px;
+      img {
+        width: 65px;
+        height: auto;
+      }
+    }
+    .popover-img {
+      img {
+        width: 150px;
+        height: auto;
+      }
+    }
+  }
+  .zhongxin {
+    .indexbu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    ul {
+      width: 19%;
+      img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+      }
+    }
+  }
+  .zhongxin2 {
+    .indexbu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    ul {
+      width: 24%;
+      img {
+        width: 100%;
+
+        height: auto;
+        cursor: pointer;
+      }
+    }
+  }
+  .proList {
+    .image {
+      width: 100%;
+      height: auto;
+    }
+    .proTitle {
+      font-size: 25px;
+      padding: 10px;
+    }
+    .button {
+      float: right;
+      text-align: right;
+      font-size: 12px;
+      padding-right: 10px;
+    }
+    .list {
+      border-bottom: #eeeeee 1px solid;
+      margin-top: 10px;
+      color: #999;
+      padding-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .department-content {
+    .leftImg {
+      width: 100%;
+      height: auto;
+    }
+    .depList {
+      color: #999;
+      text-align: center;
+      border: #000000 1px solid;
+      padding: 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
   // 装饰
   .decorate-bg-1 {
     @include decorateBg(row-reverse, 80px, 80px);
@@ -413,34 +687,44 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
       li {
         width: 23%;
         color: #fff;
         text-align: center;
         padding: 30px 0;
         transition: 0.2s transform;
+        box-shadow: 2px 2px 5px 5px rgba(185, 181, 181, 0.408);
         // margin: 10px;
         &.bg {
           // background-image: url(~@/assets/images/index/bg-2.png);
           background-color: #ffffff;
           background-size: cover;
           background-position: bottom center;
+          // border: 1px solid #000;
+          box-shadow: 2px 2px 5px 5px rgba(185, 181, 181, 0.408);
         }
         &.bg:hover {
-          background-image: url(~@/assets/images/index/bg-2-1.png);
+          // background-image: url(~@/assets/images/index/bg-2-1.png);
           background-size: cover;
           background-position: bottom center;
         }
         span {
-          font-size: 12px;
           color: #fff;
+          font-size: 12px;
+          // color: #646464;
         }
         p {
           margin-top: 30px;
           margin-bottom: 0px;
           color: #fff;
+          // color: #646464;
           font-size: 21px;
+        }
+        span:nth-child(1) {
+          color: #646464;
+        }
+        p:nth-child(1) {
+          color: #646464;
         }
         img {
           height: 60px;
@@ -453,18 +737,21 @@ export default {
           background-position: bottom center;
           &:nth-child(3) {
             box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.5);
-            background-image: url(~@/assets/images/index/box-1-bg-1.png);
+            // background-image: url(~@/assets/images/index/box-1-bg-1.png);
           }
           &:nth-child(even) {
             box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.5);
-            background-image: url(~@/assets/images/index/box-1-bg-2.png);
+            // background-image: url(~@/assets/images/index/box-1-bg-2.png);
           }
         }
         &:nth-child(3) {
-          background-color: $color-9;
+          background-color: #e4ca8f;
         }
-        &:nth-child(even) {
-          background-color: $color-3;
+        &:nth-child(2) {
+          background-color: #00763a;
+        }
+        &:nth-child(4) {
+          background-color: #56a5aa;
         }
       }
     }

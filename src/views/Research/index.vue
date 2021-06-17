@@ -3,8 +3,8 @@
     <!-- banner -->
     <div class="banner-txt">
       <div class="link-txt">
-        <el-link type="info" href="/" :underline="false">首页></el-link>
-        <el-link type="info" :underline="false">科研天地</el-link>
+        <el-link type="info" href="/" :underline="false">首页</el-link>
+        <!-- <el-link type="info" :underline="false">科研天地</el-link> -->
       </div>
       <div>
         <img src="@/assets/images/research/banner.png" width="100%" />

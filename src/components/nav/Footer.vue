@@ -11,36 +11,34 @@
                 }}</span>
               </router-link>
             </el-col> -->
-            <el-col :span="8" class="nav-ewm" :offset="1">
+            <!-- <el-col :span="8" class="nav-ewm" :offset="1">
               <h2>友情链接</h2>
               <a href="#">内蒙古自治区乌兰察布市中医蒙医医院</a>
+            </el-col> -->
+            <el-col :span="12" :offset="8" class="nav-ewm">
+              <span style="padding-left:40px">友情链接：</span>
+              <a href="http://wjw.nmg.gov.cn/">自治区卫生健康委员会  </a>
+               <a href="http://wjw.wulanchabu.gov.cn/">乌兰察布市卫生健康委员会</a>
+              <!-- <h2>关于我们</h2> -->
+              <p>联系我们 | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
             </el-col>
-            <el-col :span="7" class="nav-ewm">
-              <h2>关于我们</h2>
-              <p>预约挂号电话：0474-2263857</p>
-              <p>急救中心电话：0474-2324120</p>
-              <p>胸痛中心电话：0474-2276793</p>
-              <p>电子邮箱：wlcbzxyyb@sina.com</p>
-              <p>新浪微博：内蒙古乌兰察布市中心医院官方微博</p>
-            </el-col>
-            <el-col :span="3" class="nav-ewm center">
+            <!-- <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/footer/footer-ewm.png" />
               <p>乌兰察布市<br />中心医院微信公众号</p>
             </el-col>
             <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/ewm2.png" />
               <p>乌兰察布市<br />中医蒙医医院微信公众号</p>
-            </el-col>
+            </el-col> -->
           </el-row>
         </div>
       </div>
       <div class="min-nav">
         <el-row>
-          <el-col :span="6" :offset="1">网站地图 / 法律声明 / 联系我们</el-col>
-          <el-col :span="16">
+          <!-- <el-col :span="6" :offset="1">网站地图 / 法律声明 / 联系我们</el-col> -->
+          <el-col :span="16" :offset="8">
             Copyright © 2018 乌兰察布市中心医院网站. All Rights Reserved
            <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#fff">蒙ICP备19003220号-2</a> 
-            <!-- 网站建设：北京分形科技 -->
           </el-col>
         </el-row>
       </div>
@@ -172,9 +170,9 @@ export default {
         }
       }
       .nav-ewm {
-        margin-top: 45px;
+        margin-top: 105px;
         color: #fff;
-        font-size: 12px;
+        font-size: 15px;
         a {
           color: #fff;
         }

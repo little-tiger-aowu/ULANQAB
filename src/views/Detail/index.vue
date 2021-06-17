@@ -4,7 +4,7 @@
       <el-page-header @back="goBack" :content="data.title"> </el-page-header>
       <div class="title">{{ data.title }}</div>
       <div class="min-title">
-        发布时间：{{ data.issueTime | formatDate }} 发布人：{{ data.author }}
+        发布时间：{{ data.issueTime | formatDate }} 发布人：{{ data.author }} 浏览量：{{ data.pageView }}
       </div>
       <div class="txt">
         <span v-html="data.content"></span>
