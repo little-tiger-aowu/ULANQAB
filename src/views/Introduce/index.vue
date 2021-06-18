@@ -49,7 +49,6 @@
           <a href="#introduce?id=all3" class="a3">诊断相关科室</a>
         </div>
       </el-col>
-
     </el-row>
     <!-- 列表 非手术科室 -->
     <el-row
