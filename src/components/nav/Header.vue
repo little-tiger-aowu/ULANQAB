@@ -43,7 +43,9 @@
                           :key="index2"
                           :href="'/#/' + `${item.link == 0 ? '':item.link}` + `${item.link === 0 ? '':'/'}` + item2.link"
                           :underline="false"
-                          >{{ item2.name }}</el-link
+                          >
+                          {{ item2.name }}
+                          </el-link
                         >
                       </div>
                     </div>
@@ -129,15 +131,15 @@ export default {
            subMenu: [
             {
               name: "非手术科室",
-              link: "introduce?id=all1",
+              link: "introduce",
             },
             {
               name: "手术科室",
-              link: "introduce?id=all2",
+              link: "introduce",
             },
             {
               name: "诊断相关科室",
-              link: "introduce?id=all3",
+              link: "introduce",
             }
           ],
         },
@@ -226,7 +228,7 @@ export default {
           link: 0,
            subMenu: [
             {
-              name: "医学前沿",
+              name: "住院医师规范化培训",
               link: "educate",
             },
             {
@@ -370,16 +372,20 @@ export default {
           // left: -30%;
           top: 70px;
           width: 130%;
+          height: 10px;
           background-color: #fff;
           box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
           // height: 0px;
-          transition: 0.3s all;
-          display: none;
+          // transition: .6s all;
+          // display: none;
+          opacity: 0;
           .el-link {
             font-size: 15px;
             line-height: 40px;
             &:hover {
+              opacity: 1;
+              transition: .6s all ease-in;
               color: #308594;
             }
           }
@@ -388,7 +394,10 @@ export default {
           }
         }
         &:hover .sub-menu {
-          display: block;
+          // display: block;
+          height: auto;
+          opacity: 1;
+          transition: .8s all  ease-in;
         }
       }
     }
@@ -421,6 +430,7 @@ export default {
           display: flex;
           display: inline-flex;
           flex-direction: row;
+          flex-wrap: 1;
           justify-content: space-between;
           margin-top: -5px;
           > div {
