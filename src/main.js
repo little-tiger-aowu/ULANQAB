@@ -13,6 +13,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import style
 import 'swiper/swiper-bundle.css'
+import Swiper2, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper'
+Swiper2.use([Navigation, Pagination, EffectFade, Autoplay])
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(ElementUI);
 Vue.config.productionTip = false

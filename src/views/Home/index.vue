@@ -1,7 +1,17 @@
 <template>
   <div class="home">
     <!-- banner -->
-    <img src="@/assets/images/about/banner.png" width="100%" />
+    <swiper ref="mySwiper" :options="swiperOptions">
+      <swiper-slide>
+        <img src="@/assets/images/index/banner.jpg" width="100%"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="@/assets/images/about/banner.png" width="100%" />
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+     <div class="swiper-scrollbar" slot="scrollbar"></div> 
+    </swiper>
+    <!-- <img src="@/assets/images/about/banner.png" width="100%" /> -->
     <!-- search -->
     <el-row type="flex" justify="center">
       <el-col :span="18">
@@ -262,7 +272,7 @@
       </el-row>
     </div>
     <div style="margin-top:60px">
-        <el-col :span="21" :offset="3"><h1>特色医疗</h1></el-col>
+      <el-col :span="21" :offset="3"><h1>特色医疗</h1></el-col>
       <el-row class="zhongxin2">
         <el-col :span="18" :offset="3">
           <div class="indexbu">
@@ -378,15 +388,16 @@ export default {
       listDataA: [],
       keType: 1,
       swiperOptions: {
-        spaceBetween: 0,
-        // centeredSlides: true,
-        autoHeight: true, //高度随内容变化
+        autoplay: {
+          delay: 3000, //1秒切换一次
+        },
+        speed: 1000,
+        autoHeight: false, //高度随内容变化
         loop: true,
+        // Some Swiper option/callback...
         pagination: {
           el: ".swiper-pagination",
-          clickable: true,
         },
-        // Some Swiper option/callback...
       },
       // map
       center: { lng: 113.120003, lat: 41.036747 },
@@ -394,14 +405,12 @@ export default {
     };
   },
   computed: {
-    // swiper() {
-    //   return this.$refs.mySwiper.$swiper;
-    // },
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   mounted() {
-    console.log("Current Swiper instance object", this.swiper);
     this._getphysicianInfo(1);
-    // this.swiper.slideTo(3, 1000, false);
   },
   methods: {
     _getphysicianInfo(type) {
@@ -491,7 +500,7 @@ export default {
     color: #fff;
     height: 40px;
     font-size: 20px;
-    
+
     width: 100%;
     background-color: #00763a;
     display: block;
@@ -639,9 +648,9 @@ export default {
       text-overflow: ellipsis;
     }
   }
-  .depList:hover{
-     color: #999;
-      border: #999 1px solid;
+  .depList:hover {
+    color: #999;
+    border: #999 1px solid;
   }
   // 装饰
   .decorate-bg-1 {
@@ -658,7 +667,7 @@ export default {
     margin: 0 auto;
     background-color: #fff;
     padding: 20px 10px;
-    margin-top: -35px;
+    margin-top: 10px;
     border-bottom: 5px solid $color-9;
     box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: 0.3);
     color: #333;
@@ -708,7 +717,6 @@ export default {
           background-position: bottom center;
           // border: 1px solid #000;
           box-shadow: 2px 2px 5px 5px rgba(185, 181, 181, 0.408);
-      
         }
         &.bg:hover {
           // background-image: url(~@/assets/images/index/bg-2-1.png);
