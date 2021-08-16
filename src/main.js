@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '@/assets/icon/iconfont.css'
+import '@/assets/icons/index.js'
+import SvgIcon from '@/components/svgIcon/index.vue'// svg组件
 // 路由
 import router from './router'
 // vuex
@@ -13,6 +16,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import style
 import 'swiper/swiper-bundle.css'
+Vue.component('svg-icon', SvgIcon)
 import Swiper2, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper'
 Swiper2.use([Navigation, Pagination, EffectFade, Autoplay])
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)

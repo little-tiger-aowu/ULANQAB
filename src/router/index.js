@@ -107,6 +107,11 @@ const routes = [
     path: '/table',
     name: 'Table',
     component: Table
+  },
+  {
+    path:'/navigation',
+    name:'navigation',
+    component: ()=> import('../views/Introduce/navigation')
   }
 
 ]
