@@ -3,10 +3,10 @@
     <!-- banner -->
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide>
-        <img src="@/assets/images/index/banner.jpg" width="100%"/>
+      <img src="@/assets/images/index/banner.jpg" width="100%"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="@/assets/images/about/banner.png" width="100%" />
+         <router-link to="/about"><img src="@/assets/images/about/banner.png" width="100%" /></router-link> 
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
      <div class="swiper-scrollbar" slot="scrollbar"></div> 
@@ -390,6 +390,7 @@ export default {
       swiperOptions: {
         autoplay: {
           delay: 3000, //1秒切换一次
+          disableOnInteraction: false,
         },
         speed: 1000,
         autoHeight: false, //高度随内容变化
