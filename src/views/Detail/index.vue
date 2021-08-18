@@ -34,6 +34,7 @@
             擅长:
             冠状动脉造影、冠脉支架术、起搏器置入术、心律失常射频消融等心脏介入诊治，以及高血压、冠心病、风湿性心脏病和心律失常、心衰等心血管危急重症的抢救诊疗。
           </p>
+          <img src="@/assets/images/berbor.png" alt="" style="margin-bottom: 40px;">
           <!-- <p class="MsoNormal" style="text-indent: 30pt">
             <strong>学术及社会兼职</strong>
           </p> -->
@@ -152,9 +153,9 @@ export default {
     }
     .good {
       font-size: 17px;
-      padding-bottom: 50px;
-      border-bottom: 2px dashed #ccc;
-      margin-bottom: 45px;
+      padding-bottom: 30px;
+      //border-bottom: 2px dashed #ccc;
+      //margin-bottom: 45px;
     }
 
     .txt {

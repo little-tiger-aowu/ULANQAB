@@ -131,15 +131,15 @@ export default {
            subMenu: [
             {
               name: "非手术科室",
-              link: "introduce",
+              link: "navigation",
             },
             {
               name: "手术科室",
-              link: "introduce",
+              link: "navigation",
             },
             {
               name: "诊断相关科室",
-              link: "introduce",
+              link: "navigation",
             }
           ],
         },

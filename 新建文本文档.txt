@@ -1,0 +1,4 @@
+     <svg-icon icon-class="visit" color="#01763a" /><br />
+   <svg-icon icon-class="referral" /><br />
+   <svg-icon icon-class="plat" /><br />
+ <svg-icon icon-class="relation" /><br />
