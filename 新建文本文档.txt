@@ -2,3 +2,102 @@
    <svg-icon icon-class="referral" /><br />
    <svg-icon icon-class="plat" /><br />
  <svg-icon icon-class="relation" /><br />
+
+              <span style="text-align: left; font-size: 18px"
+                >内科学系: 东院内科住院楼2层(2段2层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >心脏内科: 东院内科住院楼5层(5段5层)、西院南楼4层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >心脏监护室(CCU) : 东院内科住院楼2层(4段2层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >呼吸内科: 东院内科住院楼3层(5段3层)、西院南楼6层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >消化内科: 东院内科住院楼4层(3段4层)、西院南楼3层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >肾脏内科: 东院内科住院楼6层(5段6层)、西院南楼4层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >血液内科: 东院内科住院楼10层(4段10层)、西院南楼2层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >血液透析中心: 东院老楼1层(7楼1层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >风湿免疫内科: 东院内科住院楼6层(4段6层)、7层 (4段7层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >感染内科: 东院内科住院楼6层(3段6层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >普通内科: 东院内科住院楼5层(4段5层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >肿瘤内科: 西院南楼2层、5层</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >老年医学科: 东院老楼2层(6楼2层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >内分泌科: 东院老楼2层(11楼2层)、3层(11楼3层)</span
+              >
+              <span style="text-align: left; font-size: 18px"
+                >内科重症监护室(MICU):
+                东院内科住院楼3层(4段3层)、西院南楼1层</span
+              >
+
+
+
+
+
+
+
+
+  <p class="MsoNormal">
+            <!-- <strong>刘达钧</strong>  &nbsp;-->
+            心血管内科主任 &nbsp; 中共党员 &nbsp;大学本科 &nbsp;主任医师
+          </p>
+          <p class="good">
+            擅长:
+            冠状动脉造影、冠脉支架术、起搏器置入术、心律失常射频消融等心脏介入诊治，以及高血压、冠心病、风湿性心脏病和心律失常、心衰等心血管危急重症的抢救诊疗。
+          </p>
+          <img src="@/assets/images/berbor.png" alt="" style="margin-bottom: 40px;">
+          <!-- <p class="MsoNormal" style="text-indent: 30pt">
+            <strong>学术及社会兼职</strong>
+          </p> -->
+          <p class="MsoNormal">内蒙古医学会心血管分会常委</p>
+          <p class="MsoNormal">内蒙古医学会电生理分会常委</p>
+          <p class="MsoNormal">内蒙古医师协会胸痛专业委员会副主委</p>
+          <p class="MsoNormal">内蒙古医学会医疗事故技术鉴定专家</p>
+        </div>
+      </div>
+      <div class="doctors">
+        <p class="MsoNormal">
+          <strong>医生简介</strong>
+        </p>
+        <p class="MsoNormal" style="text-indent: 30pt">
+          1992年7月毕业于内蒙古医学院临床医学专业，学士学位；多次在北京安贞医院、阜外心血管病医院、北大人民医院进修学习，从事临床医疗、教学、科研工作近30年。在国家级及省级专业学术期刊发表论文10余篇。曾获&ldquo;内蒙古抗击非典先进个人&rdquo;&ldquo;市中心医院星级医师&rdquo;等荣誉称号。
+        </p>
+        <p class="MsoNormal">
+          <strong>主要成果</strong>
+        </p>
+        <p class="MsoNormal" style="text-indent: 30pt">
+          主持开展的 &ldquo;冠状动脉介入治疗&rdquo; 获医院新技术新项目一等奖。
+        </p>
+         <p class="MsoNormal">
+          <strong>出诊信息</strong>
+        </p>
+        <p class="MsoNormal" style="text-indent: 30pt">
+          <strong>出诊时间：</strong>周一上、下午
+        </p>
+        <p class="MsoNormal" style="text-indent: 30pt">
+          <strong>出诊地点：</strong>心血管内科门诊（门诊楼4层B区）
+        </p>
+        <p class="MsoNormal" style="text-indent: 30pt">
+          <strong>咨询热线：</strong>0474-2276796
+        </p>
+      </div>

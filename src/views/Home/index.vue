@@ -3,13 +3,15 @@
     <!-- banner -->
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide>
-      <img src="@/assets/images/index/banner.jpg" width="100%"/>
+        <img src="@/assets/images/index/banner.jpg" width="100%" />
       </swiper-slide>
       <swiper-slide>
-         <router-link to="/about"><img src="@/assets/images/about/banner.png" width="100%" /></router-link> 
+        <router-link to="/about"
+          ><img src="@/assets/images/about/banner.png" width="100%"
+        /></router-link>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
-     <div class="swiper-scrollbar" slot="scrollbar"></div> 
+      <div class="swiper-scrollbar" slot="scrollbar"></div>
     </swiper>
     <!-- <img src="@/assets/images/about/banner.png" width="100%" /> -->
     <!-- search -->
@@ -44,8 +46,8 @@
             <li class="bg" @click="open">
               <div>
                 <img src="@/assets/images/index/icon-yisheng.png" />
-                <p style="color:#fff">预约挂号</p>
-                <span style="color:#fff">Make an Appointment</span>
+                <p style="color: #fff">预约挂号</p>
+                <span style="color: #fff">Make an Appointment</span>
               </div>
             </li>
             <li>
@@ -79,24 +81,24 @@
         </el-col>
       </el-row>
       <!-- 2 -->
-      <el-row :gutter="20" style="margin-top:60px">
+      <el-row :gutter="20" style="margin-top: 60px">
         <el-col :span="6" :offset="3">
           <el-card :body-style="{ padding: '0px' }" class="proList">
             <img src="@/assets/images/index/proIndex1.png" class="image" />
-            <div style="height:20px"></div>
+            <div style="height: 20px"></div>
             <span class="proTitle">医院公告</span>
             <router-link to="/notice">
               <el-button type="text" class="button"
-                >更多》</el-button
+                >更多>></el-button
               ></router-link
             >
-            <div style="padding: 14px;">
-              <router-link to="/notice">
+            <div style="padding: 14px">
+              <router-link  :to="'/detail?id=' + item.id + '&menu=notice'" v-for="(item,index) in noticeList" :key="index">
                 <ul class="list">
-                  乌兰察布市中心医院2021年公开招聘神经外科类紧缺医学专业人才的公告
+                  {{item.title}}
                 </ul>
               </router-link>
-              <router-link to="/notice">
+              <!-- <router-link to="/notice">
                 <ul class="list">
                   蒙速办"APP"健康码申领步骤
                 </ul>
@@ -105,27 +107,28 @@
                 <ul class="list">
                   乌兰察布市中心医院门诊就诊流程
                 </ul>
-              </router-link>
+              </router-link> -->
             </div>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" class="proList">
             <img src="@/assets/images/index/proIndex2.png" class="image" />
-            <div style="height:20px"></div>
-            <span class="proTitle">医院动态</span>
-            <router-link to="/news">
+            <div style="height: 20px"></div>
+            <span class="proTitle">医院院报</span>
+            <router-link to="/news/list?id=3&name=医院动态&menu=news">
               <el-button type="text" class="button"
-                >更多》</el-button
+                >更多>></el-button
               ></router-link
             >
-            <div style="padding: 14px;">
-              <router-link to="/news">
-                <ul class="list">
-                  院报2020年第一期
-                </ul>
-              </router-link>
-              <router-link to="/news">
+            <div style="padding: 14px">
+              <ul class="list" v-for="(item, index) in reportList" :key="index">
+                <a :href="item.content" target="_blank" style="color: #666">{{
+                  item.title
+                }}</a>
+              </ul>
+
+              <!-- <router-link to="/news">
                 <ul class="list">
                   院报2020年第八期
                 </ul>
@@ -134,27 +137,33 @@
                 <ul class="list">
                   院报2020年第七期
                 </ul>
-              </router-link>
+              </router-link> -->
             </div>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" class="proList">
             <img src="@/assets/images/index/proIndex3.png" class="image" />
-            <div style="height:20px"></div>
+            <div style="height: 20px"></div>
             <span class="proTitle">媒体摘要</span>
-            <router-link to="/news">
+            <router-link to="/news/list?id=4&name=媒体摘要&menu=news">
               <el-button type="text" class="button"
-                >更多》</el-button
+                >更多>></el-button
               ></router-link
             >
-            <div style="padding: 14px;">
-              <router-link to="/news">
+            <div style="padding: 14px">
+              <router-link
+                :to="'/detail?id=' + item.id + '&menu=news'"
+                v-for="(item, index) in medialist"
+                :key="index"
+              >
                 <ul class="list">
-                  新冠病毒疫苗接种知识问答
+                  {{
+                    item.title
+                  }}
                 </ul>
               </router-link>
-              <router-link to="/news">
+              <!-- <router-link to="/news">
                 <ul class="list">
                   国务院联防联控机制就重点人群新冠病毒疫苗接种工作举行发布会（实录全文）
                 </ul>
@@ -163,14 +172,14 @@
                 <ul class="list">
                   乌兰察布市中心医院门诊出诊医师一览表
                 </ul>
-              </router-link>
+              </router-link> -->
             </div>
           </el-card>
         </el-col>
       </el-row>
     </div>
     <!-- 科室导航 -->
-    <div style="margin-top:60px">
+    <div style="margin-top: 60px">
       <el-row class="department-content" :gutter="20">
         <el-col :span="21" :offset="3"><h1>科室导航</h1></el-col>
         <el-col :span="6" :offset="3">
@@ -181,7 +190,7 @@
             <el-col :span="6">
               <span
                 class="iconKeshi"
-                style="background:#538eb6"
+                style="background: #538eb6"
                 v-show="keType != 1"
                 @mouseenter="_getphysicianInfo(1)"
                 >非手术科室</span
@@ -195,7 +204,7 @@
             <el-col :span="6">
               <span
                 class="iconKeshi"
-                style="background:#56a5aa"
+                style="background: #56a5aa"
                 v-show="keType != 2"
                 @mouseenter="_getphysicianInfo(2)"
                 >手术科室</span
@@ -209,7 +218,7 @@
             <el-col :span="6">
               <span
                 class="iconKeshi"
-                style="background:#e7ca90"
+                style="background: #e7ca90"
                 v-show="keType != 3"
                 @mouseenter="_getphysicianInfo(3)"
                 >诊断相关科室</span
@@ -235,8 +244,8 @@
               <router-link
                 :to="
                   '/doctor?current=1&size=16&officeStr=' +
-                    item.name +
-                    '&menu=introduce'
+                  item.name +
+                  '&menu=introduce'
                 "
                 v-if="index < 16"
               >
@@ -248,7 +257,7 @@
       </el-row>
     </div>
     <!---->
-    <div style="margin-top:30px">
+    <div style="margin-top: 30px">
       <el-row class="zhongxin">
         <el-col :span="18" :offset="3">
           <div class="indexbu">
@@ -271,7 +280,7 @@
         </el-col>
       </el-row>
     </div>
-    <div style="margin-top:60px">
+    <div style="margin-top: 60px">
       <el-col :span="21" :offset="3"><h1>特色医疗</h1></el-col>
       <el-row class="zhongxin2">
         <el-col :span="18" :offset="3">
@@ -292,6 +301,26 @@
         </el-col>
       </el-row>
     </div>
+    <!-- 地图 -->
+    <div class="footer-map" style="margin-top: 60px">
+      <baidu-map
+        :center="center"
+        :zoom="zoom"
+        @ready="handler"
+        style="width: 100%; height: 370px"
+        @click="getClickInfo"
+        :scroll-wheel-zoom="true"
+      >
+        <!-- <div class="map-box">
+          <div class="title">联系市中心医院</div>
+          <ul class="map-list">
+            <li>乌兰察布中心医院</li>
+          </ul>
+          <div>地址：内蒙古自治区乌兰察布市集宁区解放大街157号</div>
+          <div class="map-txt">市中医蒙医医院（分院）</div>
+        </div> -->
+      </baidu-map>
+    </div>
     <!--右边icon-->
     <div class="iconLink">
       <ul>
@@ -299,18 +328,14 @@
           <span class="s1">
             <img src="@/assets/images/index/indexIocn1.png" />
           </span>
-          <span class="s2">
-            预约挂号
-          </span>
+          <span class="s2"> 预约挂号 </span>
         </li>
         <li>
           <router-link to="/table">
             <span class="s1">
               <img src="@/assets/images/index/indexIocn2.png" />
             </span>
-            <span class="s2">
-              门诊出诊
-            </span>
+            <span class="s2"> 门诊出诊 </span>
           </router-link>
         </li>
         <li>
@@ -318,34 +343,26 @@
             <span class="s1">
               <img src="@/assets/images/index/indexIocn3.png" />
             </span>
-            <span class="s2">
-              特色科室
-            </span>
+            <span class="s2"> 特色科室 </span>
           </router-link>
         </li>
         <li @click="open">
           <span class="s1">
             <img src="@/assets/images/index/indexIocn4.png" />
           </span>
-          <span class="s2">
-            远程医疗
-          </span>
+          <span class="s2"> 远程医疗 </span>
         </li>
         <li @click="open">
           <span class="s1">
             <img src="@/assets/images/index/indexIocn5.png" />
           </span>
-          <span class="s2">
-            报告查询
-          </span>
+          <span class="s2"> 报告查询 </span>
         </li>
         <li>
           <span class="s1">
             <img src="@/assets/images/index/indexIocn6.png" />
           </span>
-          <span class="s2">
-            暂无
-          </span>
+          <span class="s2"> 暂无 </span>
         </li>
         <li>
           <el-popover placement="left" :width="150" trigger="hover">
@@ -357,7 +374,7 @@
             <div class="popover-img">
               <img
                 src="@/assets/images/footer/footer-ewm.png"
-                style="width:150px;height: auto;"
+                style="width: 150px; height: auto"
               />
             </div>
           </el-popover>
@@ -366,9 +383,7 @@
           <span class="s1">
             <img src="@/assets/images/index/indexIocn8.png" />
           </span>
-          <span class="s2">
-            暂无
-          </span>
+          <span class="s2"> 暂无 </span>
         </li>
       </ul>
     </div>
@@ -376,7 +391,8 @@
 </template>
 
 <script>
-import { physicianInfo } from "@/api/list.js";
+import { physicianInfo, specialNewsList, newsList } from "@/api/list.js";
+
 import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   name: "Home",
@@ -403,6 +419,9 @@ export default {
       // map
       center: { lng: 113.120003, lat: 41.036747 },
       zoom: 15,
+      medialist: [], //媒体列表
+      reportList: [], //
+      noticeList: [], //
     };
   },
   computed: {
@@ -412,6 +431,9 @@ export default {
   },
   mounted() {
     this._getphysicianInfo(1);
+    this.getmedialist();
+    this.getreportList();
+    this.getnoticeList();
   },
   methods: {
     _getphysicianInfo(type) {
@@ -466,7 +488,7 @@ export default {
       content += "</table>";
       var infowindow = new BMap.InfoWindow(content);
       // 图标点击的时候显示标注
-      marker.addEventListener("click", function() {
+      marker.addEventListener("click", function () {
         this.openInfoWindow(infowindow);
       });
       // 标注默认显示
@@ -488,6 +510,52 @@ export default {
         console.log("object");
         this.errorSearch = true;
       }
+    },
+    //媒体列表
+    getmedialist() {
+      specialNewsList(4).then((res) => {
+        if (res.code == 200) {
+          res.data.forEach((item) => {
+            if (this.medialist.length != 3) {
+              this.medialist.push(item);
+            }
+          });
+          //console.log(this.medialist);
+          //console.log(res.data);
+        } else {
+          console.log(res.code);
+        }
+      });
+    },
+    //医院院报
+    getreportList() {
+      specialNewsList(2).then((res) => {
+        if (res.code == 200) {
+          res.data.forEach((item) => {
+            if (this.reportList.length != 3) {
+              this.reportList.push(item);
+            }
+          });
+          // console.log(this.reportList);
+        }
+      });
+    },
+    //医院公告
+    getnoticeList() {
+      let page = {
+        current: 1,
+        size: 10,
+        type: 6,
+      };
+      newsList(page).then((res) => {
+        res.data.records.forEach((item) => {
+          if (this.noticeList.length != 3) {
+            this.noticeList.push(item);
+          }
+        });
+        console.log(this.noticeList);
+        //console.log(res.data.records);
+      });
     },
   },
 };
@@ -966,6 +1034,8 @@ export default {
   display: none;
 }
 .footer-map {
+  width: 75%;
+  margin: 0 auto;
   position: relative;
   padding-bottom: 5px;
   border-bottom: 1px solid #538b62;

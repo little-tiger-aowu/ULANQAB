@@ -129,7 +129,7 @@
                         </el-col>
                       </el-row>
                     </div>
-                    <!-- 第四个 -->
+                    <!-- 第四个 --> 
                     <div class="txt-item4" v-show="item.id == 4">
                      <el-row type="flex" >
                         <el-col :span="24" class="content">
@@ -177,7 +177,7 @@ export default {
   mounted() {
     this.getSpecialList();
     this.getSpecialNewsList(); //医院院报
-    this.getthreeList();
+    this.getthreeList();//
     this.getfourList();
     this.getoneList();
   },
@@ -193,9 +193,11 @@ export default {
       specialList().then((res) => {
         if (res.code == 200) {
           this.listData = res.data;
+          console.log(this.listData);
         }
       });
     },
+
     getoneList(){
      specialNewsList(1).then((res) => {
         if (res.code == 200) {
@@ -271,7 +273,6 @@ export default {
   // 最新新闻
   .new-box {
     padding: 50px 0 100px;
-
     .title {
       // text-align: center;
       font-size: 30px;

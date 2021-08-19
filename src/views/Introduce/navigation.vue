@@ -5,26 +5,22 @@
     <div class="nav-right">
       <!-- 标题 -->
       <div class="right-title">
-        <h4>科室介绍</h4>
+        <h4>{{ typeList.name }}介绍</h4>
         <button @click="dialogVisible = true">查看更多</button>
         <el-dialog
           :visible.sync="dialogVisible"
           :before-close="handleClose"
           v-if="dialogVisible"
         >
-          <h4>科室介绍</h4>
+          <h4>{{ typeList.name }}介绍</h4>
           <p>
-            北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
-            北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
-            北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
-            北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
-            北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
+            {{ typeList.briefInformation }}
           </p>
         </el-dialog>
       </div>
       <!-- 内容 -->
       <div class="right-text">
-        北京协和医院内科学系自1921年建院之初即成立。经过近百年的传承及发展，目前内科学系下属包括了心脏内科、呼吸内科、消化内科、肾脏内科、血液内科、风湿免疫内科、感染内科、普通内科、肿瘤内科、老年医学科、内分泌科、内科重症监护病房共12个科室，成为了全国各种内科疑难危重疾病的诊治中心。协和内科以其严格而规范的住院医师、总住院医师轮转培训以及三级医师查房制度而闻名，由此培养出了一批又
+        <p>{{ typeList.briefInformation }}</p>
       </div>
       <h4>就诊指南</h4>
       <!-- 功能区 -->
@@ -38,7 +34,7 @@
             </router-link>
           </li>
           <li>
-            <router-link tag="p" to="/Introduce">
+            <router-link tag="p" :to="'/doctor?current=1&size=16&officeStr=' + typeList.name + '&menu=introduce'">
               <span class="font_family icon-a-yuyueguahao3"></span>
               医师介绍
             </router-link>
@@ -51,52 +47,8 @@
             </p>
             <el-dialog :visible.sync="visit" @close="has" v-if="visit">
               <span style="font-size: 24px; margin-bottom: 30px">科室位置</span>
-              <span style="text-align: left; font-size: 18px"
-                >内科学系: 东院内科住院楼2层(2段2层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >心脏内科: 东院内科住院楼5层(5段5层)、西院南楼4层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >心脏监护室(CCU) : 东院内科住院楼2层(4段2层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >呼吸内科: 东院内科住院楼3层(5段3层)、西院南楼6层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >消化内科: 东院内科住院楼4层(3段4层)、西院南楼3层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >肾脏内科: 东院内科住院楼6层(5段6层)、西院南楼4层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >血液内科: 东院内科住院楼10层(4段10层)、西院南楼2层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >血液透析中心: 东院老楼1层(7楼1层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >风湿免疫内科: 东院内科住院楼6层(4段6层)、7层 (4段7层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >感染内科: 东院内科住院楼6层(3段6层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >普通内科: 东院内科住院楼5层(4段5层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >肿瘤内科: 西院南楼2层、5层</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >老年医学科: 东院老楼2层(6楼2层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >内分泌科: 东院老楼2层(11楼2层)、3层(11楼3层)</span
-              >
-              <span style="text-align: left; font-size: 18px"
-                >内科重症监护室(MICU):
-                东院内科住院楼3层(4段3层)、西院南楼1层</span
-              >
+              <span v-html="typeList.location" style="font-size: 18px; margin-bottom: 30px"></span>
+                <!-- {{typeList.location}} contactWay电话 -->
             </el-dialog>
           </li>
           <li>
@@ -110,12 +62,12 @@
                 <h5>联系电话</h5>
                 <ul>
                   <li class="strong">院本部（中心医院）</li>
+                  <li>预约挂号电话：0474-2263875</li>
                   <li>
-                    预约挂号电话：0474-2263875 
-                  </li>
-                  <li ><span>急救中心电话：<br>
-                  &nbsp;</span><span> 0474-2263985 
-                                        0474-2324120</span>
+                    <span
+                      >急救中心电话：<br />
+                      &nbsp;</span
+                    ><span> 0474-2263985 0474-2324120</span>
                   </li>
                   <li>胸痛中心电话：0474-2276793</li>
                   <li class="strong">新区分院(市中医蒙医医院)</li>
@@ -153,7 +105,7 @@
                   </baidu-map>
                 </div>
                 <h5>中心医新区分院(市中医蒙医医院)乘车路线</h5>
-                 <!-- 地图 -->
+                <!-- 地图 -->
                 <div class="footer-map">
                   <baidu-map
                     :center="center"
@@ -175,6 +127,7 @@
 </template>
 
 <script>
+import { infoIdlist } from "@/api/list.js";
 import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   data() {
@@ -182,9 +135,24 @@ export default {
       dialogVisible: false, //
       visit: false, //科室位置
       message: false,
+      id: "", //
+      typeList: {}, //
     };
   },
+  created() {
+    this.id = this.$route.query.id;
+    this.init();
+  },
   methods: {
+    //初始化
+    init() {
+      infoIdlist(this.id).then((res) => {
+        if (res.code == 200) {
+          console.log(res.data);
+          this.typeList = res.data;
+        }
+      });
+    },
     // 关闭
     handleClose(done) {
       done();
@@ -200,7 +168,7 @@ export default {
       // 初始化地图,设置中心点坐标
       var point = new BMap.Point(113.120003, 41.036747);
       //12592519.133403657,4989464.545,16.28
-      
+
       map.centerAndZoom(point, 17);
 
       // 添加鼠标滚动缩放
@@ -250,6 +218,14 @@ export default {
       this.center.lat = e.point.lat;
     },
   },
+  // watch:{
+  //   $route:{
+  //     handler:function(val,oldval){
+  //       console.log(val.query.id,oldval.query.id);
+  //       this.id=val.query.id
+  //     }
+  //   }
+  // }
 };
 </script>
 
@@ -307,10 +283,16 @@ export default {
     .right-text {
       line-height: 24px;
       color: #474747;
-      font-size: 14px;
       margin-top: 16px;
       height: 108px;
-      overflow: hidden;
+      p {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4; /* 可以显示的行数，超出部分用...表示*/
+        -webkit-box-orient: vertical;
+      }
     }
     // /功能区
     .functional {
@@ -360,7 +342,7 @@ export default {
                   width: auto;
                   font-size: 18px;
                   text-align: left;
-                  span{
+                  span {
                     font-size: 18px;
                     display: inline-block;
                     letter-spacing: normal;

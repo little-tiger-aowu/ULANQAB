@@ -55,7 +55,7 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 1 ||
+        introduceId == 2 ||
         introduceId == '' ||
         introduceId == 'all1' ||
         introduceId == 'all2' ||
@@ -73,10 +73,11 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
-                <router-link
-                  :to="
+                <!-- :to="
                     '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
-                  "
+                  " -->
+                <router-link
+                :to="{path:'/navigation',query:{id:item.id}}"
                 >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
@@ -154,7 +155,7 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 2 ||
+        introduceId == 1 ||
         introduceId == '' ||
         introduceId == 'all1' ||
         introduceId == 'all2' ||
@@ -172,10 +173,9 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
+                <!-- '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce' -->
                 <router-link
-                  :to="
-                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
-                  "
+                  :to="{path:'/navigation',query:{id:item.id}}"
                 >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
@@ -272,9 +272,7 @@
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
                 <router-link
-                  :to="
-                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
-                  "
+                 :to="{path:'/navigation',query:{id:item.id}}"
                 >
                   <span class="box-title">{{ item.name }}</span>
                 </router-link>
@@ -378,6 +376,7 @@ export default {
     this.getSearchData();
     // 通过id获取科室及医生数据
     this.getPhysicianInfo();
+    this.getnum();
   },
   methods: {
     getPhysicianInfo() {
@@ -448,7 +447,21 @@ export default {
         }
       });
     },
+    // 获取科室类型
+    getnum(){
+       let num =this.$route.query.num
+       this.introduceId= num
+       console.log(this.introduceId);
+    }
   },
+  watch:{
+    $route:{
+      handler:function(val,oldval){
+        console.log(oldval);
+        this.introduceId=val.query.num
+      }
+    }
+  }
 };
 </script>
 <style lang="scss">

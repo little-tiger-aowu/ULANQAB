@@ -41,7 +41,7 @@
                           :class="[{ active: nowPathMenu.indexOf(item2.name) != -1 }]"
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
-                          :href="'/#/' + `${item.link == 0 ? '':item.link}` + `${item.link === 0 ? '':'/'}` + item2.link"
+                          :href="'/#/' + `${item.link == 0 ? '':item.link}` + `${item.link === 0 ? '':'/'}` + item2.link +  `?${item2.num == undefined ? '':'num=' + item2.num}`"
                           :underline="false"
                           >
                           {{ item2.name }}
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       disabled: false,
+      
       menuList: [
         {
           name: "首页",
@@ -126,20 +127,23 @@ export default {
         },
         {
           name: "科室导航",
-          // link: "introduce",
+           // link: "introduce",
             link: 0,
-           subMenu: [
+            subMenu: [
             {
               name: "非手术科室",
-              link: "navigation",
+              link: "introduce",
+              num:2,
             },
             {
               name: "手术科室",
-              link: "navigation",
+              link: "introduce",
+              num:1,
             },
             {
               name: "诊断相关科室",
-              link: "navigation",
+              link: "introduce",
+              num:3,
             }
           ],
         },
@@ -150,14 +154,17 @@ export default {
             {
               name: "非手术科室",
               link: "introduce",
+              num:2,
             },
             {
               name: "手术科室",
-              link: "research",
+              link: "introduce",
+              num:1,
             },
             {
               name: "诊断相关科室",
-              link: "research",
+              link: "introduce",
+              num:3,
             }
           ],
         },

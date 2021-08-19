@@ -79,3 +79,10 @@ export function searchOutCall(params) {
         params: params
     })
 }
+//通过id来获取科室的详细数据
+export function infoIdlist(id){
+  return request({
+      url:`/office/info?id=${id}`,
+      method:'GET',
+  })
+}
