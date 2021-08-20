@@ -7,10 +7,8 @@
         <li class="strong">院本部（中心医院）</li>
         <li>预约挂号电话：0474-2263875</li>
         <li>
-          <span
-            >急救中心电话：<br />
-            &nbsp;</span
-          ><span> 0474-2263985 0474-2324120</span>
+          <span>急救中心电话：0474-2263985 </span>
+          <span style="display: block; text-indent: 125px;"> 0474-2324120</span>
         </li>
         <li>胸痛中心电话：0474-2276793</li>
         <li class="strong">新区分院(市中医蒙医医院)</li>
@@ -27,9 +25,11 @@
       </ul>
       <h5>乘车路线及地图</h5>
       <ul>
-        <li>乘车路线：(中心医院)乘1、4、11路公交车中心医院站下车即到。</li>
-        <li>
-          乘车路线：(市中医蒙医医院)乘5路公交车虎山公园站下车向北100米即到
+        <!-- (中心医院) -->
+        <li>乘车路线：乘1、4、11路公交车中心医院站下车即到。</li>
+        <!-- 乘车路线：(市中医蒙医医院) -->
+        <li style="text-indent: 89px;">
+          乘5路公交车虎山公园站下车向北100米即到。
         </li>
       </ul>
       <h5>中心医院本部乘车路线</h5>
@@ -65,7 +65,12 @@
 <script>
 import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
-  data() {},
+  data() {
+    return {
+      center: { lng: 113.120003, lat: 41.036747 },
+      zoom: 15,
+    };
+  },
   methods: {
     // map
     handler({ BMap, map }) {
@@ -127,8 +132,13 @@ export default {
 
 <style lang="scss" scoped>
 .message {
+  text-align: center;
+
   .message-text {
+    width: 60%;
+    margin: 0 auto;
     h5 {
+     
       display: inline-block;
       font-size: 20px;
       border-bottom: 3px solid #56a5aa;
@@ -145,7 +155,7 @@ export default {
           font-size: 18px;
           display: inline-block;
           letter-spacing: normal;
-          width: 8.7%;
+          // width: 8.9%;
         }
       }
     }

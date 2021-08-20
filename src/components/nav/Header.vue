@@ -29,24 +29,37 @@
                         :underline="false"
                       > -->
                       <el-link
-                        :class="[{ active: nowPathMenu.indexOf(item.name) != -1 }]"
+                        :class="[
+                          { active: nowPathMenu.indexOf(item.name) != -1 },
+                        ]"
                         :href="item.subMenu ? '' : '/#/' + item.link"
                         :underline="false"
-                        :disabled="item.subMenu ? disabled == false : disabled == true"
+                        :disabled="
+                          item.subMenu ? disabled == false : disabled == true
+                        "
                       >
                         <span>{{ item.name }}</span></el-link
                       >
                       <div class="sub-menu">
                         <el-link
-                          :class="[{ active: nowPathMenu.indexOf(item2.name) != -1 }]"
+                          :class="[
+                            { active: nowPathMenu.indexOf(item2.name) != -1 },
+                          ]"
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
-                          :href="'/#/' + `${item.link == 0 ? '':item.link}` + `${item.link === 0 ? '':'/'}` + item2.link +  `?${item2.num == undefined ? '':'num=' + item2.num}`"
+                          :href="
+                            '/#/' +
+                            `${item.link == 0 ? '' : item.link}` +
+                            `${item.link === 0 ? '' : '/'}` +
+                            item2.link +
+                            `?${
+                              item2.num == undefined ? '' : 'num=' + item2.num
+                            }`
+                          "
                           :underline="false"
-                          >
-                          {{ item2.name }}
-                          </el-link
                         >
+                          {{ item2.name }}
+                        </el-link>
                       </div>
                     </div>
                   </div>
@@ -64,7 +77,7 @@ export default {
   data() {
     return {
       disabled: false,
-      
+
       menuList: [
         {
           name: "首页",
@@ -78,36 +91,44 @@ export default {
             {
               name: "医院介绍",
               link: "about",
-            },{
+            },
+            {
               name: "医院组织机构",
               link: "research",
             },
             {
               name: "医院领导介绍",
               link: "research",
-            },{
+            },
+            {
               name: "联系我们",
-              link: "research",
-            }
+              link: "message",
+            },
           ],
         },
         {
           name: "患者服务",
           link: 0,
           subMenu: [
-             {
+            {
               name: "预约挂号",
               link: "research",
-            },{
+            },
+            // http://192.168.1.30:8080/#/detail?id=14
+            // http://192.168.1.30:8080/#/detail?id=14%3F
+            {
               name: "就医指南",
               link: "research",
-            },{
+            },
+            {
               name: "特色诊疗",
               link: "research",
-            },{
+            },
+            {
               name: "出/入院服务",
               link: "research",
-            },{
+            },
+            {
               name: "医保服务",
               link: "research",
             },
@@ -122,78 +143,78 @@ export default {
             {
               name: "患者心声",
               link: "research",
-            }
+            },
           ],
         },
         {
           name: "科室导航",
-           // link: "introduce",
-            link: 0,
-            subMenu: [
+          // link: "introduce",
+          link: 0,
+          subMenu: [
             {
               name: "非手术科室",
               link: "introduce",
-              num:2,
+              num: 2,
             },
             {
               name: "手术科室",
               link: "introduce",
-              num:1,
+              num: 1,
             },
             {
               name: "诊断相关科室",
               link: "introduce",
-              num:3,
-            }
+              num: 3,
+            },
           ],
         },
         {
           name: "专家介绍",
-           link: 0,
-           subMenu: [
+          link: 0,
+          subMenu: [
             {
               name: "非手术科室",
               link: "introduce",
-              num:2,
+              num: 2,
             },
             {
               name: "手术科室",
               link: "introduce",
-              num:1,
+              num: 1,
             },
             {
               name: "诊断相关科室",
               link: "introduce",
-              num:3,
-            }
+              num: 3,
+            },
           ],
         },
         {
           name: "新闻中心",
           link: 0,
-           subMenu: [
+          subMenu: [
             {
               name: "综合新闻",
               link: "news",
-            }, 
+            },
             {
               name: "医院公告",
               link: "notice",
             },
-             {
+            {
               name: "媒体聚焦",
-              link: "news",
+              link: "news/list?id=4&name=媒体聚焦&menu=news",
             },
-             {
+            {
               name: "医院院报",
-              link: "news",
+              link: "news/list?id=2&name=医院院报&menu=news",
             },
           ],
         },
         {
           name: "党建工作",
           link: 0,
-           subMenu: [
+          subMenu: [
             {
               name: "党委要闻",
               link: "party",
@@ -209,13 +230,13 @@ export default {
             {
               name: "理论学习",
               link: "research",
-            }
+            },
           ],
         },
         {
           name: "科研天地",
-           link: 0,
-           subMenu: [
+          link: 0,
+          subMenu: [
             {
               name: "医学前沿",
               link: "research",
@@ -227,13 +248,13 @@ export default {
             {
               name: "科研成果",
               link: "research",
-            }
+            },
           ],
         },
         {
           name: "医学教育",
           link: 0,
-           subMenu: [
+          subMenu: [
             {
               name: "住院医师规范化培训",
               link: "educate",
@@ -245,12 +266,12 @@ export default {
             {
               name: "继续教育",
               link: "educate",
-            }
+            },
           ],
         },
         {
           name: "护理风采",
-           link: 0,
+          link: 0,
           subMenu: [
             {
               name: "护理概况",
@@ -263,9 +284,9 @@ export default {
             {
               name: "护理文化",
               link: "nursing",
-            }
+            },
           ],
-        }
+        },
       ],
       nowRoutePath: "/",
       nowPathMenu: "",
@@ -342,7 +363,7 @@ export default {
         padding: 0 10px 0 0;
         .el-link {
           font-size: 16px;
-          transition: .5s;
+          transition: 0.5s;
           span {
             padding: 5px 0;
             min-width: 64px;
@@ -379,20 +400,21 @@ export default {
           // left: -30%;
           top: 70px;
           width: 130%;
-          height: 10px;
+          //height: 10px;
           background-color: #fff;
           box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
-          // height: 0px;
-          // transition: .6s all;
-          // display: none;
+           height: 0px;
+           //transition: .6s all;
+          display: none;
           opacity: 0;
           .el-link {
             font-size: 15px;
             line-height: 40px;
             &:hover {
               opacity: 1;
-              transition: .6s all ease-in;
+               //display: block;
+              transition: 0.1s all ease-in;
               color: #308594;
             }
           }
@@ -401,10 +423,21 @@ export default {
           }
         }
         &:hover .sub-menu {
-          // display: block;
           height: auto;
           opacity: 1;
-          transition: .8s all  ease-in;
+          transition: 1s all ease-in;
+          display: block;
+          animation:mymove 1s;
+        }
+        @keyframes mymove{
+          0%{
+            top: 40px;
+            height: 0;
+          }
+          100%{
+            top: 70px;
+            height: auto;
+          }
         }
       }
     }

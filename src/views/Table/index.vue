@@ -5,15 +5,15 @@
         <!-- 线 -->
         <div class="line"></div>
         <!-- 大标题 -->
-        <div class="max-title">门诊出诊医师一览表</div>
+        <div class="max-title">{{ title }}出诊医师一览表</div>
         <!-- 标题搜索Í -->
         <div class="box-1">
           <div class="min-title">
             <span class="pu-txt">普</span>
             普 通 门 诊
           </div>
-          <div class="search-box">
-            <input type="text" v-model="keyWord" />
+          <div class="search-box" v-show="searchShow">
+            <input type="text" v-model="keyVal" />
             <button @click="searchData">搜索</button>
           </div>
         </div>
@@ -46,8 +46,7 @@
             :key="item.officeId"
           >
             <tr>
-              <td width="11%" rowspan="2">{{ item.officeName }}</td>
-
+              <td width="11%" rowspan="2">{{ item.officeName }}</td> 
               <td colspan="8">
                 <table width="100%" cellpadding="0" cellspacing="0" class="table-box-1">
                   <td width="12.5%">上午</td>
@@ -199,8 +198,12 @@ import tooltip from "@/views/Table/components/tooltip";
 export default {
   data() {
     return {
+      title:'门诊',
       keyWord: this.$route.query.keyWord || "",
+      keyVal:'',
       searchOutCallData: [],
+      searchShow:true,
+      //nunber:this.$route.query.name
     };
   },
   components: {
@@ -208,6 +211,13 @@ export default {
   },
   mounted() {
     this.getSearchOutCall();
+    if(this.keyWord !=''){
+      this.searchShow=false
+      this.getSearchOutCall()
+    }
+  },
+  watch:{
+    '$route':'searchData'
   },
   methods: {
     getSearchOutCall() {
@@ -215,14 +225,15 @@ export default {
         keyWord: this.keyWord,
       };
       searchOutCall(data).then((res) => {
-        console.log(res);
+        //console.log(res);
         if (res.code == 200) {
           this.searchOutCallData = res.data;
         }
       });
     },
     searchData() {
-      this.$router.push({ query: { keyWord: this.keyWord } })
+      this.$router.push({ query: { keyWord: this.keyVal } })
+        this.keyWord=this.$route.query.keyWord || "",
       this.getSearchOutCall();
     },
   },

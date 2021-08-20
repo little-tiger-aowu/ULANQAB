@@ -26,14 +26,14 @@
       <!-- 功能区 -->
       <div class="functional">
         <ul>
-          <li>
-            <router-link tag="p" to="/table">
+          <li style="cursor: pointer;">
+            <router-link tag="p" :to="{path:'/table',query: { keyWord:typeList.name }}">
               <!-- <svg-icon icon-class="referral" /> -->
               <span class="font_family icon-zhuanjiachuzhenxinxi"></span>
               出诊信息
             </router-link>
           </li>
-          <li>
+          <li style="cursor: pointer;">
             <router-link tag="p" :to="'/doctor?current=1&size=16&officeStr=' + typeList.name + '&menu=introduce'">
               <span class="font_family icon-a-yuyueguahao3"></span>
               医师介绍
@@ -41,83 +41,24 @@
           </li>
 
           <li>
-            <p @click="visit = true">
-              <span class="font_family icon-weizhi"></span>
+            <p @click="visit = true" style="cursor: pointer;">
+              <span class="font_family icon-weizhi" ></span>
               科室位置
             </p>
             <el-dialog :visible.sync="visit" @close="has" v-if="visit">
-              <span style="font-size: 24px; margin-bottom: 30px">科室位置</span>
+              <span style="font-size: 24px; margin-bottom: 30px ">科室位置</span>
               <span v-html="typeList.location" style="font-size: 18px; margin-bottom: 30px"></span>
                 <!-- {{typeList.location}} contactWay电话 -->
             </el-dialog>
           </li>
           <li>
-            <p @click="message = true">
+            <p @click="message = true" style="cursor: pointer;">
               <span class="font_family icon-lianxiwomen"></span>
               联系我们
             </p>
             <el-dialog :visible.sync="message" v-if="message">
               <h4 style="font-size: 24px">联系我们</h4>
-              <div class="message-text">
-                <h5>联系电话</h5>
-                <ul>
-                  <li class="strong">院本部（中心医院）</li>
-                  <li>预约挂号电话：0474-2263875</li>
-                  <li>
-                    <span
-                      >急救中心电话：<br />
-                      &nbsp;</span
-                    ><span> 0474-2263985 0474-2324120</span>
-                  </li>
-                  <li>胸痛中心电话：0474-2276793</li>
-                  <li class="strong">新区分院(市中医蒙医医院)</li>
-                  <li>预约挂号电话：0474-2313126</li>
-                </ul>
-                <h5>医院地址及邮编</h5>
-                <ul>
-                  <li class="strong">院本部（中心医院）</li>
-                  <li>地址：乌兰察布市集宁区解放大街157号</li>
-                  <li>邮编：012000</li>
-                  <li class="strong">新区分院(市中医蒙医医院)</li>
-                  <li>地址：乌兰察布市集宁新区工农大街西呼格吉街南</li>
-                  <li>邮编：012000</li>
-                </ul>
-                <h5>乘车路线及地图</h5>
-                <ul>
-                  <li>
-                    乘车路线：(中心医院)乘1、4、11路公交车中心医院站下车即到。
-                  </li>
-                  <li>
-                    乘车路线：(市中医蒙医医院)乘5路公交车虎山公园站下车向北100米即到
-                  </li>
-                </ul>
-                <h5>中心医院本部乘车路线</h5>
-                <!-- 地图 -->
-                <div class="footer-map">
-                  <baidu-map
-                    :center="center"
-                    :zoom="zoom"
-                    @ready="handler"
-                    style="width: 100%; height: 370px"
-                    @click="getClickInfo"
-                    :scroll-wheel-zoom="true"
-                  >
-                  </baidu-map>
-                </div>
-                <h5>中心医新区分院(市中医蒙医医院)乘车路线</h5>
-                <!-- 地图 -->
-                <div class="footer-map">
-                  <baidu-map
-                    :center="center"
-                    :zoom="zoom"
-                    @ready="handler"
-                    style="width: 100%; height: 370px"
-                    @click="getClickInfo"
-                    :scroll-wheel-zoom="true"
-                  >
-                  </baidu-map>
-                </div>
-              </div>
+              <span v-html="typeList.contactWay" style="font-size: 18px; margin-bottom: 30px"></span>
             </el-dialog>
           </li>
         </ul>

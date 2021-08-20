@@ -57,38 +57,42 @@
                       <!-- 左边 -->
                       <div class="item-left">
                         <!-- 图片 -->
-                        <div class="left-src">
-                          <img src="" />
-                        </div>
+                        <router-link tag="div" :to="'/detail?id=' + onegather.id + '&menu=news'"  class="left-src">
+                          <img src="@/assets/images/aboubanner.png" />
+                        </router-link>
                         <!-- 文字 -->
                         <div class="left-text">
                           <!-- 标题 -->
-                          <h4>标题</h4>
+                          <router-link tag="h4" :to="'/detail?id=' + onegather.id + '&menu=news'"  style="cursor: pointer;">{{ onegather.title }}</router-link>
                           <!-- 内容 -->
-                          <p>内容</p>
+                          <p> {{ onegather.title }}  <router-link tag="span" :to="'/detail?id=' + onegather.id + '&menu=news'" style="float: right;color: #0087cd; cursor: pointer;">更多>></router-link></p>
                         </div>
                       </div>
                       <!-- 右边 -->
                       <div class="item-right">
                         <!-- 内容 -->
-                        <div
+                        <router-link
+                          tag="div"
                           class="right-contion"
                           v-for="(item, index) in oneList"
                           :key="index"
+                          :to="'/detail?id=' + item.id + '&menu=news'"
+                           style="cursor: pointer;"
                         >
                           <!-- 标题 -->
-                          <h4>{{item.title}}</h4>
+                          <h4>{{ item.title }}</h4>
                           <!-- v-html='item.content' -->
-                          <p >
-                           <!-- {{item.content}} -->
-                             我是内容
-                          </p>
-                        </div>
+                          <p>{{ item.title }}</p>
+                        </router-link>
                       </div>
                     </div>
                     <!-- 第二个 -->
                     <div class="txt-item2" v-show="item.id == 2">
-                      <el-row class="item2-contion" type="flex" justify="center">
+                      <el-row
+                        class="item2-contion"
+                        type="flex"
+                        justify="center"
+                      >
                         <el-col
                           :span="10"
                           v-for="item in listDatas"
@@ -112,13 +116,14 @@
                     </div>
                     <!--第3个 -->
                     <div class="txt-item3" v-show="item.id == 3">
-                      <el-row type="flex" >
+                      <el-row type="flex">
                         <el-col :span="24" class="content">
                           <ul class="item3-box">
                             <router-link
                               v-for="item in threeList"
                               :key="item.id"
                               :to="'/detail?id=' + item.id + '&menu=news'"
+                              style="cursor: pointer;"
                             >
                               <li>
                                 <span class="item3-txt">{{ item.title }}</span>
@@ -129,9 +134,9 @@
                         </el-col>
                       </el-row>
                     </div>
-                    <!-- 第四个 --> 
+                    <!-- 第四个 -->
                     <div class="txt-item4" v-show="item.id == 4">
-                     <el-row type="flex" >
+                      <el-row type="flex">
                         <el-col :span="24" class="content">
                           <ul class="item3-box">
                             <router-link
@@ -167,17 +172,18 @@ export default {
   data() {
     return {
       listData: [],
-      oneList:[],//
+      oneList: [], //
       listDatas: [], //
       listshow: false, //
       threeList: [], //
-      fourList:[],//
+      fourList: [], //
+      onegather: {}, ///
     };
   },
   mounted() {
     this.getSpecialList();
     this.getSpecialNewsList(); //医院院报
-    this.getthreeList();//
+    this.getthreeList(); //
     this.getfourList();
     this.getoneList();
   },
@@ -193,13 +199,13 @@ export default {
       specialList().then((res) => {
         if (res.code == 200) {
           this.listData = res.data;
-          console.log(this.listData);
+          //console.log(this.listData);
         }
       });
     },
 
-    getoneList(){
-     specialNewsList(1).then((res) => {
+    getoneList() {
+      specialNewsList(1).then((res) => {
         if (res.code == 200) {
           // this.listDatas = res.data;
           res.data.forEach((item) => {
@@ -207,7 +213,10 @@ export default {
               this.oneList.push(item);
             }
           });
-          console.log(this.oneList[1].content);
+          this.onegather = this.oneList[0];
+          //let one='国务院联防联控机制12月19日在京举行新闻发布会，请国务院联防联控机制科研攻关组疫苗研发专班负责人、国家卫生健康委副主任曾益新和有关部门负责人介绍重点人群新冠病毒疫苗接种工作，并答记者问。'
+          //let one=this.oneList[0].content
+          //console.log(one);
         }
       });
     },
@@ -237,8 +246,8 @@ export default {
         }
       });
     },
-    getfourList(){
-       specialNewsList(4).then((res) => {
+    getfourList() {
+      specialNewsList(4).then((res) => {
         if (res.code == 200) {
           // this.listDatas = res.data;
           res.data.forEach((item) => {
@@ -248,7 +257,7 @@ export default {
           });
         }
       });
-    }
+    },
   },
 };
 </script>
@@ -259,6 +268,7 @@ export default {
   @include maxWidth;
   // banenr
   .banner-txt {
+    cursor: pointer;
     position: relative;
     .link-txt {
       position: absolute;
@@ -267,6 +277,7 @@ export default {
       z-index: 1;
       a {
         color: #fff;
+   
       }
     }
   }
@@ -277,7 +288,6 @@ export default {
       // text-align: center;
       font-size: 30px;
       margin-bottom: 30px;
-
       font-weight: normal;
       padding-left: 10px;
     }
@@ -304,6 +314,7 @@ export default {
             overflow: hidden; //超出的文本隐藏
             text-overflow: ellipsis; //溢出用省略号显示
             white-space: nowrap; //溢出不换行
+            cursor: pointer;
             span {
               font-size: 18px;
               color: #0087cd;
@@ -341,11 +352,20 @@ export default {
               }
               .left-text {
                 h4 {
-                  line-height: 0;
+                  line-height: 1;
+                  font-size: 20px;
                 }
                 p {
-                  line-height: 0;
-                   
+                  font-size: 14px;
+                  line-height: 20px;
+                  display: -webkit-box;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  -webkit-line-clamp: 2; /* 可以显示的行数，超出部分用...表示*/
+                  -webkit-box-orient: vertical;
+                }
+                h4:hover{
+                  color: $color-9;
                 }
               }
             }
@@ -365,21 +385,28 @@ export default {
                   margin: 0;
                   padding: 0;
                   line-height: 20px;
+                  font-size: 20px;
+                  margin-bottom: 10px;
                 }
                 p {
                   margin: 0;
                   padding: 0;
                   line-height: 20px;
                   width: 90%;
+                  display: -webkit-box;
                   overflow: hidden;
                   text-overflow: ellipsis;
-                  white-space: nowrap;
+                  -webkit-line-clamp: 3; /* 可以显示的行数，超出部分用...表示*/
+                  -webkit-box-orient: vertical;
                 }
               }
               .right-contion:hover {
                 background-color: #dddddd;
                 h4 {
                   color: $color-9;
+                }
+                p{
+                  background-color: #dddddd;
                 }
               }
             }
@@ -403,7 +430,7 @@ export default {
                     text-align: center;
                     font-size: 12px;
                     width: 50%;
-                    margin: -20px  auto 20px ;
+                    margin: -20px auto 20px;
                     background-color: rgba($color: #fff, $alpha: 0.7);
                     background-color: #fff;
                     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -413,24 +440,24 @@ export default {
                     white-space: nowrap; //溢出不换行
                   }
                 }
-                &:hover{
-                  img{
+                &:hover {
+                  img {
                     height: 200px;
                     cursor: crosshair;
                   }
-                  .item2-txt{
-                    div{
-                       background-color: #ddd;
+                  .item2-txt {
+                    div {
+                      background-color: #ddd;
                     }
-                      color: $color-9;
+                    color: $color-9;
                   }
-                } 
+                }
               }
-              
             }
           }
           // 第三个
-          .txt-item3, .txt-item4 {
+          .txt-item3,
+          .txt-item4 {
             margin: 0;
             padding: 0;
             // 列表
@@ -456,10 +483,11 @@ export default {
                 }
                 .item3-txt {
                   display: inline-block;
-                  width: 60%;
+                  width: 65%;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
+                  margin-left: 15px;
                   &:after {
                     content: "";
                     display: block;
@@ -469,7 +497,7 @@ export default {
                     border: 3px solid $color-9;
                     position: absolute;
                     top: 18px;
-                    left: 2px;
+                    left: 20px;
                   }
                 }
               }

@@ -241,12 +241,11 @@
           </el-row>
           <el-row :gutter="20">
             <el-col :span="6" v-for="(item, index) in listDataA" :key="item.id">
-              <router-link
-                :to="
-                  '/doctor?current=1&size=16&officeStr=' +
+              <!--  '/doctor?current=1&size=16&officeStr=' +
                   item.name +
-                  '&menu=introduce'
-                "
+                  '&menu=introduce' -->
+              <router-link
+                :to="{path:'/navigation',query:{id:item.id}}"
                 v-if="index < 16"
               >
                 <p class="depList">{{ item.name }}</p></router-link

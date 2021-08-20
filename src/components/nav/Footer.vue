@@ -20,7 +20,7 @@
               <a href="http://wjw.nmg.gov.cn/">自治区卫生健康委员会  </a>
                <a href="http://wjw.wulanchabu.gov.cn/">乌兰察布市卫生健康委员会</a>
               <!-- <h2>关于我们</h2> -->
-              <p>联系我们 | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
+              <p> <router-link tag="span" to="/message">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
             </el-col>
             <!-- <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/footer/footer-ewm.png" />
@@ -178,6 +178,10 @@ export default {
         }
         p {
           margin: 0;
+          span{
+            cursor: pointer;
+            
+          }
         }
         h2 {
           margin-block-start: 0;

@@ -5,7 +5,9 @@
       <div class="banner-txt">
         <div class="link-txt">
           <el-link type="info" href="/" :underline="false">首页></el-link>
-          <el-link type="info" href="/#/news" :underline="false">新闻中心></el-link>
+          <el-link type="info" href="/#/news" :underline="false"
+            >新闻中心></el-link
+          >
           <el-link type="info" :underline="false">{{ linkName }}</el-link>
         </div>
         <div>
@@ -107,15 +109,25 @@ export default {
   mounted() {
     this.getSpecialNewsList();
   },
-
   methods: {
     getSpecialNewsList() {
       specialNewsList(this.id).then((res) => {
         if (res.code == 200) {
           this.listData = res.data;
-          console.log(this.listData);
+          //console.log(this.listData);
         }
       });
+    },
+  },
+  watch: {
+    $route: {
+      handler: function (val, oldval) {
+        if (val.query.id != oldval.query.id) {
+          this.linkName=val.query.name
+          this.id = val.query.id;
+          this.getSpecialNewsList();
+        }
+      },
     },
   },
 };
