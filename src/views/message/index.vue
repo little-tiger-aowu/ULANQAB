@@ -49,11 +49,11 @@
       <!-- 地图 -->
       <div class="footer-map">
         <baidu-map
-          :center="center"
+          :center="centers"
           :zoom="zoom"
-          @ready="handler"
+          @ready="handlers"
           style="width: 100%; height: 370px"
-          @click="getClickInfo"
+          @click="getClick"
           :scroll-wheel-zoom="true"
         >
         </baidu-map>
@@ -67,6 +67,7 @@ import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   data() {
     return {
+      centers:{ lng:  113.143078, lat:41.03531 },
       center: { lng: 113.120003, lat: 41.036747 },
       zoom: 15,
     };
@@ -77,9 +78,7 @@ export default {
       // 初始化地图,设置中心点坐标
       var point = new BMap.Point(113.120003, 41.036747);
       //12592519.133403657,4989464.545,16.28
-
       map.centerAndZoom(point, 17);
-
       // 添加鼠标滚动缩放
       map.enableScrollWheelZoom();
       // 添加缩略图控件
@@ -95,7 +94,6 @@ export default {
       map.addControl(new BMap.ScaleControl());
       //添加地图类型控件
       map.addControl(new BMap.MapTypeControl());
-      //
       //设置标注的图标
       var icon = new BMap.Icon(mapIcon, new BMap.Size(20, 25));
       //设置标注的经纬度
@@ -120,12 +118,62 @@ export default {
       var infoWindow = new BMap.InfoWindow(content); // 创建信息窗口对象
       map.openInfoWindow(infoWindow, point);
     },
+    handlers({ BMap, map }) {
+      // 初始化地图,设置中心点坐标
+      var point = new BMap.Point(113.143078, 41.03531);
+      //12592519.133403657,4989464.545,16.28
+      map.centerAndZoom(point, 17);
+      // 添加鼠标滚动缩放
+      map.enableScrollWheelZoom();
+      // 添加缩略图控件
+      //   map.addControl(
+      //     new BMap.OverviewMapControl({
+      //       isOpen: false,
+      //       anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+      //     })
+      //   );
+      // 添加缩放平移控件
+      map.addControl(new BMap.NavigationControl());
+      //添加比例尺控件
+      map.addControl(new BMap.ScaleControl());
+      //添加地图类型控件
+      map.addControl(new BMap.MapTypeControl());
+      //设置标注的图标
+      var icon = new BMap.Icon(mapIcon, new BMap.Size(20, 25));
+      //设置标注的经纬度
+      var marker = new BMap.Marker(new BMap.Point(113.143078, 41.03531), {
+        icon: icon,
+      });
+      //把标注添加到地图上
+      map.addOverlay(marker);
+      var content = "<table>";
+      content = content + "<tr><td>乌兰察布中心医院分院(中蒙医院)</td></tr>";
+      content =
+        content +
+        "<tr><td> 地点：乌兰察布市集宁新区工农大街西呼格吉街南</td></tr>";
+      content = content + "<tr><td></td></tr>";
+      content += "</table>";
+      var infowindow = new BMap.InfoWindow(content);
+      // 图标点击的时候显示标注
+      marker.addEventListener("click", function () {
+        this.openInfoWindow(infowindow);
+      });
+      // 标注默认显示
+      var infoWindow = new BMap.InfoWindow(content); // 创建信息窗口对象
+      map.openInfoWindow(infoWindow, point);
+    },
     getClickInfo(e) {
       console.log(e.point.lng);
       console.log(e.point.lat);
       this.center.lng = e.point.lng;
       this.center.lat = e.point.lat;
     },
+    getClick(e){
+      console.log(e.point.lng);
+      console.log(e.point.lat);
+      this.centers.lng = e.point.lng;
+      this.centers.lat = e.point.lat;
+    }
   },
 };
 </script>

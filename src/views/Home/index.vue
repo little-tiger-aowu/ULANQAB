@@ -116,7 +116,7 @@
             <img src="@/assets/images/index/proIndex2.png" class="image" />
             <div style="height: 20px"></div>
             <span class="proTitle">医院院报</span>
-            <router-link to="/news/list?id=3&name=医院动态&menu=news">
+            <router-link to="/news/list?id=2&name=医院院报&menu=news">
               <el-button type="text" class="button"
                 >更多>></el-button
               ></router-link
@@ -234,7 +234,7 @@
                 src="@/assets/images/index/Department4.png"
                 class="leftImg"
               /> -->
-              <router-link to="/introduce">
+              <router-link to="/introduce?num=">
                 <span class="iconKeshi">更多科室介绍</span>
               </router-link>
             </el-col>
@@ -338,7 +338,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/introduce">
+          <router-link to="/introduce?num=">
             <span class="s1">
               <img src="@/assets/images/index/indexIocn3.png" />
             </span>

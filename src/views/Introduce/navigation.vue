@@ -14,13 +14,13 @@
         >
           <h4>{{ typeList.name }}介绍</h4>
           <p>
-            {{ typeList.briefInformation }}
+            {{typeList.briefInformation=='暂无'?'正在完善中':typeList.briefInformation }}
           </p>
         </el-dialog>
       </div>
       <!-- 内容 -->
       <div class="right-text">
-        <p>{{ typeList.briefInformation }}</p>
+        <p>{{ typeList.briefInformation=='暂无'?'正在完善中':typeList.briefInformation }}</p>
       </div>
       <h4>就诊指南</h4>
       <!-- 功能区 -->

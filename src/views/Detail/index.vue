@@ -26,10 +26,31 @@
         </div>
         <div class="txt">
           <div class="title">{{ data.name }}</div>
+          <p>
+            {{ data.position }}
+          </p>
           <div v-html="data.briefInformation"></div>
-      <!-- <p class="MsoNormal">
-           
-            心血管内科主任 &nbsp; 中共党员 &nbsp;大学本科 &nbsp;主任医师
+          <div class="title-contion">
+            <h4 v-show="data.professionalTitle != ''&&data.professionalTitle != null">学术及社会兼职</h4>
+            <p
+              v-show="data.professionalTitle != ''&&data.professionalTitle != null"
+              v-html="data.professionalTitle"
+              class="pertise"
+            >
+              <!-- {{ data.professionalTitle}} -->
+            </p>
+            <h4 v-show="data.professionalExpertise != '暂无信息'">专业特长</h4>
+            <p v-show="data.professionalExpertise != '暂无信息'">
+              {{ data.professionalExpertise }}
+            </p>
+            <h4 v-show="data.achievement != ''&&data.achievement != null">主要成果</h4>
+            <p v-show="data.achievement != ''&&data.achievement != null">
+              {{ data.achievement }}
+            </p>
+          </div>
+
+          <!-- <p class="MsoNormal">
+             心血管内科主任 &nbsp; 中共党员 &nbsp;大学本科 &nbsp;主任医师
           </p>
           <p class="good">
             擅长:
@@ -68,7 +89,7 @@
           <strong>咨询热线：</strong>0474-2276796
         </p>
       </div> -->
-     
+
       <!-- <img src="http://wlcbzxyy.front.qiniu.synconize.com/picture/0001.jpg" width="100%"> -->
     </div>
   </div>
@@ -103,10 +124,24 @@ export default {
       this.nowIdName = oId[0];
       if (oId[0] == "doctorId") {
         physicianId(oId[1]).then((res) => {
-          console.log(res);
+          //console.log(res);
           if (res.code == 200) {
+            if (res.data.professionalTitle != null) {
+              res.data.professionalTitle = res.data.professionalTitle.replace(
+                /\n\n/g,
+                "<br/>"
+              );
+              res.data.professionalTitle = res.data.professionalTitle.replace(
+                /\n/g,
+                "<br/>"
+              );
+            } else {
+              console.log(1);
+            }
+
+            // console.log(res.data.professionalTitle);
             this.data = res.data;
-            console.log(res.data.briefInformation);
+            console.log(res.data);
           }
         });
       } else {
@@ -114,7 +149,7 @@ export default {
           console.log(res);
           if (res.code == 200) {
             this.data = res.data;
-            console.log(res.data.briefInformation);
+            console.log(res.data);
           }
         });
       }
@@ -134,11 +169,11 @@ export default {
   .context {
     display: flex;
     margin-bottom: 68px;
-    .context-left{
+    .context-left {
       padding-top: 0;
     }
     .title {
-       padding-top: 38px;
+      padding-top: 38px;
       // text-align: center;
       font-size: 24px;
       font-weight: bold;
@@ -161,8 +196,25 @@ export default {
       margin-left: 70px;
       line-height: 24px;
       text-align: justify;
+       font-size: 17px !important;
       p {
         font-size: 17px !important;
+      }
+      span {
+        font-size: 17px !important;
+      }
+      .title-contion {
+        text-indent: 30pt;
+        h4 {
+          font-size: 17px;
+        }
+        .pertise {
+          line-height: 2;
+        }
+        p {
+          text-indent: 0pt;
+          margin-left: 30pt;
+        }
       }
     }
   }
@@ -182,5 +234,10 @@ export default {
 .MsoNormal {
   margin-left: 0 !important;
   font-size: 17px !important;
+  font-family: "微软雅黑" !important;
+  span {
+    font-size: 17px !important;
+    font-family: "微软雅黑" !important;
+  }
 }
 </style>
