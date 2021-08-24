@@ -5,7 +5,7 @@
         <!-- 线 -->
         <div class="line"></div>
         <!-- 大标题 -->
-        <div class="max-title">{{ title }}出诊医师一览表</div>
+        <div class="max-title">{{ title }}一览表</div>
         <!-- 标题搜索Í -->
         <div class="box-1">
           <div class="min-title">
@@ -198,7 +198,7 @@ import tooltip from "@/views/Table/components/tooltip";
 export default {
   data() {
     return {
-      title:'门诊',
+      title:'专业门诊',
       keyWord: this.$route.query.keyWord || "",
       keyVal:'',
       searchOutCallData: [],
