@@ -73,9 +73,7 @@
           >
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
-                <!-- :to="
-                    '/doctor?current=1&size=16&officeStr=' + item.name + '&menu=introduce'
-                  " -->
+                <!--  -->
                 <router-link
                 :to="{path:'/navigation',query:{id:item.id}}"
                 >
@@ -118,9 +116,10 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link
+                      <!-- <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
-                      >
+                      > -->
+                       <router-link to="/research">
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -216,9 +215,10 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link
+                      <!-- <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
-                      >
+                      > -->
+                       <router-link to="/research">
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -313,9 +313,10 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <router-link
+                      <!-- <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
-                      >
+                      > -->
+                       <router-link to="/research">
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>

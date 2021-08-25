@@ -23,7 +23,8 @@
               :key="index"
               class="content"
             >
-              <router-link :to="'/detail?doctorId=' + item.id+ '&menu=introduce'">
+              <!-- <router-link :to="'/detail?doctorId=' + item.id+ '&menu=introduce'"> -->
+               <router-link to="/research">
                 <!-- <img
                   :src="
                     item.imageUrl == null
