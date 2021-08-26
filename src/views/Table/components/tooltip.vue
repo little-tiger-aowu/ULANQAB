@@ -1,7 +1,7 @@
 <template>
   <div class="tooltip">
-    <el-tooltip placement="right" effect="light">
-      <div slot="content" class="tooltip-box">
+    <!-- <el-tooltip placement="right" effect="light"> -->
+      <!-- <div slot="content" class="tooltip-box">
         <el-row :gutter="10">
           <el-col :span="10">
             <div
@@ -22,11 +22,11 @@
             </div>
           </el-col>
         </el-row>
-      </div>
-      <router-link :to="'/detail?doctorId=' + message.id + '&menu=introduce'">  
+      </div> -->
+      <!-- <router-link :to="'/detail?doctorId=' + message.id + '&menu=introduce'">   -->
         <span> {{ message.name }} </span> <span class="pu-txt" v-if="message.outCallType == 1">普</span>
-      </router-link>
-    </el-tooltip>
+      <!-- </router-link> -->
+    <!-- </el-tooltip> -->
     <!-- <div v-else>-</div> -->
   </div>
 </template>
