@@ -20,7 +20,9 @@
               <a href="http://wjw.nmg.gov.cn/">自治区卫生健康委员会  </a>
                <a href="http://wjw.wulanchabu.gov.cn/">乌兰察布市卫生健康委员会</a>
               <!-- <h2>关于我们</h2> -->
-              <p> <router-link tag="span" to="/message">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
+              <!-- <router-link tag="span" :to="{path:'/message',query:{top:0}}">联系我们</router-link> -->
+              
+              <p> <router-link tag="span" :to="{path:'/message',query:{top:0}}">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
             </el-col>
             <!-- <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/footer/footer-ewm.png" />
@@ -94,6 +96,9 @@ export default {
   mounted() {
     // console.log(this.$route.path);
     this.nowRoutePath = this.$route.path;
+  },
+  methods:{
+    
   },
   watch: {
     "$route.path"(newVal) {

@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    <h4 style="font-size: 24px">联系我们</h4>
+    <h4 style="font-size: 24px" v-show="top==null || top == 0">联系我们</h4>
     <div class="message-text">
       <h5>联系电话</h5>
       <ul>
@@ -73,6 +73,7 @@ export default {
       centers:{ lng:  113.143078, lat:41.03531 },
       center: { lng: 113.120003, lat: 41.036747 },
       zoom: 15,
+      top:this.$route.query.top
     };
   },
   methods: {
@@ -176,8 +177,15 @@ export default {
       console.log(e.point.lat);
       this.centers.lng = e.point.lng;
       this.centers.lat = e.point.lat;
-    }
+    },
   },
+  created(){
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+      // window.addEventListener('scroll', this.topscrool,true) 
+    //this.topscrool()
+  },
+ 
 };
 </script>
 

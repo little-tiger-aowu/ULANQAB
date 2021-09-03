@@ -117,6 +117,11 @@ const routes = [
     path:'/message',
     name:'message',
     component:()=> import('../views/message/index.vue')
+  },
+  {
+    path:'/section',
+    name:'Section',
+    component:()=> import ('../views/Section/index.vue')
   }
 
 ]

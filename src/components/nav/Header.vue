@@ -153,18 +153,21 @@ export default {
           subMenu: [
             {
               name: "非手术科室",
-              link: "introduce",
-              num: 2,
+              link: "section",
+              // num: 2,
+              num:''
             },
             {
               name: "手术科室",
-              link: "introduce",
-              num: 1,
+              link: "section",
+              // num: 1,
+              num:''
             },
             {
               name: "诊断相关科室",
-              link: "introduce",
-              num: 3,
+              link: "section",
+              // num: 3,
+              num:''
             },
           ],
         },

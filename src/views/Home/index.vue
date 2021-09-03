@@ -93,9 +93,15 @@
               ></router-link
             >
             <div style="padding: 14px">
-              <router-link  :to="'/detail?id=' + item.id + '&menu=notice'" v-for="(item,index) in noticeList" :key="index">
+              <router-link
+                :to="'/detail?id=' + item.id + '&menu=notice'"
+                v-for="(item, index) in noticeList"
+                :key="index"
+              >
                 <ul class="list">
-                  {{item.title}}
+                  {{
+                    item.title
+                  }}
                 </ul>
               </router-link>
               <!-- <router-link to="/notice">
@@ -245,7 +251,7 @@
                   item.name +
                   '&menu=introduce' -->
               <router-link
-                :to="{path:'/navigation',query:{id:item.id}}"
+                :to="{ path: '/navigation', query: { id: item.id } }"
                 v-if="index < 16"
               >
                 <p class="depList">{{ item.name }}</p></router-link
@@ -300,8 +306,24 @@
         </el-col>
       </el-row>
     </div>
+    <!-- 联系我们 -->
+    <div class="contact">
+      <h1 style="  margin-top: 50px;margin-bottom: 45px;">联系我们/医院分区</h1>
+      <!-- 选项卡 -->
+      <el-row type="flex" class="contact-bg" justify="center">
+        <el-col :span="6"><div class="bg-purple">
+          <img src="@/assets/images/home-c.png">
+            <el-row  class="purple-item"> <el-col :span="5"><strong>地址：</strong> </el-col>  <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>   </el-row>
+            <el-row  class="purple-item"> <el-col :span="5"> <strong>乘车路线：</strong> </el-col>  <el-col :span="15">乘1、4、11路公交车中心医   院站下车即到。乘5路公交车虎山公园站下车向北100米即</el-col> </el-row>
+            <el-row  class="purple-item"> <el-col :span="5"><strong>急救电话：</strong></el-col> <el-col :span="15">0474-2263985   0474-2324120</el-col>      </el-row>
+          </div></el-col>
+        <el-col :span="6"><div class="bg-purples">  <img src="@/assets/images/home-c.png">
+         <el-row  class="purple-item"> <el-col :span="5"><strong>地址：</strong> </el-col>  <el-col :span="15">乌兰察布市集宁新区工农大街西呼格吉街南。                        </el-col>   </el-row>
+            <el-row  class="purple-item"> <el-col :span="5"> <strong>挂号电话：</strong> </el-col>  <el-col :span="15">0474-2313126 </el-col> </el-row></div></el-col>
+      </el-row>
+    </div>
     <!-- 地图 -->
-    <div class="footer-map" style="margin-top: 60px">
+    <!-- <div class="footer-map" style="margin-top: 60px">
       <baidu-map
         :center="center"
         :zoom="zoom"
@@ -310,16 +332,16 @@
         @click="getClickInfo"
         :scroll-wheel-zoom="true"
       >
-        <!-- <div class="map-box">
+        <div class="map-box">
           <div class="title">联系市中心医院</div>
           <ul class="map-list">
             <li>乌兰察布中心医院</li>
           </ul>
           <div>地址：内蒙古自治区乌兰察布市集宁区解放大街157号</div>
           <div class="map-txt">市中医蒙医医院（分院）</div>
-        </div> -->
+        </div>
       </baidu-map>
-    </div>
+    </div> -->
     <!--右边icon-->
     <div class="iconLink">
       <ul>
@@ -338,7 +360,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/introduce?num=">
+          <router-link to="/section?num=">
             <span class="s1">
               <img src="@/assets/images/index/indexIocn3.png" />
             </span>
@@ -1079,6 +1101,38 @@ export default {
     line-height: 60px;
     border-top: 2px solid #7ca792;
   }
+}
+//联系我们
+.contact {
+  text-align: center;
+  .contact-bg{
+    .bg-purple,.bg-purples{
+      //border: 1px solid #000;
+        box-shadow: -1px -1px 10px 1px  #8eb3ba;
+      &:hover{
+         box-shadow: -1px -1px 10px 1px  #8eb3ba;
+      }
+     
+      img{
+        width: 100%;
+        margin-bottom: 20px;
+       
+      }
+      .purple-item{
+        text-align: left;
+        padding: 0 10px;
+        margin-bottom: 20px;
+      }
+    }
+    .bg-purple{
+      margin-right: 30px;
+      padding-bottom: 1px;
+    }
+    .bg-purples{
+      margin-left: 30px;
+      padding-bottom: 59px;
+    }
+  } 
 }
 
 // 小图标
