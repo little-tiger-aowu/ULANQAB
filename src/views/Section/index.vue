@@ -93,9 +93,8 @@
             style="margin-bottom: 10px"
           >
             <div class="clear">
-              <!--  -->
               <el-button
-                style="float: left;  padding: 7px 0;"
+                style="float: left; padding: 6px 0"
                 type="text"
                 icon="el-icon-arrow-left"
               ></el-button>
@@ -124,7 +123,7 @@
     >
       <el-col :span="18">
         <div class="class-title" id="introduce?id=all2">手术科室</div>
-          <el-row :gutter="10">
+        <el-row :gutter="10">
           <el-col
             :span="4"
             v-for="item in listDataB"
@@ -134,7 +133,7 @@
             <div class="clear">
               <!--  -->
               <el-button
-                style="float: left;  padding: 7px 0;"
+                style="float: left; padding: 6px 0"
                 type="text"
                 icon="el-icon-arrow-left"
               ></el-button>
@@ -163,7 +162,7 @@
     >
       <el-col :span="18">
         <div class="class-title" id="introduce?id=all3">医技、辅助科室</div>
-         <el-row :gutter="10">
+        <el-row :gutter="10">
           <el-col
             :span="4"
             v-for="item in listDataC"
@@ -173,7 +172,7 @@
             <div class="clear">
               <!--  -->
               <el-button
-                style="float: left; padding: 7px 0;"
+                style="float: left; padding: 6px 0"
                 type="text"
                 icon="el-icon-arrow-left"
                 class="box-buts"
@@ -189,48 +188,7 @@
         </el-row>
       </el-col>
     </el-row>
-    <!-- 了解这些有可能对您的就诊有所帮助  -->
-     <h1 style="text-align: center;margin: 100px 0 50px 0;">了解这些有可能对您的就诊有所帮助</h1>
-     <!-- 功能区 -->
-      <div class="functional">
-        <ul>
-          <li style="cursor: pointer;">
-            <router-link tag="p" :to="'/table'">
-              <!-- <svg-icon icon-class="referral" /> -->
-              <span class="font_family icon-zhuanjiachuzhenxinxi"></span>
-              出诊信息
-            </router-link>
-          </li>
-          <li style="cursor: pointer;">
-            <router-link tag="p" :to="'/doctor?current=1&size=16&officeStr=&menu=introduce'">
-              <span class="font_family icon-a-yuyueguahao3"></span>
-              医师介绍
-            </router-link>
-          </li>
 
-          <li>
-            <p @click="visit = true" style="cursor: pointer;">
-              <span class="font_family icon-weizhi" ></span>
-              科室位置
-            </p>
-            <el-dialog :visible.sync="visit"  v-if="visit">
-              <span style="font-size: 24px; margin-bottom: 30px ">科室位置</span>
-              <span  style="font-size: 18px; margin-bottom: 30px"></span>
-                <!-- {{typeList.location}} contactWay电话 -->
-            </el-dialog>
-          </li>
-          <li>
-            <p @click="message = true" style="cursor: pointer;">
-              <span class="font_family icon-lianxiwomen"></span>
-              联系我们
-            </p>
-            <el-dialog :visible.sync="message" v-if="message">
-              <h4 style="font-size: 24px">联系我们</h4>
-              <span  style="font-size: 18px; margin-bottom: 30px"></span>
-            </el-dialog>
-          </li>
-        </ul>
-      </div>
   </div>
 </template>
 
@@ -240,13 +198,13 @@ export default {
   name: "Introduce",
   data() {
     return {
-      // dialogVisible: false, 
+      // dialogVisible: false,
       visit: false, //科室位置
       message: false,
       id: "", //
       //   搜索
       inputSearch: "",
-    
+
       // 科室数据
       listDataA: [], // 非手术
       listDataB: [], // 手术
@@ -259,7 +217,6 @@ export default {
       doctorData: [],
       // 当前id
       introduceId: this.$route.query.id || "",
-      
     };
   },
   mounted() {
@@ -370,8 +327,10 @@ export default {
       h2 {
         margin: 0;
         padding: 0;
-        font-size: 48px;
+        font-size: 46px;
         line-height: 360px;
+        font-weight: 600;
+        letter-spacing: 2px;
         color: #fff;
         text-align: center;
       }
@@ -421,7 +380,7 @@ export default {
     // background-color: #609a70;
     // border-radius: 5px;
     // color: #fff;
-    margin: 20px 0 10px;
+    margin: 50px 0 20px;
     // padding: 8px 15px;
     padding: 8px 0;
     font-size: 20px;
@@ -429,7 +388,7 @@ export default {
     font-weight: bold;
   }
   .box-title {
-    padding-left: 30px;
+    padding-left: 10px;
     font-weight: normal;
     //font-weight: bold;
     font-size: 18px;
@@ -438,20 +397,27 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 50%;
+    width: 60%;
     display: inline-block;
-    
   }
-  .clear{
-      padding: 0 10px;
-      border: solid 1px #171d1d;
-      width: auto;
-      border-radius: 15px;
-    &:hover{
-       border: solid 1px $color-9;
-       color: $color-9 !important;
-     .box-title{
-         color: $color-9 !important; 
+  .clear {
+    padding: 0 10px;
+    border: solid 1px #171d1d;
+    width: auto;
+    border-radius: 15px;
+
+    .el-button--text {
+      color: #171d1d;
+    }
+    &:hover {
+      border: solid 1px $color-9;
+      color: $color-9 !important;
+      .box-title {
+        color: $color-9 !important;
+      }
+      .el-button--text {
+        //background-color: #2f8594;
+        color: #2f8594;
       }
     }
   }
@@ -519,6 +485,7 @@ export default {
 .top .top-buts {
   background-color: #308594;
   height: 40px;
+  font-size: 18px;
   border-radius: 10px;
   color: #fff;
 }
@@ -534,87 +501,14 @@ export default {
 .top .a3 {
   background: #e5ca8f;
 }
- // /功能区
-.functional {
-    
-        margin: 0 auto;
-        width: 60%;
-        padding-bottom: 90px;
-      ul {
-        display: flex;
-        li {
-          text-align: center;
-          width: 25%;
-          height: auto;
-          span {
-            display: block;
-            font-size: 50px;
-            color: #4c4c4c;
-            padding-bottom: 10px;
-          }
-          ::v-deep .el-dialog {
-            width: 80%;
-            .el-dialog__body {
-              padding: 30px 20px 50px 50px;
-            }
-            span {
-              letter-spacing: 3px;
-              line-height: 1.5;
-            }
-            .footer-map {
-              position: relative;
-              padding-bottom: 5px;
-              border-bottom: 1px solid #538b62;
-              margin-bottom: 50px;
-            }
-            .strong {
-              font-weight: 600;
-              margin-bottom: 20px;
-            }
-            .message-text {
-              h5 {
-                display: inline-block;
-                font-size: 20px;
-                border-bottom: 3px solid #56a5aa;
-                margin-bottom: 30px;
-              }
-              ul {
-                display: block;
-                li {
-                  margin-bottom: 10px;
-                  width: auto;
-                  font-size: 18px;
-                  text-align: left;
-                  span {
-                    font-size: 18px;
-                    display: inline-block;
-                    letter-spacing: normal;
-                    width: 8.7%;
-                  }
-                }
-              }
-            }
-          }
-          p {
-            color: #333333;
-            font-size: 18px;
-            margin: 0;
-            .svg-icon {
-              width: 10px;
-            }
-          }
-          p:hover {
-            color: #01763a;
-            span {
-              color: #01763a;
-            }
-          }
-        }
-      }
-    }
+
 </style>
 <style lang="scss">
-::v-deep .clear .el-button--text{
-    color:red;
-}  
+// .el-button--text{
+//    color: #2f8594;
+// }
+[class*=" el-icon-"],
+[class^="el-icon-"] {
+  font-weight: 900 !important;
+}
 </style>

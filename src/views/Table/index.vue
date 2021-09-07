@@ -11,6 +11,7 @@
           <div class="min-title">
             <span class="pu-txt">普</span>
             普 通 门 诊
+            <button @click="cut">{{hospital==1?'分院出诊表':'总院出诊表'}}</button>
           </div>
           <div class="search-box" v-show="searchShow">
             <input type="text" v-model="keyVal" />
@@ -203,6 +204,7 @@ export default {
       keyVal:'',
       searchOutCallData: [],
       searchShow:true,
+      hospital:1
       //nunber:this.$route.query.name
     };
   },
@@ -222,6 +224,7 @@ export default {
   methods: {
     getSearchOutCall() {
       let data = {
+        hospital:this.hospital,
         keyWord: this.keyWord,
       };
       searchOutCall(data).then((res) => {
@@ -236,6 +239,15 @@ export default {
         this.keyWord=this.$route.query.keyWord || "",
       this.getSearchOutCall();
     },
+    cut(){
+      if(this.hospital==1){
+       this.hospital=2
+       this.getSearchOutCall()
+      }else{
+        this.hospital=1
+          this.getSearchOutCall()
+      }    
+    }
   },
 };
 </script>
@@ -266,6 +278,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    .min-title{
+        button{
+        margin-left: 10px;
+      }
+    }
     .pu-txt {
       background-image: linear-gradient($color-10, $color-9);
       color: #fff;
@@ -273,6 +290,17 @@ export default {
       font-size: 16px;
       border-radius: 3px;
     }
+      button {
+        cursor: pointer;
+        height: 25px;
+        border: 0;
+        background-image: linear-gradient(to left, $color-10, $color-9);
+        color: #fff;
+        width: 90px;
+        &:focus {
+          outline: none;
+        }
+      }
     .search-box {
       input {
         height: 25px;
@@ -284,16 +312,8 @@ export default {
           outline: none;
         }
       }
-      button {
-        cursor: pointer;
-        height: 25px;
-        border: 0;
-        background-image: linear-gradient(to left, $color-10, $color-9);
-        color: #fff;
+      button{
         width: 60px;
-        &:focus {
-          outline: none;
-        }
       }
     }
   }

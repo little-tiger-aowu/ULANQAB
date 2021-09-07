@@ -118,7 +118,7 @@ export default {
             // http://192.168.1.30:8080/#/detail?id=14%3F
             {
               name: "就医指南",
-              link: "research",
+              link: "guide",
             },
             {
               name: "特色诊疗",

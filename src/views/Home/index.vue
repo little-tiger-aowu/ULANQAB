@@ -308,18 +308,44 @@
     </div>
     <!-- 联系我们 -->
     <div class="contact">
-      <h1 style="  margin-top: 50px;margin-bottom: 45px;">联系我们/医院分区</h1>
+      <h1 style="margin-top: 50px; margin-bottom: 45px">联系我们/医院分区</h1>
       <!-- 选项卡 -->
       <el-row type="flex" class="contact-bg" justify="center">
-        <el-col :span="6"><div class="bg-purple">
-          <img src="@/assets/images/home-c.png">
-            <el-row  class="purple-item"> <el-col :span="5"><strong>地址：</strong> </el-col>  <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>   </el-row>
-            <el-row  class="purple-item"> <el-col :span="5"> <strong>乘车路线：</strong> </el-col>  <el-col :span="15">乘1、4、11路公交车中心医   院站下车即到。乘5路公交车虎山公园站下车向北100米即</el-col> </el-row>
-            <el-row  class="purple-item"> <el-col :span="5"><strong>急救电话：</strong></el-col> <el-col :span="15">0474-2263985   0474-2324120</el-col>      </el-row>
-          </div></el-col>
-        <el-col :span="6"><div class="bg-purples">  <img src="@/assets/images/home-c.png">
-         <el-row  class="purple-item"> <el-col :span="5"><strong>地址：</strong> </el-col>  <el-col :span="15">乌兰察布市集宁新区工农大街西呼格吉街南。                        </el-col>   </el-row>
-            <el-row  class="purple-item"> <el-col :span="5"> <strong>挂号电话：</strong> </el-col>  <el-col :span="15">0474-2313126 </el-col> </el-row></div></el-col>
+        <el-col :span="6" >
+          <div class="bg-purple" @click="$router.push({path:'/message',query:{top : 2}})">
+            <img src="@/assets/images/home-c.png" />
+            <el-row class="purple-item">
+              <el-col :span="5"><strong>地址：</strong> </el-col>
+              <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>
+            </el-row>
+            <el-row class="purple-item">
+              <el-col :span="5"> <strong>乘车路线：</strong> </el-col>
+              <el-col :span="15"
+                >乘1、4、11路公交车中心医
+                院站下车即到。乘5路公交车虎山公园站下车向北100米即</el-col
+              >
+            </el-row>
+            <el-row class="purple-item">
+              <el-col :span="5"><strong>急救电话：</strong></el-col>
+              <el-col :span="15">0474-2263985 0474-2324120</el-col>
+            </el-row>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="bg-purples"  @click="$router.push({path:'/message',query:{top : 1}})">
+            <img src="@/assets/images/home-c.png" />
+            <el-row class="purple-item">
+              <el-col :span="5"><strong>地址：</strong> </el-col>
+              <el-col :span="15"
+                >乌兰察布市集宁新区工农大街西呼格吉街南。
+              </el-col>
+            </el-row>
+            <el-row class="purple-item">
+              <el-col :span="5"> <strong>挂号电话：</strong> </el-col>
+              <el-col :span="15">0474-2313126 </el-col>
+            </el-row>
+          </div></el-col
+        >
       </el-row>
     </div>
     <!-- 地图 -->
@@ -1105,34 +1131,35 @@ export default {
 //联系我们
 .contact {
   text-align: center;
-  .contact-bg{
-    .bg-purple,.bg-purples{
+  .contact-bg {
+    .bg-purple,
+    .bg-purples {
+      cursor: pointer;
       //border: 1px solid #000;
-        box-shadow: -1px -1px 10px 1px  #8eb3ba;
-      &:hover{
-         box-shadow: -1px -1px 10px 1px  #8eb3ba;
+      box-shadow: -1px -1px 10px 1px #C7DEE2;
+      &:hover {
+        box-shadow: -1px -1px 10px 1px #8eb3ba;
       }
-     
-      img{
+
+      img {
         width: 100%;
         margin-bottom: 20px;
-       
       }
-      .purple-item{
+      .purple-item {
         text-align: left;
         padding: 0 10px;
         margin-bottom: 20px;
       }
     }
-    .bg-purple{
+    .bg-purple {
       margin-right: 30px;
       padding-bottom: 1px;
     }
-    .bg-purples{
+    .bg-purples {
       margin-left: 30px;
       padding-bottom: 59px;
     }
-  } 
+  }
 }
 
 // 小图标

@@ -1,39 +1,39 @@
 <template>
   <div class="message">
-    <h4 style="font-size: 24px" v-show="top==null || top == 0">联系我们</h4>
+    <h4 style="font-size: 24px">联系我们</h4>
     <div class="message-text">
       <h5>联系电话</h5>
       <ul>
-        <li class="strong">院本部（中心医院）</li>
-        <li>预约挂号电话：0474-2263875</li>
+        <li class="strong" v-show="top==2 ||top==null">院本部（中心医院）</li>
+        <li v-show="top==2 ||top==null">预约挂号电话：0474-2263875</li>
         <li>
           <span>急救中心电话：0474-2263985 </span>
           <span style="display: block; text-indent: 125px;"> 0474-2324120</span>
         </li>
         <li>胸痛中心电话：0474-2276793</li>
-        <li class="strong">新区分院(乌兰察布市中医蒙医医院)</li>
-        <li>预约挂号电话：0474-2313126</li>
+        <li class="strong"  v-show="top==1 ||top==null">新区分院(乌兰察布市中医蒙医医院)</li>
+        <li v-show="top==1 ||top==null">预约挂号电话：0474-2313126</li>
       </ul>
       <h5>医院地址及邮编</h5>
       <ul>
-        <li class="strong">院本部（中心医院）</li>
-        <li>地址：乌兰察布市集宁区解放大街157号</li>
-        <li>邮编：012000</li>
-        <li class="strong">新区分院(乌兰察布市中医蒙医医院)</li>
-        <li>地址：乌兰察布市集宁新区工农大街西呼格吉街南</li>
-        <li>邮编：012000</li>
+        <li class="strong" v-show="top==2 ||top==null">院本部（中心医院）</li>
+        <li v-show="top==2 ||top==null">地址：乌兰察布市集宁区解放大街157号</li>
+        <li v-show="top==2 ||top==null">邮编：012000</li>
+        <li class="strong" v-show="top==1 ||top==null">新区分院(乌兰察布市中医蒙医医院)</li>
+        <li v-show="top==1 ||top==null">地址：乌兰察布市集宁新区工农大街西呼格吉街南</li>
+        <li v-show="top==1 ||top==null">邮编：012000</li>
       </ul>
-      <h5>中心医院本部乘车路线</h5>
-      <ul>
+      <h5 v-show="top==2 ||top==null">中心医院本部乘车路线</h5>
+      <ul v-show="top==2 ||top==null">
         <li> 乘车路线：乘1、4、11路公交车中心医院站下车即到。</li>
         <!-- 乘车路线：(市中医蒙医医院) -->
         <li style="text-indent: 89px;">
           乘5路公交车虎山公园站下车向北100米即到。
         </li>
       </ul>
-      <h5>中心医院本部地图</h5>
+      <h5 v-show="top==2 ||top==null">中心医院本部地图</h5>
       <!-- 地图 -->
-      <div class="footer-map">
+      <div class="footer-map" v-show="top==2 ||top==null">
         <baidu-map
           :center="center"
           :zoom="zoom"
@@ -44,13 +44,13 @@
         >
         </baidu-map>
       </div>
-      <h5>中心医院新区分院(乌兰察布市中医蒙医医院)乘车路线</h5>
-      <ul>
+      <h5 v-show="top==1 ||top==null">中心医院新区分院(乌兰察布市中医蒙医医院)乘车路线</h5>
+      <ul v-show="top==1 ||top==null">
         <li> 乘车路线：乘10路、11路、21路、33路、36路公交均可到达</li>
       </ul>
-      <h5>中心医院新区分院(乌兰察布市中医蒙医医院)地图</h5>
+      <h5 v-show="top==1 ||top==null">中心医院新区分院(乌兰察布市中医蒙医医院)地图</h5>
       <!-- 地图 -->
-      <div class="footer-map">
+      <div class="footer-map" v-show="top==1||top==null">
         <baidu-map
           :center="centers"
           :zoom="zoom"
@@ -183,7 +183,8 @@ export default {
       document.documentElement.scrollTop = 0
       document.body.scrollTop = 0
       // window.addEventListener('scroll', this.topscrool,true) 
-    //this.topscrool()
+      //this.topscrool()
+      console.log(this.top);
   },
  
 };

@@ -22,7 +22,7 @@
               <!-- <h2>关于我们</h2> -->
               <!-- <router-link tag="span" :to="{path:'/message',query:{top:0}}">联系我们</router-link> -->
               
-              <p> <router-link tag="span" :to="{path:'/message',query:{top:0}}">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
+              <p> <router-link tag="span" :to="{path:'/message'}">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
             </el-col>
             <!-- <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/footer/footer-ewm.png" />

@@ -122,6 +122,11 @@ const routes = [
     path:'/section',
     name:'Section',
     component:()=> import ('../views/Section/index.vue')
+  },
+  {
+    path:'/guide',
+    name:'guide',
+    component: () => import('../views/guide/index.vue')
   }
 
 ]
