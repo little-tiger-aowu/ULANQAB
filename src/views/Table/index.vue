@@ -43,8 +43,8 @@
             cellpadding="0"
             cellspacing="0"
             class="table-box"
-            v-for="item in searchOutCallData"
-            :key="item.officeId"
+            v-for="(item,index) in searchOutCallData"
+            :key="index"
           >
             <tr>
               <td width="11%" rowspan="2">{{ item.officeName }}</td> 
@@ -52,18 +52,18 @@
                 <table width="100%" cellpadding="0" cellspacing="0" class="table-box-1">
                   <td width="12.5%">上午</td>
                   <td width="12.5%">
-                    <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
+                    <div v-for="(item2,index) in item.timeOutCallVos" :key="index">
                       <div v-if="item2.time == '周一上午'">
-                        <div v-for="item3 in item2.physicianBriefVoList" :key="item3.id">
+                        <div v-for="(item3,index) in item2.physicianBriefVoList" :key="index">
                           <tooltip :message="item3"></tooltip>
                         </div>
                       </div>
                     </div>
                   </td>
                   <td width="12.5%">
-                    <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
+                    <div v-for="(item2,index) in item.timeOutCallVos" :key="index">
                       <div v-if="item2.time == '周二上午'">
-                        <div v-for="item3 in item2.physicianBriefVoList" :key="item3.id">
+                        <div v-for="(item3,index) in item2.physicianBriefVoList" :key="index">
                           <tooltip :message="item3"></tooltip>
                         </div>
                       </div>
@@ -230,6 +230,7 @@ export default {
       searchOutCall(data).then((res) => {
         //console.log(res);
         if (res.code == 200) {
+          console.log(res);
           this.searchOutCallData = res.data;
         }
       });
@@ -245,7 +246,7 @@ export default {
        this.getSearchOutCall()
       }else{
         this.hospital=1
-          this.getSearchOutCall()
+        this.getSearchOutCall()
       }    
     }
   },
