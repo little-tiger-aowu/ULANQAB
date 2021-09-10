@@ -336,9 +336,14 @@
             <img src="@/assets/images/home-c.png" />
             <el-row class="purple-item">
               <el-col :span="5"><strong>地址：</strong> </el-col>
-              <el-col :span="15"
-                >乌兰察布市集宁新区工农大街西呼格吉街南。
+              <el-col :span="15">乌兰察布市集宁新区工农大街西呼格吉街南。
               </el-col>
+            </el-row>
+            <el-row class="purple-item">
+              <el-col :span="5"> <strong>乘车路线：</strong> </el-col>
+              <el-col :span="15"
+                >乘10路、11路、21路、33路、36路公交均可到达</el-col
+              >
             </el-row>
             <el-row class="purple-item">
               <el-col :span="5"> <strong>挂号电话：</strong> </el-col>
@@ -1134,6 +1139,8 @@ export default {
   .contact-bg {
     .bg-purple,
     .bg-purples {
+      height: 400px;
+      box-sizing: border-box;
       cursor: pointer;
       //border: 1px solid #000;
       box-shadow: -1px -1px 10px 1px #C7DEE2;

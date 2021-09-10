@@ -2,7 +2,7 @@
   <div class="detail">
     <div v-if="nowIdName == 'id'">
       <el-page-header @back="goBack" :content="data.title"> </el-page-header>
-      <div class="title">{{ data.title }}</div>
+      <div id="title">{{ data.title }}</div>
       <div class="min-title">
         发布时间：{{ data.issueTime | formatDate }} 发布人：{{
           data.author
@@ -31,9 +31,17 @@
           </p>
           <div v-html="data.briefInformation"></div>
           <div class="title-contion">
-            <h4 v-show="data.professionalTitle != ''&&data.professionalTitle != null">学术及社会兼职</h4>
+            <h4
+              v-show="
+                data.professionalTitle != '' && data.professionalTitle != null
+              "
+            >
+              学术及社会兼职
+            </h4>
             <p
-              v-show="data.professionalTitle != ''&&data.professionalTitle != null"
+              v-show="
+                data.professionalTitle != '' && data.professionalTitle != null
+              "
               v-html="data.professionalTitle"
               class="pertise"
             >
@@ -43,8 +51,10 @@
             <p v-show="data.professionalExpertise != '暂无信息'">
               {{ data.professionalExpertise }}
             </p>
-            <h4 v-show="data.achievement != ''&&data.achievement != null">主要成果</h4>
-            <p v-show="data.achievement != ''&&data.achievement != null">
+            <h4 v-show="data.achievement != '' && data.achievement != null">
+              主要成果
+            </h4>
+            <p v-show="data.achievement != '' && data.achievement != null">
               {{ data.achievement }}
             </p>
           </div>
@@ -166,6 +176,12 @@ export default {
 .detail {
   max-width: 1000px;
   margin: 50px auto 0;
+  #title {
+    //padding-top: 38px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
   .context {
     display: flex;
     margin-bottom: 68px;
@@ -196,7 +212,7 @@ export default {
       margin-left: 70px;
       line-height: 24px;
       text-align: justify;
-       font-size: 17px !important;
+      font-size: 17px !important;
       p {
         font-size: 17px !important;
       }

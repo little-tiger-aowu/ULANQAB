@@ -54,7 +54,7 @@
                             item2.link +
                             `?${
                               item2.num == undefined ? '' : 'num=' + item2.num
-                            }`
+                              }`
                           "
                           :underline="false"
                         >
@@ -112,7 +112,8 @@ export default {
           subMenu: [
             {
               name: "预约挂号",
-              link: "research",
+              link: "guide",
+              num:  2
             },
             // http://192.168.1.30:8080/#/detail?id=14
             // http://192.168.1.30:8080/#/detail?id=14%3F
@@ -130,7 +131,7 @@ export default {
             },
             {
               name: "医保服务",
-              link: "research",
+              link: "guide?opnum=2",
             },
             {
               name: "常见问题",

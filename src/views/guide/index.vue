@@ -36,14 +36,17 @@
                 @click="liopen(item.identify)"
               >
                 {{ item.title }}
-                <img  v-show="item.identify==1" src="@/assets/images/option.png">
+                <img
+                  v-show="item.identify == 1"
+                  src="@/assets/images/option.png"
+                />
               </li>
             </ul>
           </el-col>
           <el-col :span="22" class="option-left">
             <p>出诊信息查询</p>
-            <input type="text"  v-model="officeStr" placeholder="科室名称" />
-            <input type="text"  v-model="doctorName" placeholder="医生名称" />
+            <input type="text" v-model="officeStr" placeholder="科室名称" />
+            <input type="text" v-model="doctorName" placeholder="医生名称" />
             <div>
               <el-button @click="searchData">搜索</el-button>
             </div>
@@ -51,45 +54,78 @@
         </el-row>
       </el-col>
       <!-- 选项右边内容 -->
-      <el-col :span="16" class="option-right" >
+      <el-col :span="16" class="option-right">
         <div id="right" ref="text">
           <h4>{{ opcontion.title }}</h4>
-          <!--  -->
+          <!-- 流程图 -->
           <img
             :src="opcontion.contion"
-            v-show="opcontion.id == 1 || opcontion.id == 4"
+            v-show="opcontion.id == 1 || opcontion.id == 4 || opcontion.id == 8"
           />
+
+          <!-- 门诊时间 -->
+          <!-- style="text-align: center;" -->
+          <div
+            style="padding: 0 40px"
+            v-show="opcontion.id == 3"
+            v-html="opcontion.contion"
+          ></div>
+          <div
+            id="tab"
+            v-show="opcontion.id == 2"
+            v-html="opcontion.contion"
+          ></div>
+          <!-- <img src="" alt=""> -->
           <!-- 滚动条 -->
-          <div class="scrollTools">
-          <div class="scrollThumb" ref="thumb" @mousedown="move"></div>
-          </div>
+          <!-- <div class="scrollTools" id="el">
+  
+           <div class="scrollThumb" ref="thumb" v-drag ></div>
+          </div> -->
+          <div id="insurance" v-html="opcontion.contion" v-show="opcontion.id == 5"></div>
           {{ opcontion.contion == "" ? "暂无" : "" }}
         </div>
         <div class="footer-map" v-show="opcontion.contion == 1">
+          <p>地址：内蒙古自治区乌兰察布市集宁区解放大街157号</p>
           <!-- 地图（本院） -->
-          <baidu-map 
-            v-if="mapShow" 
+          <baidu-map
+            v-if="mapShow"
             :center="center"
             :zoom="zoom"
             @ready="handler"
-            style="width: 100%; height: 370px"
+            style="width: 80%; height: 370px; margin: 0 auto"
             @click="getClickInfo"
             :scroll-wheel-zoom="true"
           >
           </baidu-map>
+          <p style="margin-bottom: 10px">乘车路线：</p>
+          <ul>
+            <li style="margin-bottom: 5px; padding-left: 72px; font-size: 16px">
+              乘1、4、11路公交车中心医院站下车即到。
+            </li>
+            <li style="margin-bottom: 5px; padding-left: 72px; font-size: 16px">
+              乘5路公交车虎山公园站下车向北100米即到。
+            </li>
+          </ul>
         </div>
         <!-- 地图（分院） -->
         <div class="footer-map" v-show="opcontion.contion == 2">
+          <p>地址：乌兰察布市集宁新区工农大街西呼格吉街南</p>
           <baidu-map
             v-if="mapShow"
-            :center="centers"  
+            :center="centers"
             :zoom="zoom"
             @ready="handlers"
-            style="width: 100%; height: 370px"
+            style="width: 80%; height: 370px; margin: 0 auto"
             @click="getClick"
             :scroll-wheel-zoom="true"
           >
           </baidu-map>
+          <p style="margin-bottom: 10px">乘车路线：</p>
+          <ul>
+            <li style="margin-bottom: 5px; padding-left: 72px; font-size: 16px">
+              乘10路、11路、21路、33路、36路公交均可到达
+            </li>
+          </ul>
         </div>
       </el-col>
     </el-row>
@@ -108,7 +144,11 @@
           </router-link>
         </li>
         <li style="cursor: pointer">
-          <router-link tag="p" :to="{ path: '/guide', query: { option: 1 } }" class="img2">
+          <router-link
+            tag="p"
+            :to="{ path: '/guide', query: { option: 1 } }"
+            class="img2"
+          >
             <!-- <span class="font_family icon-a-yuyueguahao3"></span>
             就医须知 -->
           </router-link>
@@ -125,19 +165,34 @@
           </router-link>
         </li>
         <li>
-          <router-link tag="p" style="cursor: pointer" :to="'/section?num=2'" class="img4">
+          <router-link
+            tag="p"
+            style="cursor: pointer"
+            :to="'/section?num=2'"
+            class="img4"
+          >
             <!-- <span class="font_family icon-lianxiwomen"></span>
             专科专病 -->
           </router-link>
         </li>
         <li>
-          <router-link tag="p" style="cursor: pointer" :to="'/research'" class="img5">
+          <router-link
+            tag="p"
+            style="cursor: pointer"
+            :to="'/research'"
+            class="img5"
+          >
             <!-- <span class="font_family icon-lianxiwomen"></span>
             健康体检 -->
           </router-link>
         </li>
         <li>
-          <router-link tag="p" style="cursor: pointer" :to="'/serve/health'" class="img6">
+          <router-link
+            tag="p"
+            style="cursor: pointer"
+            :to="'/serve/health'"
+            class="img6"
+          >
             <!-- <span class="font_family icon-lianxiwomen"></span>
             健康科普 -->
           </router-link>
@@ -151,20 +206,10 @@
 import mapIcon from "@/assets/images/yihua-icon-fill.png";
 import { searchData } from "@/api/list.js";
 import data from "../../utils/list";
-// var out = document.getElementById('right');
-// out.onmousewheel = function (ev) {
-//   var e = ev || window.event;
-//   if (e.preventDefault) {
-//     e.preventDefault();
-//   } else {
-//     e.returnValue = false;
-//   }
-// };
-// console.log(out);
 export default {
   data() {
     return {
-      mapShow:false,
+      mapShow: false,
       centers: { lng: 113.143078, lat: 41.03531 },
       center: { lng: 113.120003, lat: 41.036747 },
       zoom: 17,
@@ -175,8 +220,8 @@ export default {
       opcontion: {},
       optionList: [],
       list: data.list,
-      activeHigth:'',
-      bgHight:'',
+      nums: this.$route.query.num,
+      opnums: this.$route.query.opnum,
     };
   },
   methods: {
@@ -216,18 +261,18 @@ export default {
       this.opcontion = this.optionList[0];
       // this.liopen(0)
       setTimeout(() => {
-        this.mapShow = true
-      }, 0)
+        this.mapShow = true;
+      }, 0);
     },
     //
     liopen(val) {
-      this.mapShow = false
+      this.mapShow = false;
       this.optionLi = val;
       let num = val - 1;
       this.opcontion = this.optionList[num];
       setTimeout(() => {
-        this.mapShow = true
-      }, 10)
+        this.mapShow = true;
+      }, 10);
     },
     handler({ BMap, map }) {
       // 初始化地图,设置中心点坐标
@@ -328,24 +373,23 @@ export default {
       this.centers.lng = e.point.lng;
       this.centers.lat = e.point.lat;
     },
-    move(e){
-      //获取目标元素
-      let odiv = e.target;
-      console.log(odiv);
-      odiv.style.top=100+'px'
-      // console.log();
+    init() {
+      if (this.nums != undefined || this.opnums != undefined) {
+        if (this.nums == 2) {
+          this.optionLi = 2;
+          this.optionList = this.list[0].list;
+          this.opcontion = this.optionList[2];
+        }
+        if (this.opnums != "") {
+          this.option = 2;
+          this.optionList = this.list[1].list;
+          this.opcontion = this.optionList[2];
+        }
+        console.log(this.$route.query.opnum);
+        // console.log(this.nums);
+        // console.log(this.opnums);
+      }
     },
-    getHight(){
-       this.bgHight=this.$refs.text.offsetHeight
-       console.log(this.bgHight);
-       this.activeHigth= 50 * (635 / this.bgHight);
-       console.log(this.activeHigth);
-    }
-  },
-  mounted(){
-     setTimeout(()=>{
-     this.getHight()
-     },1000)
   },
   created() {
     // var out = document.getElementById('right');
@@ -353,6 +397,7 @@ export default {
     this.optionList = this.list[0].list;
     this.opcontion = this.optionList[0];
     console.log(this.$route.query.option);
+    //this.init();
   },
   watch: {
     $route: {
@@ -368,9 +413,6 @@ export default {
         }
       },
     },
-    bghigth : function(old,val){
-      console.log(old,val);
-    }
   },
 };
 </script>
@@ -483,12 +525,14 @@ export default {
     // }
     .option-left:first-child {
       margin-bottom: 35px;
+      cursor: pointer;
     }
     .option-right {
       position: relative;
       height: 635px;
       overflow-y: scroll;
       padding: 24px 20px;
+
       box-shadow: 0px 0px 5px 1px #b2b2b2;
       h4 {
         padding: 0;
@@ -544,8 +588,12 @@ export default {
   .footer-map {
     position: relative;
     padding-bottom: 5px;
-    border-bottom: 1px solid #538b62;
     margin-bottom: 50px;
+    p {
+      padding-left: 20px;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
   }
   // /功能区
   .functional {
@@ -564,64 +612,69 @@ export default {
           color: #4c4c4c;
           padding-bottom: 10px;
         }
-        .img,.img2,.img3,.img4,.img5,.img6{
-            margin: 0 auto;
-            width: 170px;
-            height: 170px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+        .img,
+        .img2,
+        .img3,
+        .img4,
+        .img5,
+        .img6 {
+          margin: 0 auto;
+          width: 170px;
+          height: 170px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
         }
-        .img{
-           background: url(../../assets/images/guide-m1.png) no-repeat;
-           background-size: 100% 100%;
+        .img {
+          background: url(../../assets/images/guide-m1.png) no-repeat;
+          background-size: 100% 100%;
         }
-        .img:hover{
+        .img:hover {
           background: url(../../assets/images/guide-1.png) no-repeat;
           background-size: 100% 100%;
           border: none;
         }
-        .img2{
-           background: url(../../assets/images/guide-j2.png) no-repeat;
-           background-size: 100% 100%;
+        .img2 {
+          background: url(../../assets/images/guide-j2.png) no-repeat;
+          background-size: 100% 100%;
         }
-        .img2:hover{
+        .img2:hover {
           background: url(../../assets/images/guide-2.png) no-repeat;
           background-size: 100% 100%;
           border: none;
         }
-         .img3{
-           background: url(../../assets/images/guide-f3.png) no-repeat;
-           background-size: 100% 100%;
+        .img3 {
+          background: url(../../assets/images/guide-f3.png) no-repeat;
+          background-size: 100% 100%;
         }
-         .img3:hover{
+        .img3:hover {
           background: url(../../assets/images/guide-3.png) no-repeat;
           background-size: 100% 100%;
           border: none;
         }
-        .img4{
-           background: url(../../assets/images/guide-z4.png) no-repeat;
-           background-size: 100% 100%;
+        .img4 {
+          background: url(../../assets/images/guide-z4.png) no-repeat;
+          background-size: 100% 100%;
         }
-         .img4:hover{
+        .img4:hover {
           background: url(../../assets/images/guide-4.png) no-repeat;
           background-size: 100% 100%;
           border: none;
         }
-        .img5{
-           background: url(../../assets/images/guide-j5.png) no-repeat;
-           background-size: 100% 100%;
+        .img5 {
+          background: url(../../assets/images/guide-j5.png) no-repeat;
+          background-size: 100% 100%;
         }
-         .img5:hover{
+        .img5:hover {
           background: url(../../assets/images/guide-5.png) no-repeat;
           background-size: 100% 100%;
           border: none;
         }
-        .img6{
-           background: url(../../assets/images/guide-j6.png) no-repeat;
-           background-size: 100% 100%;
+        .img6 {
+          background: url(../../assets/images/guide-j6.png) no-repeat;
+          background-size: 100% 100%;
         }
-         .img6:hover{
+        .img6:hover {
           background: url(../../assets/images/guide-6.png) no-repeat;
           background-size: 100% 100%;
           border: none;
@@ -646,5 +699,22 @@ export default {
       }
     }
   }
+}
+</style>
+<style>
+#tab table {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+#tab table th {
+  border-left: 1px solid #ccc;
+}
+#tab table td {
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+#insurance p{
+  padding-left: 20px;
 }
 </style>
