@@ -12,6 +12,7 @@
       </div>
     </div>
     <!-- 选项 -->
+    <a name="firstAnchor" style="opacity: 0">1</a>
     <el-row type="flex" justify="space-between" class="guide-option">
       <el-col :span="3" v-for="(item, index) in list" :key="index">
         <el-button
@@ -56,17 +57,24 @@
       <!-- 选项右边内容 -->
       <el-col :span="16" class="option-right">
         <div id="right" ref="text">
-          <h4>{{ opcontion.title }}</h4>
+          <h4 :style="opcontion.id == 3 ? 'text-align: center;' : ''">
+            {{ opcontion.title }}
+          </h4>
           <!-- 流程图 -->
-          <img
+          <!-- <img
             :src="opcontion.contion"
             v-show="opcontion.id == 1 || opcontion.id == 4 || opcontion.id == 8"
-          />
-
+          /> -->
+          <el-image
+            v-show="opcontion.id == 1 || opcontion.id == 4 || opcontion.id == 8"
+            :src="opcontion.contion"
+            :preview-src-list="Array(opcontion.contion)"
+          >
+          </el-image>
           <!-- 门诊时间 -->
           <!-- style="text-align: center;" -->
           <div
-            style="padding: 0 40px"
+            style="padding: 0 40px; text-align: center"
             v-show="opcontion.id == 3"
             v-html="opcontion.contion"
           ></div>
@@ -78,10 +86,13 @@
           <!-- <img src="" alt=""> -->
           <!-- 滚动条 -->
           <!-- <div class="scrollTools" id="el">
-  
            <div class="scrollThumb" ref="thumb" v-drag ></div>
           </div> -->
-          <div id="insurance" v-html="opcontion.contion" v-show="opcontion.id == 5"></div>
+          <div
+            id="insurance"
+            v-html="opcontion.contion"
+            v-show="opcontion.id == 5"
+          ></div>
           {{ opcontion.contion == "" ? "暂无" : "" }}
         </div>
         <div class="footer-map" v-show="opcontion.contion == 1">
@@ -144,25 +155,17 @@
           </router-link>
         </li>
         <li style="cursor: pointer">
-          <router-link
-            tag="p"
-            :to="{ path: '/guide', query: { option: 1 } }"
-            class="img2"
-          >
+          <div tag="p" @click="skip(1)" class="img2">
             <!-- <span class="font_family icon-a-yuyueguahao3"></span>
             就医须知 -->
-          </router-link>
+          </div>
         </li>
         <li>
-          <router-link
-            tag="p"
-            style="cursor: pointer"
-            :to="{ path: '/guide', query: { option: 4 } }"
-            class="img3"
-          >
-            <!-- <span class="font_family icon-weizhi"></span>
-            方位指南 -->
-          </router-link>
+          <!--  :to="{ path: '/guide', query: { option: 4 } }" -->
+          <div tag="p" @click="skip(3)" class="img3">
+            <!-- <span class="font_family icon-a-yuyueguahao3"></span>
+            就医须知 -->
+          </div>
         </li>
         <li>
           <router-link
@@ -225,6 +228,18 @@ export default {
     };
   },
   methods: {
+    skip(val) {
+      this.option = val;
+      let num = val - 1;
+      this.optionList = this.list[num].list;
+      this.opcontion = this.optionList[0];
+      if (val == 3) {
+        this.mapShow = true;
+      }
+      // window.location.hash = "#firstAnchor";
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    },
     // 获取搜索信息
     getSearchData() {
       let data = {
@@ -380,14 +395,26 @@ export default {
           this.optionList = this.list[0].list;
           this.opcontion = this.optionList[2];
         }
-        if (this.opnums != "") {
-          this.option = 2;
-          this.optionList = this.list[1].list;
-          this.opcontion = this.optionList[2];
-        }
         console.log(this.$route.query.opnum);
         // console.log(this.nums);
         // console.log(this.opnums);
+      }
+      if (this.opnums != "") {
+        this.option = 2;
+        this.optionList = this.list[1].list;
+        this.opcontion = this.optionList[2];
+      }
+    },
+    health() {
+      if (this.$route.query.option != undefined) {
+        this.option = this.$route.query.option;
+        let num = this.$route.query.option - 1;
+        this.optionList = this.list[num].list;
+        this.mapShow = true;
+        this.optionList[0].contion = String(this.optionList[0].contion);
+        this.opcontion = this.optionList[0];
+        console.log(this.opcontion);
+        document.documentElement.scrollTop = 0;
       }
     },
   },
@@ -397,22 +424,29 @@ export default {
     this.optionList = this.list[0].list;
     this.opcontion = this.optionList[0];
     console.log(this.$route.query.option);
-    //this.init();
+    this.health();
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    // this.init();
   },
   watch: {
-    $route: {
-      handler: function (val, oldval) {
-        console.log(val, oldval);
-        console.log(val.query.option);
-        if (val.query.option != undefined) {
-          this.option = val.query.option;
-          let num = val.query.option - 1;
-          this.optionList = this.list[num].list;
-          this.opcontion = this.optionList[0];
-          document.documentElement.scrollTop = 0;
-        }
-      },
-    },
+    // $route: {
+    //   handler: function (val, oldval) {
+    //     console.log(val, oldval);
+    //     console.log(val.query.option);
+    //     if (val.query.option != undefined) {
+    //       this.option = val.query.option;
+    //       let num = val.query.option - 1;
+    //       this.optionList = this.list[num].list;
+    //       this.mapShow = true;
+    //       this.optionList[0].contion = String(this.optionList[0].contion);
+    //       this.opcontion = this.optionList[0];
+    //       console.log(this.opcontion);
+    //       document.documentElement.scrollTop = 0;
+    //       // this.$route.query.option=''
+    //     }
+    //   },
+    // },
   },
 };
 </script>
@@ -714,7 +748,7 @@ export default {
   border-left: 1px solid #ccc;
   border-top: 1px solid #ccc;
 }
-#insurance p{
+#insurance p {
   padding-left: 20px;
 }
 </style>

@@ -112,7 +112,7 @@ export default {
           subMenu: [
             {
               name: "预约挂号",
-              link: "guide",
+              link: "research",
               num:  2
             },
             // http://192.168.1.30:8080/#/detail?id=14

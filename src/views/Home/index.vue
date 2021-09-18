@@ -3,12 +3,15 @@
     <!-- banner -->
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide>
-        <img src="@/assets/images/index/banner.jpg" width="100%" />
+        <img src="@/assets/images/index/banner.jpg" width="100%" id="swiperImg" />
+      </swiper-slide>
+      <swiper-slide>
+        <img src="@/assets/images/mid-autumn.jpg"  width="100%" id="swiperImg" />
       </swiper-slide>
       <swiper-slide>
         <router-link to="/about"
           ><img src="@/assets/images/about/banner.png" width="100%"
-        /></router-link>
+        id="swiperImg" /></router-link>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
       <div class="swiper-scrollbar" slot="scrollbar"></div>
@@ -62,7 +65,7 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/detail?id=14">
+              <router-link to="/guide">
                 <div>
                   <img src="@/assets/images/index/icon-yibaofuwu.png" />
                   <p>就诊指南</p>
@@ -71,11 +74,11 @@
               </router-link>
             </li>
             <li>
-              <div @click="open">
+              <router-link  tag="div" :to="{ path: '/guide', query: { option: 2 }}" >
                 <img src="@/assets/images/index/icon-wenti.png" />
                 <p>医保服务</p>
                 <span>Medical Insurance Service</span>
-              </div>
+              </router-link>
             </li>
           </ul>
         </el-col>
@@ -306,13 +309,16 @@
         </el-col>
       </el-row>
     </div>
-    <!-- 联系我们 -->
+    <!-- 联系我们 /医院分区-->
     <div class="contact">
-      <h1 style="margin-top: 50px; margin-bottom: 45px">联系我们/医院分区</h1>
+      <h1 style="margin-top: 50px; margin-bottom: 45px">联系我们</h1>
       <!-- 选项卡 -->
       <el-row type="flex" class="contact-bg" justify="center">
-        <el-col :span="6" >
-          <div class="bg-purple" @click="$router.push({path:'/message',query:{top : 2}})">
+        <el-col :span="6">
+          <div
+            class="bg-purple"
+            @click="$router.push({ path: '/message', query: { top: 2 } })"
+          >
             <img src="@/assets/images/home-c.png" />
             <el-row class="purple-item">
               <el-col :span="5"><strong>地址：</strong> </el-col>
@@ -332,11 +338,15 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="bg-purples"  @click="$router.push({path:'/message',query:{top : 1}})">
+          <div
+            class="bg-purples"
+            @click="$router.push({ path: '/message', query: { top: 1 } })"
+          >
             <img src="@/assets/images/home-c.png" />
             <el-row class="purple-item">
               <el-col :span="5"><strong>地址：</strong> </el-col>
-              <el-col :span="15">乌兰察布市集宁新区工农大街西呼格吉街南。
+              <el-col :span="15"
+                >乌兰察布市集宁新区工农大街西呼格吉街南。
               </el-col>
             </el-row>
             <el-row class="purple-item">
@@ -610,12 +620,22 @@ export default {
       });
     },
   },
+
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/css/base.scss";
 @import "@/assets/css/mixin.scss";
 .home {
+  #swiperImg{
+   height: 767px;
+  }
+  .swiper-container{
+    height: 797px;
+  }
+  .swiper-pagination{
+    margin-top: 10px;
+  }
   .iconKeshi {
     text-align: center;
     color: #fff;
@@ -1143,7 +1163,7 @@ export default {
       box-sizing: border-box;
       cursor: pointer;
       //border: 1px solid #000;
-      box-shadow: -1px -1px 10px 1px #C7DEE2;
+      box-shadow: -1px -1px 10px 1px #c7dee2;
       &:hover {
         box-shadow: -1px -1px 10px 1px #8eb3ba;
       }
