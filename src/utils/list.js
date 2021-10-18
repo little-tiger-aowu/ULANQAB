@@ -1,15 +1,16 @@
 export default {
-    list:[
+  list: [
+    {
+      id: 1,
+      header: "就医须知",
+      list: [
+        { id: 1, identify: 1, title: "就医流程图", contion: "http://wlcbzxyy.front.qiniu.synconize.com/081913531103_1.Jpeg" },
         {
-          id: 1,
-          header: "就医须知",
-          list: [
-            { id: 1,  identify:1, title: "就医流程图", contion: "http://wlcbzxyy.front.qiniu.synconize.com/081913531103_1.Jpeg" },
-            { id: 2,  identify:2,title: "预约挂号方式", contion:`  <table
+          id: 2, identify: 2, title: "预约挂号方式", contion: `  <table
             border="0"
             cellspacing="0"
             cellpadding="0"
-            style="letter-spacing: 4px"
+            style="font-size: 14px; table-layout: fixed;letter-spacing: 3px; "
             v-show="opcontion.id == 2"
           >
             <tr style="height: 50px">
@@ -18,38 +19,51 @@ export default {
               <th style="width: 15%">预约周期</th>
               <th>取号时间/地点</th>
             </tr>
-            <tr>
+            <tr style="table-layout: fixed;letter-spacing: 3px;
+            word-wrap: break-word;
+            word-break: normal;  
+            text-align:justify; 
+            text-justify: inter-ideograph; ">
               <td align="center">微信预约</td>
               <td valign="top" style="padding: 10px 15px">
-                关注乌兰察布市中心医院公众号，在“健康服务”菜单栏中点击“预约挂号”，选择需要挂号的科室，进而选择可预约医生、预约时间（蓝色为可预约，灰色为停诊），点击进入后根据提示绑定就诊卡进行预约挂号
+                关注乌兰察布市中心医院公众号，在“健康服务”菜单栏中点击“预约挂号”，选择需要挂号的科室，进而选择可预约医生、预约时间（蓝色为可预约，灰色为停诊），点击进入后根据提示绑定就诊卡进行预约挂号。
               </td>
               <td align="center">7天</td>
               <td style="padding: 10px 15px">
-                预约成功后可到院支付诊查费（在公众号“个人信息”中点击“就诊二维码”到自助挂号机上进行扫码缴费），也可在公众号的“个人信息”中点击“门诊支付”进行缴费（只能在预约当日进行缴费），支付成功后在自助挂号机打印单据，根据挂号单据信息到对应科室进行诊查
+                预约成功后可到院支付诊查费（在公众号“个人信息”中点击“就诊二维码”到自助挂号机上进行扫码缴费），也可在公众号的“个人信息”中点击“门诊支付”进行缴费（只能在预约当日进行缴费），支付成功后在自助挂号机打印单据，根据挂号单据信息到对应科室进行诊查。
               </td>
             </tr>
-            <tr>
+            <tr style="table-layout: fixed;letter-spacing: 3px;
+            word-wrap: break-word;
+            word-break: normal;  
+            text-align:justify; 
+            text-justify: inter-ideograph; ">
               <td align="center">电话预约</td>
               <td style="padding: 10px 15px">
-                拨打预约挂号电话： 0474-2263875、 0474-2312126 进行预约挂号
+                拨打预约挂号电话： 0474-2263875、 0474-2312126 进行预约挂号。
               </td>
               <td align="center">7天</td>
               <td style="padding: 10px 15px">
-                预约成功后，请在预约当日到门诊楼一层自助挂号机进行操作
+                预约成功后，请在预约当日到门诊楼一层自助挂号机进行操作。
               </td>
             </tr>
-            <tr>
+            <tr style="table-layout: fixed;letter-spacing: 3px;
+            word-wrap: break-word;
+            word-break: normal;  
+            text-align:justify; 
+            text-justify: inter-ideograph; ">
               <td align="center">自助挂号机预约</td>
               <td style="padding: 10px 15px">
-                在门诊楼一层大厅自助挂号机使用本人有效二代身份证进行预约挂号
+                在门诊楼一层大厅自助挂号机使用本人有效二代身份证进行预约挂号。
               </td>
               <td align="center">7天</td>
               <td style="padding: 10px 15px">
-                预约成功后，根据打印挂号单据到对应科室进行诊查
+                预约成功后，根据打印挂号单据到对应科室进行诊查。
               </td>
             </tr>
           </table>`},
-            { id: 3,  identify:3,title: "医院门诊分布及开放时间", contion: ` <p style="font-size: 18px;font-weight: 600;margin-bottom: 15px;text-align: left;">市中心医院</p>
+        {
+          id: 3, identify: 3, title: "医院门诊分布及开放时间", contion: ` <p style="font-size: 18px;font-weight: 600;margin-bottom: 15px;text-align: left;">市中心医院</p>
             <ul>
               <li style="margin-bottom: 6px;  margin-left:7px ;font-size: 16px;"><span>周一至周日：</span>上午：<span style="opacity:0">1</span>8:00 - 12:00</li>
               <li style="margin-bottom: 5px;font-size: 16px;margin-left:21px ;"><span style="opacity:0">周一至周日:</span>下午：14:30 - 17:30</li>
@@ -59,14 +73,15 @@ export default {
               <li style="margin-bottom: 6px; margin-left:7px ;font-size: 16px;"><span>周一至周日：</span>上午：<span style="opacity:0">1</span>8:00 - 12:00</li>
               <li style="margin-bottom: 5px;font-size: 16px; margin-left:21px ;"><span style="opacity:0">周一至周日:</span>下午：14:30 - 17:30</li>
             </ul>` },
-            { id: 4,  identify:4,title: "急诊就诊流程", contion: require('@/assets/images/emergent.png')},
-          ],
-        },
+        { id: 4, identify: 4, title: "急诊就诊流程", contion: require('@/assets/images/emergent.png') },
+      ],
+    },
+    {
+      id: 2,
+      header: "医保服务",
+      list: [
         {
-          id: 2,
-          header: "医保服务",
-          list: [
-            { id: 5,  identify:1,title: "城乡居民医疗保险政策解读", contion: `<p class="MsoNormal" style="text-indent:0cm;">
+          id: 5, identify: 1, title: "城乡居民医疗保险政策解读", contion: `<p class="MsoNormal" style="text-indent:0cm;">
             <span>一、报销对象都有那些人？</span> 
           </p>
           <p class="MsoNormal" style="text-indent:32.0pt;">
@@ -145,8 +160,8 @@ export default {
             <br />
           </p>
           `},
-           {
-            id: 5, identify:2,title:'城镇职工医疗保险政策解读' ,contion:`<p class="MsoNormal" style="margin-left: 0cm; text-indent: 0cm;">一、住院</p>
+        {
+          id: 5, identify: 2, title: '城镇职工医疗保险政策解读', contion: `<p class="MsoNormal" style="margin-left: 0cm; text-indent: 0cm;">一、住院</p>
             <p class="MsoNormal" style="margin-left: 0cm; text-indent: 32.0pt;">1. 职工医保患者入院时必须持本人社会保障卡（或医疗IC卡）押在住院处，以便核查和结算费用 。</p>
             <p class="MsoNormal" style="text-indent: 32.0pt;">2. 因特殊原因没有押社会保障卡（IC卡），请在五个工作日内住院期间押IC卡，并将我院的HIS系统中现费类别转为职工医疗，否则无法在出院时进行医保网络结算。</p>
             <p class="MsoNormal" style="text-indent: 32.0pt;">3. 医保最高支付限额标准，城镇职工基本医疗保险（含大病保险）一个参保年度内最高支付限额26万元，大额医疗保险最高支付12万元，参保职工一个参保年度内医疗费用医保累计最高支付限额38万元，超过最高支付限额以上的医疗保险费年度内不再报销。</p>
@@ -172,39 +187,38 @@ export default {
             <p class="MsoNormal"> <br></p>
            
             `
-           }
-          ],
-        },
+        }
+      ],
+    },
+    {
+      id: 3,
+      header: "医院位置",
+      list: [
+        { id: 6, identify: 1, title: "中心医院周边地图和交通", contion: 1 },
         {
-          id: 3,
-          header: "医院位置",
-          list: [
-            { id: 6,  identify:1, title: "中心医院周边地图和交通", contion: 1 },
-            {
-              id: 7,
-              title: "乌兰察布市中医蒙医医院周边地图和交通",
-              contion: 2 ,
-              identify:2,
-            },
-          ],
+          id: 7,
+          title: "乌兰察布市中医蒙医医院周边地图和交通",
+          contion: 2,
+          identify: 2,
         },
-        {
-          id: 4,
-          header: "院内导航",
-          list: [
-            // 及楼层索引示意图
-            { id: 8,  identify:1, title: "院区楼宇分布示意图", contion: require('@/assets/images/tenement.jpg') },
-          ],
-        },
-        {
-          id: 5,
-          header: "价格公示",
-          list: [
-            { id: 9, identify:1, title: "价格公示文件", contion: "" },
-          ],
-        },
-      ]
+      ],
+    },
+    {
+      id: 4,
+      header: "院内导航",
+      list: [
+        // 及楼层索引示意图
+        { id: 8, identify: 1, title: "院区楼宇分布示意图", contion: require('@/assets/images/tenement.jpg') },
+      ],
+    },
+    {
+      id: 5,
+      header: "价格公示",
+      list: [
+        { id: 9, identify: 1, title: "价格公示文件", contion: "" },
+      ],
+    },
+  ]
 }
 
 
-   

@@ -41,14 +41,15 @@
                       <em>{{ item.name }}</em>
                       <router-link
                         :to="
-                          '/news/list?id=' +
+                        `${item.name=='医院院报'? '':'/news/list?id=' +
                           item.id +
                           '&name=' +
                           item.name +
-                          '&menu=news'
+                          '&menu=news'}`
                         "
                         tag="span"
                         style="float: right"
+                        @click.native="external(item)"
                         >更多</router-link
                       >
                     </div>
@@ -195,6 +196,14 @@ export default {
     },
   },
   methods: {
+    //  跳转
+    external(val){
+      if (val.name == "医院院报") {
+        window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+      }
+     console.log(val);
+      // window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+    },
     getSpecialList() {
       specialList().then((res) => {
         if (res.code == 200) {
@@ -203,7 +212,6 @@ export default {
         }
       });
     },
-
     getoneList() {
       specialNewsList(1).then((res) => {
         if (res.code == 200) {
@@ -373,7 +381,9 @@ export default {
               width: 45%;
               display: flex;
               flex-direction: column;
+             
               .right-contion {
+                
                 box-shadow: 1px 1px 15px #ddd;
                 height: 98px;
                 margin-top: 20px;
@@ -384,7 +394,7 @@ export default {
                 h4 {
                   margin: 0;
                   padding: 0;
-                  line-height: 20px;
+                  line-height: 28px;
                   font-size: 20px;
                   margin-bottom: 10px;
                 }

@@ -5,9 +5,10 @@
       <swiper-slide>
         <img src="@/assets/images/index/banner.jpg" width="100%" id="swiperImg" />
       </swiper-slide>
-      <swiper-slide>
+      <!-- 中秋图 -->
+      <!-- <swiper-slide>
         <img src="@/assets/images/mid-autumn.jpg"  width="100%" id="swiperImg" />
-      </swiper-slide>
+      </swiper-slide> -->
       <swiper-slide>
         <router-link to="/about"
           ><img src="@/assets/images/about/banner.png" width="100%"
@@ -319,20 +320,20 @@
             class="bg-purple"
             @click="$router.push({ path: '/message', query: { top: 2 } })"
           >
-            <img src="@/assets/images/home-c.png" />
+            <img src="@/assets/images/home-c.png"   style="height: 200px;"/>
             <el-row class="purple-item">
               <el-col :span="5"><strong>地址：</strong> </el-col>
               <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="5"> <strong>乘车路线：</strong> </el-col>
+              <el-col :span="6"> <strong>乘车路线:</strong> </el-col>
               <el-col :span="15"
                 >乘1、4、11路公交车中心医
                 院站下车即到。乘5路公交车虎山公园站下车向北100米即</el-col
               >
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="5"><strong>急救电话：</strong></el-col>
+              <el-col :span="7"><strong>预约挂号电话:</strong></el-col>
               <el-col :span="15">0474-2263985 0474-2324120</el-col>
             </el-row>
           </div>
@@ -342,7 +343,7 @@
             class="bg-purples"
             @click="$router.push({ path: '/message', query: { top: 1 } })"
           >
-            <img src="@/assets/images/home-c.png" />
+            <img src="@/assets/images/home-c-2.jpg"  style="height: 200px;"/>
             <el-row class="purple-item">
               <el-col :span="5"><strong>地址：</strong> </el-col>
               <el-col :span="15"
@@ -350,15 +351,20 @@
               </el-col>
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="5"> <strong>乘车路线：</strong> </el-col>
+              <el-col :span="6"> <strong>乘车路线:</strong> </el-col>
               <el-col :span="15"
                 >乘10路、11路、21路、33路、36路公交均可到达</el-col
               >
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="5"> <strong>挂号电话：</strong> </el-col>
-              <el-col :span="15">0474-2313126 </el-col>
+              <el-col :span="7"><strong>预约挂号电话:</strong></el-col>
+              <el-col :span="10">0474-2313126  </el-col>
             </el-row>
+            <el-row class="purple-item">
+              <el-col :span="5"> <strong>咨询电话:</strong> </el-col>
+              <el-col :span="15">0474–2313113 </el-col>
+            </el-row>
+          
           </div></el-col
         >
       </el-row>
@@ -1159,7 +1165,7 @@ export default {
   .contact-bg {
     .bg-purple,
     .bg-purples {
-      height: 400px;
+      height: 420px;
       box-sizing: border-box;
       cursor: pointer;
       //border: 1px solid #000;

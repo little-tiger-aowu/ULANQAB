@@ -48,15 +48,16 @@
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
                           :href="
-                            '/#/' +
-                            `${item.link == 0 ? '' : item.link}` +
+                            `${item.show == 0 ? '#' : '/#/' +`${item.link == 0 ? '' : item.link}` +
                             `${item.link === 0 ? '' : '/'}` +
                             item2.link +
                             `?${
                               item2.num == undefined ? '' : 'num=' + item2.num
-                              }`
+                            }`}`
+                            
                           "
                           :underline="false"
+                          @click.native="external(item2)"
                         >
                           {{ item2.name }}
                         </el-link>
@@ -113,7 +114,7 @@ export default {
             {
               name: "预约挂号",
               link: "research",
-              num:  2
+              num: 2,
             },
             // http://192.168.1.30:8080/#/detail?id=14
             // http://192.168.1.30:8080/#/detail?id=14%3F
@@ -156,19 +157,19 @@ export default {
               name: "非手术科室",
               link: "section",
               // num: 2,
-              num:''
+              num: "",
             },
             {
               name: "手术科室",
               link: "section",
               // num: 1,
-              num:''
+              num: "",
             },
             {
               name: "诊断相关科室",
               link: "section",
               // num: 3,
-              num:''
+              num: "",
             },
           ],
         },
@@ -211,7 +212,9 @@ export default {
             },
             {
               name: "医院院报",
-              link: "news/list?id=2&name=医院院报&menu=news",
+              // link: "news/list?id=2&name=医院院报&menu=news",
+              link: "",
+              show: 0,
             },
           ],
         },
@@ -295,6 +298,15 @@ export default {
       nowRoutePath: "/",
       nowPathMenu: "",
     };
+  },
+  methods: {
+    external(val) {
+      if (val.name == "医院院报") {
+        window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+        console.log(1);
+      }
+      //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
+    },
   },
   mounted() {
     console.log(this.$route);
@@ -408,8 +420,8 @@ export default {
           background-color: #fff;
           box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
-           height: 0px;
-           //transition: .6s all;
+          height: 0px;
+          //transition: .6s all;
           display: none;
           opacity: 0;
           .el-link {
@@ -417,7 +429,7 @@ export default {
             line-height: 40px;
             &:hover {
               opacity: 1;
-               //display: block;
+              //display: block;
               transition: 0.1s all ease-in;
               color: #308594;
             }
@@ -431,14 +443,14 @@ export default {
           opacity: 1;
           transition: 1s all ease-in;
           display: block;
-          animation:mymove 1s;
+          animation: mymove 1s;
         }
-        @keyframes mymove{
-          0%{
+        @keyframes mymove {
+          0% {
             top: 40px;
             height: 0;
           }
-          100%{
+          100% {
             top: 70px;
             height: auto;
           }
