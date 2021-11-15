@@ -1,8 +1,8 @@
 @font-face {
   font-family: "font_family"; /* Project id 2628025 */
-  src: url('iconfont.woff2?t=1629099882456') format('woff2'),
-       url('iconfont.woff?t=1629099882456') format('woff'),
-       url('iconfont.ttf?t=1629099882456') format('truetype');
+  src: url('iconfont.woff2?t=1636962836497') format('woff2'),
+       url('iconfont.woff?t=1636962836497') format('woff'),
+       url('iconfont.ttf?t=1636962836497') format('truetype');
 }
 
 .font_family {
@@ -13,19 +13,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-a-yuyueguahao3:before {
-  content: "\e61e";
+.icon-tingzhenqi:before {
+  content: "\e62c";
 }
 
-.icon-lianxiwomen:before {
-  content: "\e61d";
+.icon-zhongyishi:before {
+  content: "\e62b";
 }
 
-.icon-weizhi:before {
-  content: "\e61c";
+.icon-chuzhen:before {
+  content: "\e62a";
 }
 
-.icon-zhuanjiachuzhenxinxi:before {
-  content: "\e61b";
+.icon-a-zhuanjiachuzhenxinxi1:before {
+  content: "\e629";
+}
+
+.icon-a-weizhi1:before {
+  content: "\e628";
+}
+
+.icon-a-lianxiwomen1:before {
+  content: "\e627";
+}
+
+.icon-yishiziliao:before {
+  content: "\e626";
 }
 

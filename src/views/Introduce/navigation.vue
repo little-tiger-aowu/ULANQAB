@@ -33,20 +33,20 @@
           <li style="cursor: pointer;">
             <router-link tag="p" :to="{path:'/table',query: { keyWord:typeList.name }}">
               <!-- <svg-icon icon-class="referral" /> -->
-              <span class="font_family icon-zhuanjiachuzhenxinxi"></span>
+              <span class="font_family icon-tingzhenqi"></span>
               出诊信息
             </router-link>
           </li>
           <li style="cursor: pointer;">
             <router-link tag="p" :to="'/doctor?current=1&size=16&officeStr=' + typeList.name + '&menu=introduce'">
-              <span class="font_family icon-a-yuyueguahao3"></span>
+              <span class="font_family icon-a-zhuanjiachuzhenxinxi1"></span>
               医师介绍
             </router-link>
           </li>
 
           <li>
             <p @click="visit = true" style="cursor: pointer;">
-              <span class="font_family icon-weizhi" ></span>
+              <span class="font_family icon-a-weizhi1" ></span>
               科室位置
             </p>
             <el-dialog :visible.sync="visit" @close="has" v-if="visit">
@@ -57,7 +57,7 @@
           </li>
           <li>
             <p @click="message = true" style="cursor: pointer;">
-              <span class="font_family icon-lianxiwomen"></span>
+              <span class="font_family icon-a-lianxiwomen1"></span>
               联系我们
             </p>
             <el-dialog :visible.sync="message" v-if="message">

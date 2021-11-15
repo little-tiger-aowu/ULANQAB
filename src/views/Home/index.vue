@@ -126,11 +126,13 @@
             <img src="@/assets/images/index/proIndex2.png" class="image" />
             <div style="height: 20px"></div>
             <span class="proTitle">医院院报</span>
-            <router-link to="/news/list?id=2&name=医院院报&menu=news">
-              <el-button type="text" class="button"
+            <!-- to="/news/list?id=2&name=医院院报&menu=news" -->
+            <!-- <router-link to=''> -->
+              <el-button @click="clad" type="text" class="button"
                 >更多>></el-button
-              ></router-link
-            >
+              >
+              <!-- </router-link
+            > -->
             <div style="padding: 14px">
               <ul class="list" v-for="(item, index) in reportList" :key="index">
                 <a :href="item.content" target="_blank" style="color: #666">{{
@@ -504,6 +506,11 @@ export default {
     this.getnoticeList();
   },
   methods: {
+    // 跳转
+    clad(){
+      window.location.assign("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+      //  window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+    },
     _getphysicianInfo(type) {
       this.keType = type;
       physicianInfo(type).then((res) => {

@@ -116,10 +116,10 @@
                           </el-col>
                         </el-row>
                       </div>
-                      <!-- <router-link
+                      <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
-                      > -->
-                       <router-link to="/research">
+                      >
+                       <!-- <router-link to="/research"> -->
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
