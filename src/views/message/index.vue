@@ -1,11 +1,11 @@
 <template>
   <div class="message">
     <h4 style="font-size: 24px">联系我们</h4>
-    <h2 v-show="top == 2 || top == null">院本部（中心医院）</h2>
+    <h2 v-show="top == 2 || top == null">中心医院院本部（中心医院）</h2>
     <div class="message-text" v-show="top == 2 || top == null">
       <h5>联系电话</h5>
       <ul>
-        <li class="strong">院本部（中心医院）</li>
+        <li class="strong">中心医院院本部（中心医院）</li>
         <li>预约挂号电话：0474-2263875</li>
         <li>
           <span>急救中心电话：0474-2263985 </span>
@@ -15,11 +15,11 @@
       </ul>
       <h5>医院地址及邮编</h5>
       <ul>
-        <li class="strong">院本部（中心医院）</li>
+        <li class="strong">中心医院院本部（中心医院）</li>
         <li>地址：乌兰察布市集宁区解放大街157号</li>
         <li>邮编：012000</li>
       </ul>
-      <h5>中心医院本部乘车路线</h5>
+      <h5>中心医院院本部乘车路线</h5>
       <ul>
         <li>乘车路线：乘1、4、11路公交车中心医院站下车即到。</li>
         <!-- 乘车路线：(市中医蒙医医院) -->
@@ -27,26 +27,28 @@
           乘5路公交车虎山公园站下车向北100米即到。
         </li>
       </ul>
-      <h5>中心医院本部地图</h5>
+      <h5>中心医院院本部地图</h5>
       <!-- 地图 -->
-      <div class="footer-map">
+      <div class="footer-map" style=" margin-bottom: 150px;">
         <baidu-map
           v-if="showMap"
           :center="center"
           :zoom="zoom"
           @ready="handler"
-          style="width: 100%; height: 370px"
+          style="width: 100%; height: 370px;"
           @click="getClickInfo"
           :scroll-wheel-zoom="true"
         >
         </baidu-map>
       </div>
     </div>
-    <h2 v-show="top == 1 || top == null">新区分院(乌兰察布市中医蒙医医院)</h2>
+    <h2 v-show="top == 1 || top == null" >
+      中心医院新区分院(乌兰察布市中医蒙医医院)
+    </h2>
     <div class="message-text" v-show="top == 1 || top == null">
       <h5>联系电话</h5>
       <ul>
-        <li class="strong">新区分院(乌兰察布市中医蒙医医院)</li>
+        <li class="strong">中心医院新区分院(乌兰察布市中医蒙医医院)</li>
         <li>预约挂号电话：0474-2313126</li>
         <li>
           <span>急救中心电话：0474-2263985 </span>
@@ -57,7 +59,7 @@
       </ul>
       <h5>医院地址及邮编</h5>
       <ul>
-        <li class="strong">新区分院(乌兰察布市中医蒙医医院)</li>
+        <li class="strong">中心医院新区分院(乌兰察布市中医蒙医医院)</li>
         <li>地址：乌兰察布市集宁新区工农大街西呼格吉街南</li>
         <li>邮编：012000</li>
       </ul>
@@ -213,10 +215,14 @@ export default {
 <style lang="scss" scoped>
 .message {
   text-align: center;
-
+  h2 {
+    margin: 30px 0;
+   
+  }
   .message-text {
     width: 60%;
     margin: 0 auto;
+
     h5 {
       display: inline-block;
       font-size: 20px;
@@ -226,7 +232,7 @@ export default {
     ul {
       display: block;
       li {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         width: auto;
         font-size: 18px;
         text-align: left;

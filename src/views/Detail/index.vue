@@ -15,11 +15,12 @@
     </div>
     <!-- 医师信息 -->
     <div v-else>
-      <el-page-header @back="goBack" :content="data.name"> </el-page-header>
+      <el-page-header @back="goBack" :content="data.officeName">
+      </el-page-header>
       <div class="context">
         <div class="context-left">
           <div class="img">
-            <img :src="data.imageUrl" height="150" />
+            <img :src="data.imageUrl" />
           </div>
           <div class="min-title">
             发布时间：{{ data.createTime | formatDate }}
@@ -31,14 +32,14 @@
           <ul class="rank">
             <!--  职称 -->
             <li v-show="data.position != '' && data.position != null">
-              <p class="bold">职称:</p>
+              <!-- <p class="bold"> 职务:</p> -->
               {{ data.position }}
             </li>
             <!-- 科室 -->
-            <li v-show="data.officeName != '' && data.officeName != null" class="office">
+            <!-- <li v-show="data.officeName != '' && data.officeName != null" class="office">
               <p class="bold">科室:</p>
               {{ data.officeName }}
-            </li>
+            </li> -->
           </ul>
           <!-- 职务 -->
           <p
@@ -47,7 +48,7 @@
               data.professionalTitle != '' && data.professionalTitle != null
             "
           >
-            职务:
+            学术及社会兼职:
           </p>
           <div
             v-show="
@@ -65,7 +66,7 @@
               data.briefInformation != '暂无信息'
             "
           >
-            简介:
+            个人简介:
           </p>
           <div
             v-html="data.briefInformation"
@@ -92,16 +93,7 @@
               v-html="data.professionalTitle"
               class="pertise"
             ></p> -->
-            <p class="bold" v-show="data.professionalExpertise != '暂无信息'">
-              专业特长:
-            </p>
-            <!-- <h4 v-show="data.professionalExpertise != '暂无信息'">专业特长:</h4> -->
-            <p
-              v-show="data.professionalExpertise != '暂无信息'"
-              style="margin: 0"
-            >
-              {{ data.professionalExpertise }}
-            </p>
+
             <p
               class="bold"
               v-show="data.achievement != '' && data.achievement != null"
@@ -116,6 +108,25 @@
               style="margin: 0"
             >
               {{ data.achievement }}
+            </p>
+            <p class="bold" v-show="data.professionalExpertise != '暂无信息' && data.professionalExpertise!=null  &&data.professionalExpertise!=''">
+              专业特长:
+            </p>
+            <!-- <h4 v-show="data.professionalExpertise != '暂无信息'">专业特长:</h4> -->
+            <p
+              v-show="data.professionalExpertise != '暂无信息' && data.professionalExpertise!=null  &&data.professionalExpertise!=''"
+              style="margin: 0"
+            >
+              {{ data.professionalExpertise }}
+            </p>
+            <p class="bold" v-show="data.visitTime != '暂无信息'&&data.visitTime !=null">
+              出诊时间:
+            </p>
+             <p
+              v-show="data.visitTime != '暂无信息'&&data.visitTime !=null"
+              style="margin: 0"
+            >
+              {{ data.visitTime }}
             </p>
           </div>
         </div>
@@ -336,7 +347,10 @@ export default {
       text-align: center;
       img {
         width: 400px;
-        height: auto;
+        height: 450px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        // height: auto;
       }
     }
     .good {
@@ -360,27 +374,27 @@ export default {
         color: #666666;
       }
       // 简介
-      .intro{
+      .intro {
         font-size: 12px;
-      //   overflow: hidden; //超出文本隐藏
-      // text-overflow: ellipsis; ///超出部分省略号显示
-      // display: -webkit-box; //弹性盒模型
-      // -webkit-box-orient: vertical; //上下垂直
-      // -webkit-line-clamp: 2; //自定义行数
+        //   overflow: hidden; //超出文本隐藏
+        // text-overflow: ellipsis; ///超出部分省略号显示
+        // display: -webkit-box; //弹性盒模型
+        // -webkit-box-orient: vertical; //上下垂直
+        // -webkit-line-clamp: 2; //自定义行数
       }
       span {
         font-size: 14px !important;
       }
       .rank {
         display: flex;
-       
+
         li {
           width: 65%;
           font-size: 14px !important;
           color: #666666;
           padding-right: 30px;
         }
-         .office{
+        .office {
           width: 30% !important;
           padding: 0;
         }

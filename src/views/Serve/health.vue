@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- 更多信息 -->
-      <div>
+      <div v-show="show">
         <el-row type="flex" justify="center">
           <el-col :span="16" class="content">
             <ul class="box">
@@ -31,7 +31,7 @@
         </el-row>
       </div>
       <!-- 外围框 -->
-      <div class="periphery"  v-show="show">
+      <div class="periphery">
         <!--健康讲堂 -->
         <div class="classroom">
           <!-- 头部  -->
@@ -40,8 +40,18 @@
             <span>>更多</span>
             <!-- 选择项 -->
             <div class="optionList">
-              <div></div>
+              <div @click="optionBtns(0)" ref="option" class="actives">专家讲座视频</div>
+              <div @click="optionBtns(1)" ref="option1">特色治疗视频</div>
+              <div @click="optionBtns(2)" ref="option2">医院宣传视频</div>
             </div>
+          </div>
+          <!-- 视频列表 -->
+          <div class="classroomVideo">
+             <div class="videoItem" v-for="(item,index) in 3" :key="index">
+                <video src=""></video>
+                <!-- 文字 -->
+                <p>测试</p>
+             </div>
           </div>
         </div>
         <!-- 健康科普 -->
@@ -51,6 +61,8 @@
             <p>健康科普</p>
             <span>>更多</span>
           </div>
+          <!-- 文章列表 -->
+
         </div>
       </div>
     </div>
@@ -83,6 +95,7 @@ export default {
       },
       total: 1,
       show: false,
+     
     };
   },
   //过滤
@@ -93,6 +106,7 @@ export default {
     },
   },
   mounted() {
+    
     this.getSpecialNewsList();
   },
 
@@ -109,6 +123,23 @@ export default {
     handleCurrentChange(val) {
       this.page.current = val;
       this.getNewsList();
+    },
+    // 点击
+    optionBtns(val) {
+      // console.log(el.target.className="actives");
+      if (val == 0) {
+        this.$refs.option1.className = "";
+        this.$refs.option2.className = "";
+        this.$refs.option.className = "actives";
+      } else if (val == 1) {
+        this.$refs.option.className = "";
+        this.$refs.option2.className = "";
+        this.$refs.option1.className = "actives";
+      } else if (val == 2) {
+        this.$refs.option.className = "";
+        this.$refs.option1.className = "";
+        this.$refs.option2.className = "actives";
+      }
     },
   },
 };
@@ -141,7 +172,7 @@ export default {
       border-radius: 10px;
       display: flex;
       justify-content: space-between;
-      // 健康讲堂
+      // 健康讲堂 健康科普
       .classroom,
       .science {
         width: 45%;
@@ -155,6 +186,23 @@ export default {
           // 选择项
           .optionList {
             position: absolute;
+            left: 20%;
+            bottom: 0;
+            div {
+              float: left;
+              line-height: 2;
+              font-size: 18px;
+              color: #6d6d6d;
+
+              padding: 10px;
+
+              border-top-right-radius: 10px;
+              border-top-left-radius: 10px;
+            }
+            .actives {
+              color: #fff;
+              background-color: #2f7f87;
+            }
           }
           p {
             font-size: 24px;
@@ -172,6 +220,27 @@ export default {
             line-height: 2;
           }
         }
+        //视频列表
+       .classroomVideo{
+         .videoItem{
+            margin: 20px 0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 13px;
+            display: flex; 
+            justify-content: space-between;  
+            video{
+              width: 30%;
+              background-color: aqua;
+              border-radius: 10px;
+            }
+            // 文字
+            p{
+              width: 65%;
+              font-size: 16px;
+            }
+         }
+       }
       }
     }
     // 列表

@@ -324,14 +324,12 @@
           >
             <img src="@/assets/images/home-c.png"   style="height: 200px;"/>
             <el-row class="purple-item">
-              <el-col :span="5"><strong>地址：</strong> </el-col>
+              <el-col :span="7"><strong>地址：</strong> </el-col>
               <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="6"> <strong>乘车路线:</strong> </el-col>
-              <el-col :span="15"
-                >乘1、4、11路公交车中心医
-                院站下车即到。乘5路公交车虎山公园站下车向北100米即</el-col
+              <el-col :span="7"> <strong>乘车路线:</strong> </el-col>
+              <el-col :span="15">乘1、4、11路公交车中心医院站下车即到。乘5路公交车虎山公园站下车向北100米即可到达</el-col
               >
             </el-row>
             <el-row class="purple-item">
@@ -347,13 +345,13 @@
           >
             <img src="@/assets/images/home-c-2.jpg"  style="height: 200px;"/>
             <el-row class="purple-item">
-              <el-col :span="5"><strong>地址：</strong> </el-col>
+              <el-col :span="7"><strong>地址：</strong> </el-col>
               <el-col :span="15"
                 >乌兰察布市集宁新区工农大街西呼格吉街南。
               </el-col>
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="6"> <strong>乘车路线:</strong> </el-col>
+              <el-col :span="7"> <strong>乘车路线:</strong> </el-col>
               <el-col :span="15"
                 >乘10路、11路、21路、33路、36路公交均可到达</el-col
               >
@@ -363,7 +361,7 @@
               <el-col :span="10">0474-2313126  </el-col>
             </el-row>
             <el-row class="purple-item">
-              <el-col :span="5"> <strong>咨询电话:</strong> </el-col>
+              <el-col :span="7"> <strong>咨询电话:</strong> </el-col>
               <el-col :span="15">0474–2313113 </el-col>
             </el-row>
           

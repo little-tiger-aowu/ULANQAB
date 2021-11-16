@@ -47,19 +47,27 @@
                           ]"
                           v-for="(item2, index2) in item.subMenu"
                           :key="index2"
-                          :href="
-                            `${item.show == 0 ? '#' : '/#/' +`${item.link == 0 ? '' : item.link}` +
-                            `${item.link === 0 ? '' : '/'}` +
-                            item2.link +
-                            `?${
-                              item2.num == undefined ? '' : 'num=' + item2.num
-                            }`}`
-                            
-                          "
+                          :href="`${
+                            item.show == 0
+                              ? '#'
+                              : '/#/' +
+                                `${item.link == 0 ? '' : item.link}` +
+                                `${item.link === 0 ? '' : '/'}` +
+                                item2.link +
+                                `?${
+                                  item2.num == undefined
+                                    ? ''
+                                    : 'num=' + item2.num
+                                }`
+                          }`"
                           :underline="false"
                           @click.native="external(item2)"
                         >
-                          {{ item2.name }}
+                          {{
+                            item2.name.length > 6
+                              ? item2.name.slice(0, 5) + ".."
+                              : item2.name
+                          }}
                         </el-link>
                       </div>
                     </div>
@@ -302,7 +310,9 @@ export default {
   methods: {
     external(val) {
       if (val.name == "医院院报") {
-        window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+        window.location.replace(
+          "http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8"
+        );
         console.log(1);
       }
       //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
@@ -420,27 +430,30 @@ export default {
           background-color: #fff;
           box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
           text-align: center;
-          height: 0px;
+          // height: auto;
           //transition: .6s all;
           display: none;
-          opacity: 0;
+          // .el-link:nth-child(30) {
+          //   line-height: 20px !important;
+          // }
           .el-link {
             font-size: 15px;
             line-height: 40px;
-            &:hover {
-              opacity: 1;
-              //display: block;
-              transition: 0.1s all ease-in;
-              color: #308594;
-            }
+            // &:hover {
+            //   opacity: 1;
+            //   //display: block;
+            //   transition: 0.1s all ease-in;
+            //   color: #308594;
+            // }
           }
+
           .active {
             color: #308594;
           }
         }
         &:hover .sub-menu {
           height: auto;
-          opacity: 1;
+          // opacity: 1;
           transition: 1s all ease-in;
           display: block;
           animation: mymove 1s;
