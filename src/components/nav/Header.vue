@@ -41,6 +41,7 @@
                         <span>{{ item.name }}</span></el-link
                       >
                       <div class="sub-menu">
+                        <div class="suspend" ref="suspend" id="suspend" v-show="divShow">住院医师规范化培训</div>
                         <el-link
                           :class="[
                             { active: nowPathMenu.indexOf(item2.name) != -1 },
@@ -62,6 +63,8 @@
                           }`"
                           :underline="false"
                           @click.native="external(item2)"
+                          @mouseover.native="suspendShow(item2.name)"
+                          @mouseleave.native="suspendFl(item2.name)"
                         >
                           {{
                             item2.name.length > 6
@@ -86,7 +89,7 @@ export default {
   data() {
     return {
       disabled: false,
-
+      divShow:false,
       menuList: [
         {
           name: "首页",
@@ -315,8 +318,27 @@ export default {
         );
         console.log(1);
       }
+
       //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
     },
+    // 显示
+    suspendShow(val){
+      if(val.length>6){
+        this.divShow=true
+        // this.$refs.suspend.className='show'
+        console.log(this.$refs.suspend.style);
+        console.log(document.getElementsByClassName('suspend'));
+        // document.getElementById('suspend').style.display='none'
+         document.getElementById('suspend').style="display:none;"
+        // this.$refs.suspend.style.display=
+        // console.log( );
+       
+      }       
+    },
+    // 隐藏
+  suspendFl(){
+    this.divShow=false
+  }
   },
   mounted() {
     console.log(this.$route);
@@ -345,18 +367,18 @@ export default {
     margin: 0 !important;
   }
   .nav {
-    min-height: 120px;
+    min-height: 7.5rem;
     .nav-right {
       background-color: $color-3;
-      min-width: 960px;
+      min-width: 60rem;
 
       > div {
         @include maxWidth;
-        height: 49px;
-        line-height: 49px;
+        height: 3.0625rem;
+        line-height: 3.0625rem;
         text-align: right;
         span {
-          padding: 0 15px;
+          padding: 0 0.9375rem;
           position: relative;
           cursor: pointer;
           &.active {
@@ -369,32 +391,33 @@ export default {
       }
     }
     .nav-logo {
-      box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.18);
-      margin-top: -49px;
-      min-width: 100px;
+      box-shadow: 0rem 0rem 1.125rem 0rem rgba(2, 2, 2, 0.18);
+      margin-top: -3.0625rem;
+      min-width: 6.25rem;
       img {
         background-color: $color-1;
         box-sizing: border-box;
-        padding: 10px;
+        padding: 0.625rem;
       }
     }
     .nav-menu {
       display: flex;
       display: -webkit-flex;
       justify-content: space-around;
-      // min-width: 730px;
+      // min-width: 45.625rem;
       .nav-menu-box {
         position: relative;
         height: 100%;
-        padding: 0 10px 0 0;
+        padding: 0 0.625rem 0 0;
         .el-link {
-          font-size: 16px;
+          position: relative;
+          font-size: 1rem;
           transition: 0.5s;
           span {
-            padding: 5px 0;
-            min-width: 64px;
+            padding: 0.3125rem 0;
+            min-width: 4rem;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 1.25rem;
 
             text-align: center;
           }
@@ -403,9 +426,9 @@ export default {
               background-image: url(~@/assets/images/icon-down.png);
               background-repeat: no-repeat;
               background-position: top center;
-              background-size: 11px 8px;
+              background-size: 0.6875rem 0.5rem;
               color: $color-9;
-              padding: 15px 0;
+              padding: 0.9375rem 0;
             }
           }
         }
@@ -414,37 +437,51 @@ export default {
             background-image: url(~@/assets/images/icon-down.png);
             background-repeat: no-repeat;
             background-position: top center;
-            background-size: 11px 8px;
+            background-size: 0.6875rem 0.5rem;
             color: $color-9;
-            padding: 15px 0;
+            padding: 0.9375rem 0;
           }
         }
         .sub-menu {
-          overflow: hidden;
+          // overflow: hidden;
           position: absolute;
-          z-index: 999;
+          z-index: 2;
           // left: -30%;
-          top: 70px;
+          top: 4.375rem;
           width: 130%;
-          //height: 10px;
+          //height: .625rem;
           background-color: #fff;
-          box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+          box-shadow: 0rem 0rem 0.625rem rgba($color: #000000, $alpha: 0.2);
           text-align: center;
           // height: auto;
           //transition: .6s all;
           display: none;
           // .el-link:nth-child(30) {
-          //   line-height: 20px !important;
+          //   line-height: 1.25rem !important;
           // }
+          // 悬浮窗
+          .suspend {
+            // display: none;
+            position: absolute;
+            top: -35px;
+            color: #fff;
+            left: 50%;
+            width: 140px;
+            border-radius: 5px;
+            transform: translateX(-50%);
+            padding: 5px;
+            background: rgba(2, 2, 2, 0.68);
+            z-index: 3;
+          }
           .el-link {
-            font-size: 15px;
-            line-height: 40px;
-            // &:hover {
-            //   opacity: 1;
-            //   //display: block;
-            //   transition: 0.1s all ease-in;
-            //   color: #308594;
-            // }
+            font-size: 0.9375rem;
+            line-height: 2.5rem;
+            &:hover {
+              opacity: 1;
+              //display: block;
+              transition: 0.1s all ease-in;
+              color: #308594;
+            }
           }
 
           .active {
@@ -460,11 +497,11 @@ export default {
         }
         @keyframes mymove {
           0% {
-            top: 40px;
+            top: 2.5rem;
             height: 0;
           }
           100% {
-            top: 70px;
+            top: 4.375rem;
             height: auto;
           }
         }
@@ -484,15 +521,15 @@ export default {
       display: inline-flex;
       justify-content: space-around;
       .logo-img {
-        width: 150px;
-        box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.18);
-        margin-top: -49px;
-        min-width: 130px;
-        height: 130px;
-        margin-right: 20px;
+        width: 9.375rem;
+        box-shadow: 0rem 0rem 1.125rem 0rem rgba(2, 2, 2, 0.18);
+        margin-top: -3.0625rem;
+        min-width: 8.125rem;
+        height: 8.125rem;
+        margin-right: 1.25rem;
       }
       .nav-menu {
-        height: 70px;
+        height: 4.375rem;
         width: 100%;
         .nav-menu-a {
           width: 100%;
@@ -501,7 +538,7 @@ export default {
           flex-direction: row;
           flex-wrap: 1;
           justify-content: space-between;
-          margin-top: -5px;
+          margin-top: -0.3125rem;
           > div {
             display: flex;
             display: inline-flex;

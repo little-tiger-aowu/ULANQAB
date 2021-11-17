@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- 更多信息 -->
-      <div v-show="show">
+      <div >
         <el-row type="flex" justify="center">
           <el-col :span="16" class="content">
             <ul class="box">
@@ -31,7 +31,7 @@
         </el-row>
       </div>
       <!-- 外围框 -->
-      <div class="periphery">
+      <div class="periphery"  v-show="show">
         <!--健康讲堂 -->
         <div class="classroom">
           <!-- 头部  -->
@@ -62,7 +62,7 @@
             <span>>更多</span>
           </div>
           <!-- 文章列表 -->
-
+             
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@
           <div class="title">{{ data.name }}</div>
           <ul class="rank">
             <!--  职称 -->
-            <li v-show="data.position != '' && data.position != null">
+            <li v-show="data.position != '' && data.position != null" >
               <!-- <p class="bold"> 职务:</p> -->
               {{ data.position }}
             </li>
@@ -43,6 +43,7 @@
           </ul>
           <!-- 职务 -->
           <p
+            
             class="bold"
             v-show="
               data.professionalTitle != '' && data.professionalTitle != null
@@ -51,6 +52,7 @@
             学术及社会兼职:
           </p>
           <div
+          style="text-indent: 30.0pt"
             v-show="
               data.professionalTitle != '' && data.professionalTitle != null
             "
@@ -105,26 +107,40 @@
             </h4> -->
             <p
               v-show="data.achievement != '' && data.achievement != null"
-              style="margin: 0"
+              style="margin: 0;text-indent: 30.0pt"
             >
               {{ data.achievement }}
             </p>
-            <p class="bold" v-show="data.professionalExpertise != '暂无信息' && data.professionalExpertise!=null  &&data.professionalExpertise!=''">
+            <p
+              class="bold"
+              v-show="
+                data.professionalExpertise != '暂无信息' &&
+                data.professionalExpertise != null &&
+                data.professionalExpertise != ''
+              "
+            >
               专业特长:
             </p>
             <!-- <h4 v-show="data.professionalExpertise != '暂无信息'">专业特长:</h4> -->
             <p
-              v-show="data.professionalExpertise != '暂无信息' && data.professionalExpertise!=null  &&data.professionalExpertise!=''"
-              style="margin: 0"
+              v-show="
+                data.professionalExpertise != '暂无信息' &&
+                data.professionalExpertise != null &&
+                data.professionalExpertise != ''
+              "
+              style="margin: 0;text-indent: 30.0pt"
             >
               {{ data.professionalExpertise }}
             </p>
-            <p class="bold" v-show="data.visitTime != '暂无信息'&&data.visitTime !=null">
+            <p
+              class="bold"
+              v-show="data.visitTime != '' && data.visitTime != null"
+            >
               出诊时间:
             </p>
-             <p
-              v-show="data.visitTime != '暂无信息'&&data.visitTime !=null"
-              style="margin: 0"
+            <p
+              v-show="data.visitTime != '' && data.visitTime != null"
+              style="margin: 0;text-indent: 30.0pt"
             >
               {{ data.visitTime }}
             </p>
@@ -249,7 +265,7 @@ export default {
     init() {
       infoIdlist(this.data.officeId).then((res) => {
         if (res.code == 200) {
-          console.log(res.data);
+          console.log(res);
           this.typeList = res.data;
         } else {
           console.log(res);
@@ -276,25 +292,41 @@ export default {
         physicianId(oId[1]).then((res) => {
           // console.log(res);
           if (res.code == 200) {
-            // if (res.data.professionalTitle != null) {
-            //   res.data.professionalTitle = res.data.professionalTitle.replace(
-            //     /\n\n/g,
-            //     "<br/>"
-            //   );
-            //   res.data.professionalTitle = res.data.professionalTitle.replace(
-            //     /\n/g,
-            //     "<br/>"
-            //   );
-            // } else {
-            //   console.log(1);
-            // }
-
+            if (res.data.professionalTitle != null) {
+              res.data.professionalTitle = res.data.professionalTitle.replace(
+                /\n\n/g,
+                "、"
+              );
+              res.data.professionalTitle = res.data.professionalTitle.replace(
+                /\n/g,
+                "、"
+              );
+              //   "<br/>"
+            } else {
+              console.log(1);
+            }
             // console.log(res.data.professionalTitle);
             this.data = res.data;
             console.log(res.data);
           }
           infoIdlist(this.data.officeId).then((res) => {
             if (res.code == 200) {
+              if (res.data.contactWay != null) {
+                res.data.contactWay = res.data.contactWay.replace(
+                  /\n\n/g,
+                  "<br/>"
+                );
+                res.data.contactWay = res.data.contactWay.replace(/\n/g, "<br/>");
+                //   "<br/>"
+              }
+              if (res.data.location != null) {
+                res.data.location = res.data.location.replace(
+                  /\n\n/g,
+                  "<br/>"
+                );
+                res.data.location = res.data.location.replace(/\n/g, "<br/>");
+                //   "<br/>"
+              }
               console.log(res.data);
               this.typeList = res.data;
             } else {
@@ -346,8 +378,11 @@ export default {
     .img {
       text-align: center;
       img {
-        width: 400px;
-        height: 450px;
+        margin-top: 60px;
+        width: 325px;
+        height: 350px;
+        // max-width: 400px;
+        // max-height: 450px;
         background-size: contain;
         background-repeat: no-repeat;
         // height: auto;
@@ -389,15 +424,15 @@ export default {
         display: flex;
 
         li {
-          width: 65%;
+          // width: 65%;
           font-size: 14px !important;
           color: #666666;
           padding-right: 30px;
         }
-        .office {
-          width: 30% !important;
-          padding: 0;
-        }
+        // .office {
+        //   width: 30% !important;
+        //   padding: 0;
+        // }
       }
       .title-contion {
         // text-indent: 30pt;
