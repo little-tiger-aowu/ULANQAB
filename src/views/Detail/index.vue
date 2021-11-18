@@ -22,9 +22,9 @@
           <div class="img">
             <img :src="data.imageUrl" />
           </div>
-          <div class="min-title">
+          <!-- <div class="min-title">
             发布时间：{{ data.createTime | formatDate }}
-          </div>
+          </div> -->
         </div>
         <div class="txt">
           <!-- 名字 -->
@@ -42,8 +42,7 @@
             </li> -->
           </ul>
           <!-- 职务 -->
-          <p
-            
+          <p    
             class="bold"
             v-show="
               data.professionalTitle != '' && data.professionalTitle != null
@@ -52,7 +51,7 @@
             学术及社会兼职:
           </p>
           <div
-          style="text-indent: 30.0pt"
+            style="  margin-left: 40px;"
             v-show="
               data.professionalTitle != '' && data.professionalTitle != null
             "
@@ -107,7 +106,7 @@
             </h4> -->
             <p
               v-show="data.achievement != '' && data.achievement != null"
-              style="margin: 0;text-indent: 30.0pt"
+              style="margin: 0;  margin-left: 40px;"
             >
               {{ data.achievement }}
             </p>
@@ -128,7 +127,7 @@
                 data.professionalExpertise != null &&
                 data.professionalExpertise != ''
               "
-              style="margin: 0;text-indent: 30.0pt"
+              style="margin: 0;  margin-left: 40px;"
             >
               {{ data.professionalExpertise }}
             </p>
@@ -140,7 +139,7 @@
             </p>
             <p
               v-show="data.visitTime != '' && data.visitTime != null"
-              style="margin: 0;text-indent: 30.0pt"
+              style="margin: 0;  margin-left: 40px;"
             >
               {{ data.visitTime }}
             </p>
@@ -379,6 +378,8 @@ export default {
       text-align: center;
       img {
         margin-top: 60px;
+        object-fit: cover; 
+        object-position: top;//可能有时候图片不是从头部开始截图的 所以需要定位一下
         width: 325px;
         height: 350px;
         // max-width: 400px;
@@ -401,6 +402,7 @@ export default {
       text-align: justify;
       font-size: 14px !important;
       p {
+        margin-left: 40px;
         font-size: 14px !important;
         color: #666666;
       }
@@ -410,7 +412,8 @@ export default {
       }
       // 简介
       .intro {
-        font-size: 12px;
+          margin-left: 40px;
+          font-size: 12px;
         //   overflow: hidden; //超出文本隐藏
         // text-overflow: ellipsis; ///超出部分省略号显示
         // display: -webkit-box; //弹性盒模型
@@ -565,6 +568,7 @@ export default {
   color: #666666;
 }
 .MsoNormal {
+  text-indent: 0 !important;
   margin-left: 0 !important;
   font-size: 14px !important;
   font-family: "微软雅黑" !important;

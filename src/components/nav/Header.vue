@@ -41,37 +41,13 @@
                         <span>{{ item.name }}</span></el-link
                       >
                       <div class="sub-menu">
-                        <div class="suspend" ref="suspend" id="suspend" v-show="divShow">住院医师规范化培训</div>
-                        <el-link
-                          :class="[
-                            { active: nowPathMenu.indexOf(item2.name) != -1 },
-                          ]"
-                          v-for="(item2, index2) in item.subMenu"
-                          :key="index2"
-                          :href="`${
-                            item.show == 0
-                              ? '#'
-                              : '/#/' +
-                                `${item.link == 0 ? '' : item.link}` +
-                                `${item.link === 0 ? '' : '/'}` +
-                                item2.link +
-                                `?${
-                                  item2.num == undefined
-                                    ? ''
-                                    : 'num=' + item2.num
-                                }`
-                          }`"
-                          :underline="false"
-                          @click.native="external(item2)"
-                          @mouseover.native="suspendShow(item2.name)"
-                          @mouseleave.native="suspendFl(item2.name)"
-                        >
-                          {{
-                            item2.name.length > 6
+                        <!-- <div class="suspend" ref="suspend" id="suspend" v-show="divShow">住院医师规范化培训</div> -->
+                        <el-tooltip class="item" effect="dark" :content="item2.name.length>6 ?item2.name:''" :disabled='item2.name.length<7' placement="top-start"  v-for="(item2, index2) in item.subMenu"
+                          :key="index2">
+                          <el-button @click="external(item2,item)">{{ item2.name.length > 6
                               ? item2.name.slice(0, 5) + ".."
-                              : item2.name
-                          }}
-                        </el-link>
+                              : item2.name}} </el-button>
+                        </el-tooltip>
                       </div>
                     </div>
                   </div>
@@ -311,14 +287,19 @@ export default {
     };
   },
   methods: {
-    external(val) {
+    // 跳转
+    external(val,path) {
+      // console.log(val,path);
+       let link =`${path.link==0 ?'' :path.link}`+`${path.link == 0 ? '' :'/'}`+val.link+`?${val.num==undefined ?'':'num=' + val.num }`
+      console.log(link);
       if (val.name == "医院院报") {
         window.location.replace(
           "http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8"
         );
         console.log(1);
+      }else{
+         this.$router.push(link)
       }
-
       //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
     },
     // 显示
@@ -459,11 +440,27 @@ export default {
           // .el-link:nth-child(30) {
           //   line-height: 1.25rem !important;
           // }
+          .el-button{
+            line-height: 1.5;
+            margin: 0 !important;
+            padding: 10px 5px;
+            border: none; 
+            color: #000000; 
+            background-color: #fff;  
+          }
+          .el-button:hover{
+            color: #308594 !important;
+            background-color: #fff;
+          }
+          .el-button:active{
+            color: #308594 !important; 
+            background-color: #fff;
+          }
           // 悬浮窗
           .suspend {
             // display: none;
             position: absolute;
-            top: -35px;
+            top: -20px;
             color: #fff;
             left: 50%;
             width: 140px;
@@ -473,17 +470,6 @@ export default {
             background: rgba(2, 2, 2, 0.68);
             z-index: 3;
           }
-          .el-link {
-            font-size: 0.9375rem;
-            line-height: 2.5rem;
-            &:hover {
-              opacity: 1;
-              //display: block;
-              transition: 0.1s all ease-in;
-              color: #308594;
-            }
-          }
-
           .active {
             color: #308594;
           }
@@ -491,9 +477,9 @@ export default {
         &:hover .sub-menu {
           height: auto;
           // opacity: 1;
-          transition: 1s all ease-in;
+          transition: 0.5s all ease-in;
           display: block;
-          animation: mymove 1s;
+          // animation: mymove 1s;
         }
         @keyframes mymove {
           0% {

@@ -218,7 +218,7 @@
                       <!-- <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
                       > -->
-                       <router-link to="/research">
+                       <router-link :to="'/detail?doctorId=' + item2.id + '&menu=introduce'">
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
@@ -316,7 +316,7 @@
                       <!-- <router-link
                         :to="'/detail?doctorId=' + item2.id + '&menu=introduce'"
                       > -->
-                       <router-link to="/research">
+                       <router-link  :to="'/detail?doctorId=' + item2.id + '&menu=introduce'">
                         <span style="color: #333">
                           {{ item2.name }}
                         </span>
