@@ -31,7 +31,7 @@
           <div class="title">{{ data.name }}</div>
           <ul class="rank">
             <!--  职称 -->
-            <li v-show="data.position != '' && data.position != null" >
+            <li v-show="data.position != '' && data.position != null"  style="font-size: 16px">
               <!-- <p class="bold"> 职务:</p> -->
               {{ data.position }}
             </li>
@@ -51,7 +51,7 @@
             学术及社会兼职:
           </p>
           <div
-            style="  margin-left: 40px;"
+            style="margin-left: 0px;"
             v-show="
               data.professionalTitle != '' && data.professionalTitle != null
             "
@@ -106,7 +106,7 @@
             </h4> -->
             <p
               v-show="data.achievement != '' && data.achievement != null"
-              style="margin: 0;  margin-left: 40px;"
+              style="margin: 0;  margin-left: 0px;"
             >
               {{ data.achievement }}
             </p>
@@ -127,7 +127,7 @@
                 data.professionalExpertise != null &&
                 data.professionalExpertise != ''
               "
-              style="margin: 0;  margin-left: 40px;"
+              style="margin: 0;  margin-left: 0px;"
             >
               {{ data.professionalExpertise }}
             </p>
@@ -139,7 +139,7 @@
             </p>
             <p
               v-show="data.visitTime != '' && data.visitTime != null"
-              style="margin: 0;  margin-left: 40px;"
+              style="margin: 0;  margin-left: 0px;"
             >
               {{ data.visitTime }}
             </p>
@@ -180,10 +180,11 @@
             </p>
             <el-dialog :visible.sync="visit" @close="has" v-if="visit">
               <span style="font-size: 24px; margin-bottom: 30px">科室位置</span>
-              <span
-                v-html="typeList.location"
-                style="font-size: 18px; margin-bottom: 30px"
-              ></span>
+              <div style=" text-align: left; display: inline-block;">
+                <pre>
+                   <span v-html="typeList.location" style="font-size: 18px; margin-bottom: 30px"></span>
+                </pre>
+              </div>
               <!-- {{typeList.location}} contactWay电话 -->
             </el-dialog>
           </li>
@@ -194,10 +195,11 @@
             </p>
             <el-dialog :visible.sync="message" v-if="message">
               <h4 style="font-size: 24px">联系我们</h4>
-              <span
-                v-html="typeList.contactWay"
-                style="font-size: 18px; margin-bottom: 30px"
-              ></span>
+             <div style=" text-align: left; display: inline-block;">
+               <pre>
+                <span v-html="typeList.contactWay" style="font-size: 18px; margin-bottom: 30px"></span>
+                </pre>
+              </div>
             </el-dialog>
           </li>
         </ul>
@@ -255,7 +257,7 @@ export default {
       return formatDate(date, "yyyy-MM-dd");
     },
   },
-  mounted() {
+  created() {
     this.getNewsData();
     // this.init();
   },
@@ -378,9 +380,9 @@ export default {
       text-align: center;
       img {
         margin-top: 60px;
-        object-fit: cover; 
-        object-position: top;//可能有时候图片不是从头部开始截图的 所以需要定位一下
-        width: 325px;
+        // object-fit: cover; 
+        // object-position: top;//可能有时候图片不是从头部开始截图的 所以需要定位一下
+        width: 240px;
         height: 350px;
         // max-width: 400px;
         // max-height: 450px;
@@ -402,8 +404,8 @@ export default {
       text-align: justify;
       font-size: 14px !important;
       p {
-        margin-left: 40px;
-        font-size: 14px !important;
+        margin-left: 0px;
+        font-size: 14px ;
         color: #666666;
       }
       .pertise {
@@ -412,7 +414,7 @@ export default {
       }
       // 简介
       .intro {
-          margin-left: 40px;
+          margin-left: 0px;
           font-size: 12px;
         //   overflow: hidden; //超出文本隐藏
         // text-overflow: ellipsis; ///超出部分省略号显示
@@ -428,7 +430,7 @@ export default {
 
         li {
           // width: 65%;
-          font-size: 14px !important;
+          font-size: 14px ;
           color: #666666;
           padding-right: 30px;
         }
@@ -458,6 +460,7 @@ export default {
     padding-bottom: 90px;
     ul {
       display: flex;
+      
       li {
         text-align: center;
         width: 25%;
@@ -477,6 +480,7 @@ export default {
           background-size: 100% 100%;
         }
         img {
+          
           display: block;
           margin: 0 auto;
           // padding: 0;
@@ -558,6 +562,7 @@ export default {
   margin-bottom: 50px;
 }
 .bold {
+  font-size: 16px !important;
   font-weight: 600;
   color: #333333 !important;
 }

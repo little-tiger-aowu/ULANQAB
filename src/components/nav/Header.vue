@@ -290,7 +290,7 @@ export default {
     // 跳转
     external(val,path) {
       // console.log(val,path);
-       let link =`${path.link==0 ?'' :path.link}`+`${path.link == 0 ? '' :'/'}`+val.link+`?${val.num==undefined ?'':'num=' + val.num }`
+      let link =`${path.link==0 ?'' :path.link}`+`${path.link == 0 ? '' :'/'}`+val.link+`${val.num == undefined ?'':'?num=' + val.num }`
       console.log(link);
       if (val.name == "医院院报") {
         window.location.replace(
@@ -299,6 +299,7 @@ export default {
         console.log(1);
       }else{
          this.$router.push(link)
+         console.log(link);
       }
       //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
     },

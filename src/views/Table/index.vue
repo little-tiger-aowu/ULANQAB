@@ -84,8 +84,8 @@
             :key="index"
           >
             <tr>
-              <td width="12.5%">{{ item.officeName }}</td>
-              <td width="6.25%">
+              <td width="12.5%" class="blod">{{ item.officeName }}</td>
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周一上午'">
                     <div
@@ -97,7 +97,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周一下午'">
                     <div
@@ -109,19 +109,19 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周二上午'">
                     <div
                       v-for="(item3, index) in item2.physicianBriefVoList"
                       :key="index"
                     >
-                      <tooltip :message="item3"></tooltip>
+                      <tooltip :message="item3" ></tooltip>
                     </div>
                   </div>
                 </div>
               </td>
-              <td width="6.2%">
+              <td width="6.2%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周二下午'">
                     <div
@@ -133,7 +133,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周三上午'">
                     <div
@@ -145,7 +145,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周三下午'">
                     <div
@@ -157,7 +157,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周四上午'">
                     <div
@@ -169,7 +169,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周四下午'">
                     <div
@@ -181,7 +181,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.2%">
+              <td width="6.2%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周五上午'">
                     <div
@@ -193,7 +193,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周五下午'">
                     <div
@@ -205,7 +205,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周六上午'">
                     <div
@@ -217,7 +217,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周六下午'">
                     <div
@@ -229,7 +229,7 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="(item2, index) in item.timeOutCallVos" :key="index">
                   <div v-if="item2.time == '周日上午'">
                     <div
@@ -241,14 +241,15 @@
                   </div>
                 </div>
               </td>
-              <td width="6.25%">
+              <td width="6.25%" class="text">
                 <div v-for="item2 in item.timeOutCallVos" :key="item2.timeSort">
                   <div v-if="item2.time == '周日下午'">
                     <div
                       v-for="item3 in item2.physicianBriefVoList"
                       :key="item3.id"
                     >
-                      <tooltip :message="item3"></tooltip>
+                      <tooltip :message="item3" ></tooltip>
+                      <tooltip></tooltip>
                     </div>
                   </div>
                 </div>
@@ -390,7 +391,8 @@ export default {
       td {
         margin: 0 !important;
         // padding: 0 !important;
-        padding: 10px;
+        padding: 10px 5px;
+        box-sizing: border-box;
         div {
           margin: 0 !important;
           padding: 0 !important;
@@ -486,6 +488,14 @@ export default {
   }
   .el-row {
     margin: 0 !important;
+  }
+  .text{
+    text-align-last:justify;
+    text-align: justify;
+    text-justify:distribute-all-lines; // 这行必加，兼容ie浏览器
+  }
+  .blod{
+    font-weight: 700;
   }
 }
 </style>

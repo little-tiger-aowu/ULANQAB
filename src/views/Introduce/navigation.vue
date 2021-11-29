@@ -49,9 +49,13 @@
               <span class="font_family icon-a-weizhi1" ></span>
               科室位置
             </p>
-            <el-dialog :visible.sync="visit" @close="has" v-if="visit">
+            <el-dialog :visible.sync="visit" @close="has" v-if="visit" style="text-align: center;">
               <span style="font-size: 24px; margin-bottom: 30px ">科室位置</span>
-              <span v-html="typeList.location" style="font-size: 18px; margin-bottom: 30px"></span>
+              <div style=" text-align: left; display: inline-block;">
+                <pre>
+                   <span v-html="typeList.location" style="font-size: 18px; margin-bottom: 30px"></span>
+                </pre>
+              </div>
                 <!-- {{typeList.location}} contactWay电话 -->
             </el-dialog>
           </li>
@@ -60,9 +64,13 @@
               <span class="font_family icon-a-lianxiwomen1"></span>
               联系我们
             </p>
-            <el-dialog :visible.sync="message" v-if="message">
+            <el-dialog :visible.sync="message" v-if="message" style="text-align: center;">
               <h4 style="font-size: 24px">联系我们</h4>
-              <span v-html="typeList.contactWay" style="font-size: 18px; margin-bottom: 30px"></span>
+               <div style=" text-align: left; display: inline-block;">
+                 <pre>
+                <span v-html="typeList.contactWay" style="font-size: 18px; margin-bottom: 30px"></span>
+                </pre>
+              </div>
             </el-dialog>
           </li>
         </ul>
@@ -94,6 +102,22 @@ export default {
       infoIdlist(this.id).then((res) => {
         if (res.code == 200) {
           console.log(res.data);
+            if (res.data.contactWay != null) {
+                res.data.contactWay = res.data.contactWay.replace(
+                  /\n\n/g,
+                  "<br/>"
+                );
+                res.data.contactWay = res.data.contactWay.replace(/\n/g, "<br/>");
+                //   "<br/>"
+              }
+              if (res.data.location != null) {
+                res.data.location = res.data.location.replace(
+                  /\n\n/g,
+                  "<br/>"
+                );
+                res.data.location = res.data.location.replace(/\n/g, "<br/>");
+                //   "<br/>"
+              }
           this.typeList = res.data;
         }
       });
