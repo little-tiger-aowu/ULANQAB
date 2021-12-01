@@ -38,15 +38,13 @@
 export default {
   props: ['message'],
   created(){
-  //  this.init()
+   this.init()
   },
   methods:{
     init(){
-       if(this.message == undefined){
-         this.message = new FormData
-         this.message.append('name','')
-         this.message.append('outCallType','')
-         this.message.append('remark','')
+       if(this.message.name.length == 2){
+        //  this.message.name=this.message.name.substr(0,1)+$ndsp;+this.message.name.substr(1,1) 
+         console.log(this.message.name=this.message.name.substr(0,1)+'\xa0\xa0\xa0'+this.message.name.substr(1,1) );
        }
     }
   }

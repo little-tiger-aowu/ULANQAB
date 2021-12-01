@@ -55,7 +55,6 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 2 ||
         introduceId == '' ||
         introduceId == 'all1' ||
         introduceId == 'all2' ||
@@ -154,7 +153,6 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 1 ||
         introduceId == '' ||
         introduceId == 'all1' ||
         introduceId == 'all2' ||
@@ -253,7 +251,6 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 3 ||
         introduceId == '' ||
         introduceId == 'all1' ||
         introduceId == 'all2' ||
@@ -261,7 +258,7 @@
       "
     >
       <el-col :span="18">
-        <div class="class-title" id="introduce?id=all3">医技、辅助科室</div>
+        <div class="class-title" id="introduce?id=all3">诊断相关科室</div>
         <el-row :gutter="10">
           <el-col
             :span="8"
@@ -450,7 +447,7 @@ export default {
     },
     // 获取科室类型
     getnum(){
-       let num =this.$route.query.num
+       let num =this.$route.query.id
        this.introduceId= num
        console.log(this.introduceId);
     }
@@ -459,7 +456,7 @@ export default {
     $route:{
       handler:function(val,oldval){
         console.log(oldval);
-        this.introduceId=val.query.num
+        this.introduceId=val.query.id
       }
     }
   }

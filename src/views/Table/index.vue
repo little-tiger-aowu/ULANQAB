@@ -490,9 +490,9 @@ export default {
     margin: 0 !important;
   }
   .text{
-    text-align-last:justify;
-    text-align: justify;
-    text-justify:distribute-all-lines; // 这行必加，兼容ie浏览器
+    // text-align-last:justify;
+    // text-align: justify;
+    // text-justify:distribute-all-lines; // 这行必加，兼容ie浏览器
   }
   .blod{
     font-weight: 700;

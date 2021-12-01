@@ -143,20 +143,20 @@ export default {
             {
               name: "非手术科室",
               link: "section",
-              // num: 2,
-              num: "",
+              num: 'all1',
+              // num: "",
             },
             {
               name: "手术科室",
               link: "section",
-              // num: 1,
-              num: "",
+              num: 'all2',
+              // num: "",
             },
             {
               name: "诊断相关科室",
               link: "section",
-              // num: 3,
-              num: "",
+              num: 'all3',
+              // num: "",
             },
           ],
         },
@@ -167,17 +167,17 @@ export default {
             {
               name: "非手术科室",
               link: "introduce",
-              num: 2,
+              num: '',
             },
             {
               name: "手术科室",
               link: "introduce",
-              num: 1,
+              num: '',
             },
             {
               name: "诊断相关科室",
               link: "introduce",
-              num: 3,
+              num: '',
             },
           ],
         },
@@ -289,8 +289,8 @@ export default {
   methods: {
     // 跳转
     external(val,path) {
-      // console.log(val,path);
-      let link =`${path.link==0 ?'' :path.link}`+`${path.link == 0 ? '' :'/'}`+val.link+`${val.num == undefined ?'':'?num=' + val.num }`
+      console.log(val,path);
+      let link =`${path.link==0 ?'' :path.link}`+`${path.link == 0 ? '' :'/'}`+val.link+`${val.num == undefined ?'':'?id=' + val.num }`
       console.log(link);
       if (val.name == "医院院报") {
         window.location.replace(
@@ -300,6 +300,22 @@ export default {
       }else{
          this.$router.push(link)
          console.log(link);
+      }
+      if(path.name=='科室导航'  ){
+        if(val.name=='非手术科室'){
+           document.documentElement.scrollTop=550
+        }else{
+            document.documentElement.scrollTop=880
+        }
+      }
+      if(path.name=='专家介绍'){
+         if(val.name=='非手术科室'){
+           document.documentElement.scrollTop=550
+        }else if(val.name=='手术科室'){
+            document.documentElement.scrollTop=1650
+        }else{
+           document.documentElement.scrollTop=2200
+        }
       }
       //  http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8
     },

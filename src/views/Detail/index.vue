@@ -562,7 +562,7 @@ export default {
   margin-bottom: 50px;
 }
 .bold {
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: 600;
   color: #333333 !important;
 }

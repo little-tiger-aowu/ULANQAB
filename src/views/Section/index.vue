@@ -37,22 +37,22 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == '' ||
-        introduceId == 'all1' ||
-        introduceId == 'all2' ||
-        introduceId == 'all3'
+        sectionId == '' ||
+        sectionId == 'all1' ||
+        sectionId == 'all2' ||
+        sectionId == 'all3'
       "
     >
       <el-col :span="18" class="select">
         <div class="top">
           <el-col :span="3">
-            <a href="#introduce?id=all1" class="a1">非手术科室</a>
+            <a href="#section?id=all1" class="a1" id="a1">非手术科室</a>
           </el-col>
           <el-col :span="3">
-            <a href="#introduce?id=all2" class="a2">手术科室</a>
+            <a href="#section?id=all2" class="a2">手术科室</a>
           </el-col>
           <el-col :span="3">
-            <a href="#introduce?id=all3" class="a3">诊断相关科室</a>
+            <a href="#section?id=all3" class="a3">诊断相关科室</a>
           </el-col>
           <el-col :span="2" class="top-text"> 信息查询 </el-col>
           <el-col :span="4" style="line-height: 40px">
@@ -76,15 +76,14 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 2 ||
-        introduceId == '' ||
-        introduceId == 'all1' ||
-        introduceId == 'all2' ||
-        introduceId == 'all3'
+        sectionId == '' ||
+        sectionId == 'all1' ||
+        sectionId == 'all2' ||
+        sectionId == 'all3'
       "
     >
       <el-col :span="18">
-        <div class="class-title" id="introduce?id=all1">非手术科室</div>
+        <div class="class-title" id="section?id=all1">非手术科室</div>
         <el-row :gutter="10">
           <el-col
             :span="4"
@@ -114,15 +113,14 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 1 ||
-        introduceId == '' ||
-        introduceId == 'all1' ||
-        introduceId == 'all2' ||
-        introduceId == 'all3'
+        sectionId == '' ||
+        sectionId == 'all1' ||
+        sectionId == 'all2' ||
+        sectionId == 'all3'
       "
     >
       <el-col :span="18">
-        <div class="class-title" id="introduce?id=all2">手术科室</div>
+        <div class="class-title" id="section?id=all2">手术科室</div>
         <el-row :gutter="10">
           <el-col
             :span="4"
@@ -153,15 +151,14 @@
       type="flex"
       justify="center"
       v-show="
-        introduceId == 3 ||
-        introduceId == '' ||
-        introduceId == 'all1' ||
-        introduceId == 'all2' ||
-        introduceId == 'all3'
+        sectionId == '' ||
+        sectionId == 'all1' ||
+        sectionId == 'all2' ||
+        sectionId == 'all3'
       "
     >
       <el-col :span="18">
-        <div class="class-title" id="introduce?id=all3">医技、辅助科室</div>
+        <div class="class-title" id="section?id=all3">诊断相关科室</div>
         <el-row :gutter="10">
           <el-col
             :span="4"
@@ -195,7 +192,7 @@
 <script>
 import { pageList, searchData, physicianInfo } from "@/api/list.js";
 export default {
-  name: "Introduce",
+ 
   data() {
     return {
       // dialogVisible: false,
@@ -216,7 +213,7 @@ export default {
       // 医生列表
       doctorData: [],
       // 当前id
-      introduceId: this.$route.query.id || "",
+      sectionId: this.$route.query.id || "",
     };
   },
   mounted() {
@@ -273,7 +270,7 @@ export default {
           this.doctorName +
           "&officeStr=" +
           this.officeStr +
-          "&menu=introduce"
+          "&menu=section"
       );
       this.getSearchData();
     },
@@ -297,16 +294,22 @@ export default {
     },
     // 获取科室类型
     getnum() {
-      let num = this.$route.query.num;
-      this.introduceId = num;
-      console.log(this.introduceId);
+      let num = this.$route.query.id;
+      this.sectionId = num;
     },
   },
   watch: {
+    
     $route: {
       handler: function (val, oldval) {
         console.log(oldval);
-        this.introduceId = val.query.num;
+        this.sectionId = val.query.id;
+        console.log(val.query.id);
+      //  if(val.query.id == 'all1'){
+      //     document.documentElement.scrollTop=550
+      //   }else{
+      //     document.documentElement.scrollTop=880
+      //   }
       },
     },
   },
