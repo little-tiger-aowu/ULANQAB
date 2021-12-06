@@ -48,7 +48,7 @@
               data.professionalTitle != '' && data.professionalTitle != null
             "
           >
-            学术及社会兼职:
+            学术及社会兼职
           </p>
           <div
             style="margin-left: 0px;"
@@ -67,7 +67,7 @@
               data.briefInformation != '暂无信息'
             "
           >
-            个人简介:
+            个人简介
           </p>
           <div
             v-html="data.briefInformation"
@@ -99,7 +99,7 @@
               class="bold"
               v-show="data.achievement != '' && data.achievement != null"
             >
-              主要成果:
+              主要成果
             </p>
             <!-- <h4 v-show="data.achievement != '' && data.achievement != null">
               主要成果:
@@ -118,7 +118,7 @@
                 data.professionalExpertise != ''
               "
             >
-              专业特长:
+              专业特长
             </p>
             <!-- <h4 v-show="data.professionalExpertise != '暂无信息'">专业特长:</h4> -->
             <p
@@ -135,7 +135,7 @@
               class="bold"
               v-show="data.visitTime != '' && data.visitTime != null"
             >
-              出诊时间:
+              出诊时间
             </p>
             <p
               v-show="data.visitTime != '' && data.visitTime != null"

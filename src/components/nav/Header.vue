@@ -42,9 +42,9 @@
                       >
                       <div class="sub-menu">
                         <!-- <div class="suspend" ref="suspend" id="suspend" v-show="divShow">住院医师规范化培训</div> -->
-                        <el-tooltip class="item" effect="dark" :content="item2.name.length>6 ?item2.name:''" :disabled='item2.name.length<7' placement="top-start"  v-for="(item2, index2) in item.subMenu"
+                        <el-tooltip class="item" effect="dark" :content="item2.name.length>5 ?item2.name:''" :disabled='item2.name.length<6' placement="top-start"  v-for="(item2, index2) in item.subMenu"
                           :key="index2">
-                          <el-button @click="external(item2,item)">{{ item2.name.length > 6
+                          <el-button  @click="external(item2,item)">{{ item2.name.length > 5
                               ? item2.name.slice(0, 5) + ".."
                               : item2.name}} </el-button>
                         </el-tooltip>
@@ -451,6 +451,7 @@ export default {
           background-color: #fff;
           box-shadow: 0rem 0rem 0.625rem rgba($color: #000000, $alpha: 0.2);
           text-align: center;
+        
           // height: auto;
           //transition: .6s all;
           display: none;
@@ -458,11 +459,12 @@ export default {
           //   line-height: 1.25rem !important;
           // }
           .el-button{
+              font-size: 15px;
             line-height: 1.5;
             margin: 0 !important;
             padding: 10px 5px;
             border: none; 
-            color: #000000; 
+            // color: #000000; 
             background-color: #fff;  
           }
           .el-button:hover{
