@@ -86,3 +86,12 @@ export function infoIdlist(id){
       method:'GET',
   })
 }
+
+// 通过类型分页获取视频数据
+export function getvideo(params){
+    return request({
+        url:'/video/page',
+        method:'GET',
+        params
+    })
+}

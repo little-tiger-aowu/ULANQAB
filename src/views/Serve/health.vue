@@ -11,10 +11,9 @@
           <img src="@/assets/images/serve/health-banner.png" width="100%" />
         </div>
       </div>
-      <!-- 更多信息 -->
-      <div >
+      <div class="item-1" v-if="show == false">
         <el-row type="flex" justify="center">
-          <el-col :span="16" class="content">
+          <el-col :span="18" class="content">
             <ul class="box">
               <router-link
                 v-for="item in listData"
@@ -31,27 +30,59 @@
         </el-row>
       </div>
       <!-- 外围框 -->
-      <div class="periphery"  v-show="show">
+      <div class="periphery" v-else>
         <!--健康讲堂 -->
         <div class="classroom">
           <!-- 头部  -->
           <div class="classroom-top">
             <p>健康讲堂</p>
-            <span>>更多</span>
+            <!-- <span>> 更多</span> -->
             <!-- 选择项 -->
             <div class="optionList">
-              <div @click="optionBtns(0)" ref="option" class="actives">专家讲座视频</div>
-              <div @click="optionBtns(1)" ref="option1">特色治疗视频</div>
-              <div @click="optionBtns(2)" ref="option2">医院宣传视频</div>
+              <div
+                @mouseenter="optionBtns(0)"
+                @mouseleave="optionMouse(0)"
+                ref="option"
+                class="actives"
+              >
+                专家讲座视频
+              </div>
+              <div
+                @mouseenter="optionBtns(1)"
+                @mouseleave="optionMouse(1)"
+                ref="option1"
+              >
+                特色治疗视频
+              </div>
+              <div
+                @mouseenter="optionBtns(2)"
+                @mouseleave="optionMouse(2)"
+                ref="option2"
+              >
+                医院宣传视频
+              </div>
             </div>
           </div>
           <!-- 视频列表 -->
           <div class="classroomVideo">
-             <div class="videoItem" v-for="(item,index) in 3" :key="index">
-                <video src=""></video>
-                <!-- 文字 -->
-                <p>测试</p>
-             </div>
+            <div
+              class="videoItem"
+              v-for="(item, index) in videoList"
+              :key="index"
+              @click="videoItemData(item)"
+            >
+              <div class="videoItem-img">
+                <img :src="item.coverImage" />
+                <img
+                  src="@/assets/images/videoopen.png"
+                  class="videoItem-open"
+                />
+              </div>
+
+              <!-- <video  controls muted :src="item.videoUrl"></video> -->
+              <!-- 文字 -->
+              <p>{{ item.name }}</p>
+            </div>
           </div>
         </div>
         <!-- 健康科普 -->
@@ -59,10 +90,24 @@
           <!-- 头部  -->
           <div class="science-top">
             <p>健康科普</p>
-            <span>>更多</span>
+            <span @click="show = false">> 更多</span>
           </div>
           <!-- 文章列表 -->
-             
+          <div
+            class="science-Txtlist"
+            v-for="(item, index) in listDataOne"
+            :key="index"
+            @click="
+              $router.push(
+                '/detail?id=' + item.id + '&menu=serve&submenu=health'
+              )
+            "
+          >
+            <!-- 标题 -->
+            <p class="Txtlist-top">{{ item.title }}</p>
+            <!-- 内容 -->
+            <p class="Txtlist-content" v-html="item.content"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -80,22 +125,28 @@
   </div>
 </template>
 <script>
-import { newsList } from "@/api/list.js";
+import { newsList, getvideo } from "@/api/list.js";
 import { formatDate } from "@/utils/time.js";
 export default {
   name: "newsList",
   data() {
     return {
+      videoContionshow: false,
+      videoItems: {},
       //   专题列表
       listData: [],
+      // 专题列表第一条
+      listDataOne: [],
+      // 视频列表
+      videoList: [],
+      location: 1,
       page: {
         current: 1,
         size: 10,
         type: 8,
       },
       total: 1,
-      show: false,
-     
+      show: true,
     };
   },
   //过滤
@@ -105,41 +156,94 @@ export default {
       return formatDate(date, "yyyy-MM-dd");
     },
   },
-  mounted() {
-    
+  created() {
     this.getSpecialNewsList();
   },
 
   methods: {
+    // 初始化
     getSpecialNewsList() {
+      // 文章
       newsList(this.page).then((res) => {
         if (res.code == 200) {
           //   this.listData = res.data;
           this.total = res.data.total;
+          // 全部
           this.listData = res.data.records;
+          // 第一条
+           this.listDataOne.push(res.data.records[0]);
+            this.listDataOne.push(res.data.records[1]);
+          this.listDataOne.push(res.data.records[2]);
+        
+          for (let index = 0; index < this.listDataOne.length; index++) {
+             this.listDataOne[index].content = this.listDataOne[index].content
+            .replace(/&nbsp;/g, "")
+            .replace(/&rdquo;/g, "")
+            .replace(/&ldquo;/g, "");
+          // &ldquo;
+          this.listDataOne[index].content = this.listDataOne[index].content
+            .replace(/<[^>]+>/g, "")
+            .replace(/(\n)/g, "");
+          }
+         
+          // this.listDataOne[0].content
+          // console.log(this.listDataOne[0].content);
+        }
+      });
+      this._getvideo();
+    },
+    // 视频
+    _getvideo() {
+      let params = {
+        current: 1,
+        location: this.location,
+        size: 3,
+      };
+      getvideo(params).then((res) => {
+        if (res.code == 200) {
+          // console.log(res.data);
+          this.videoList = res.data.records;
+          console.log(this.videoList);
+          this.videoItems = this.videoList[0];
+          console.log(this.videoItems);
         }
       });
     },
+    // 分页
     handleCurrentChange(val) {
       this.page.current = val;
       this.getNewsList();
     },
-    // 点击
+    // 选择项移入
     optionBtns(val) {
       // console.log(el.target.className="actives");
       if (val == 0) {
         this.$refs.option1.className = "";
         this.$refs.option2.className = "";
         this.$refs.option.className = "actives";
+        this.location = 1;
       } else if (val == 1) {
         this.$refs.option.className = "";
         this.$refs.option2.className = "";
         this.$refs.option1.className = "actives";
+        this.location = 2;
       } else if (val == 2) {
         this.$refs.option.className = "";
         this.$refs.option1.className = "";
+        this.location = 3;
         this.$refs.option2.className = "actives";
       }
+      this._getvideo();
+    },
+    // 选择项移出
+    optionMouse(val) {
+      console.log(val);
+    },
+    //视频详情
+    videoItemData(val) {
+      console.log(val);
+      // this.videoItems = val;
+      this.$router.push({path:'/detail?id=' + '' ,query:val})
     },
   },
 };
@@ -150,6 +254,9 @@ export default {
 .news {
   @include maxWidth;
   min-height: 70vh;
+  .videoitem{
+    width: 100%;
+  }
   .block {
     //   banenr
     .banner-txt {
@@ -181,7 +288,7 @@ export default {
         .science-top {
           display: flex;
           justify-content: space-between;
-          border-bottom: 2px solid #b5b5b5;
+          border-bottom: 1px solid #b5b5b5;
           position: relative;
           // 选择项
           .optionList {
@@ -218,29 +325,84 @@ export default {
             font-size: 18px;
             color: #2f7f87;
             line-height: 2;
+            cursor: pointer;
           }
         }
         //视频列表
-       .classroomVideo{
-         .videoItem{
+        .classroomVideo {
+          .videoItem {
             margin: 20px 0;
-            border: 2px solid #ccc;
+            border: 1px solid rgba(73, 73, 73, 0.28);
+            box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.09);
             border-radius: 10px;
             padding: 8px 13px;
-            display: flex; 
-            justify-content: space-between;  
-            video{
+            opacity: 0.9;
+            display: flex;
+            justify-content: space-between;
+            video {
               width: 30%;
               background-color: aqua;
               border-radius: 10px;
             }
+            .videoItem-img {
+              width: 30%;
+              position: relative;
+              img {
+                width: 100%;
+              }
+            }
+            .videoItem-open {
+              // background-color: #333;
+              background-color: none;
+              width: 50px !important;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
             // 文字
-            p{
+            p {
               width: 65%;
               font-size: 16px;
             }
-         }
-       }
+            &:hover {
+              p {
+                color: $color-9;
+              }
+            }
+          }
+        }
+        //文章列表
+        .science-Txtlist {
+          padding: 0 0 60px 16px;
+          margin: 20px 0;
+          border: 1px solid rgba(73, 73, 73, 0.28);
+          border-radius: 10px;
+          opacity: 0.9;
+          box-shadow: 0px 0px 18px 0px rgba(2, 2, 2, 0.09);
+          //  标题
+          .Txtlist-top {
+            font-weight: 600;
+            font-size: 24px;
+          }
+          // 内容
+          .Txtlist-content {
+            padding-right: 16px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            overflow: hidden; //超出文本隐藏
+            text-overflow: ellipsis; ///超出部分省略号显示
+            display: -webkit-box; //弹性盒模型
+            -webkit-box-orient: vertical; //上下垂直
+            -webkit-line-clamp: 2; //自定义行数
+          }
+          &:hover {
+            .Txtlist-top {
+              color: $color-9;
+            }
+            //
+          }
+        }
       }
     }
     // 列表
