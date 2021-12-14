@@ -92,7 +92,7 @@
                       v-for="(item3, index) in item2.physicianBriefVoList"
                       :key="index"
                     >
-                      <tooltip :message="item3"></tooltip>
+                      <tooltip :message="item3" ></tooltip>
                     </div>
                   </div>
                 </div>
@@ -274,6 +274,11 @@ export default {
       searchShow: true,
       hospital: 1,
       //nunber:this.$route.query.name
+      item3Replace:{
+        name:'',
+        outCallType:'',
+        remark:'',
+      }
     };
   },
   components: {
@@ -300,6 +305,10 @@ export default {
         if (res.code == 200) {
           console.log(res);
           this.searchOutCallData = res.data;
+          // this.searchOutCallData.forEach(item=>{
+          //   //  item.timeOutCallVos
+          // })
+          console.log( this.searchOutCallData);
         }
       });
     },

@@ -24,7 +24,7 @@
         </el-row>
       </div> -->
     <!-- <router-link :to="'/detail?doctorId=' + message.id + '&menu=introduce'">   -->
-    <span>{{ message != undefined ? message.name :''  }}<span class="pu-txt" v-if="message.outCallType == 1">普</span></span> 
+    <span>{{ message != undefined ? message.name : ''  }}<span class="pu-txt" v-if="message.outCallType == 1">普</span></span> 
     <span  class="names" v-if="message.remark != null" :class="message.remark.length >6 ? 'leftSpan':''">{{message.remark}}</span>
     
     <!-- <span v-if="remarkShow != null">{{ 0 }} </span> -->
@@ -42,9 +42,13 @@ export default {
   },
   methods:{
     init(){
+      if(this.message ==undefined){
+       console.log(this.message);
+      }   
        if(this.message.name.length == 2){
         //  this.message.name=this.message.name.substr(0,1)+$ndsp;+this.message.name.substr(1,1) 
-         console.log(this.message.name=this.message.name.substr(0,1)+'\xa0\xa0\xa0'+this.message.name.substr(1,1) );
+        this.message.name=this.message.name.substr(0,1)+'\xa0\xa0\xa0'+this.message.name.substr(1,1) 
+        //  console.log();
        }
     }
   }
@@ -65,8 +69,8 @@ export default {
      font-size: 10px;
   }
   .leftSpan{
-    text-align-last:left;
-    text-align: left;
+    text-align: center;
+    //  text-align-last:left;
   }
   .pu-txt {
     background-image: linear-gradient($color-10, $color-9);
