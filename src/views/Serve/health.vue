@@ -16,6 +16,7 @@
           <el-col :span="18" class="content">
             <ul class="box">
               <router-link
+                v-show="item.title!=undefined"
                 v-for="item in listData"
                 :key="item.id"
                 :to="'/detail?id=' + item.id + '&menu=serve&submenu=health'"
@@ -23,8 +24,20 @@
                 <li>
                   <span class="txt">{{ item.title }}</span>
                   <span>{{ item.issueTime | formatDate }}</span>
+                
                 </li>
               </router-link>
+               <div
+                v-show="item.name!=undefined"
+                v-for="(item,index) in listData"
+                :key="index"
+                @click="videoItemData(item)"
+              >
+                <li>
+                   <span class="txt">{{  item.name  }}</span>
+                   <span >{{item.updateTime | formatDate}}</span>
+                </li>
+              </div>
             </ul>
           </el-col>
         </el-row>
@@ -84,6 +97,9 @@
               <p>{{ item.name }}</p>
             </div>
           </div>
+          <span @click="classroomMore" v-show="videoList.length != 0"
+            >更多</span
+          >
         </div>
         <!-- 健康科普 -->
         <div class="science">
@@ -171,21 +187,21 @@ export default {
           // 全部
           this.listData = res.data.records;
           // 第一条
-           this.listDataOne.push(res.data.records[0]);
-            this.listDataOne.push(res.data.records[1]);
+          this.listDataOne.push(res.data.records[0]);
+          this.listDataOne.push(res.data.records[1]);
           this.listDataOne.push(res.data.records[2]);
-        
+
           for (let index = 0; index < this.listDataOne.length; index++) {
-             this.listDataOne[index].content = this.listDataOne[index].content
-            .replace(/&nbsp;/g, "")
-            .replace(/&rdquo;/g, "")
-            .replace(/&ldquo;/g, "");
-          // &ldquo;
-          this.listDataOne[index].content = this.listDataOne[index].content
-            .replace(/<[^>]+>/g, "")
-            .replace(/(\n)/g, "");
+            this.listDataOne[index].content = this.listDataOne[index].content
+              .replace(/&nbsp;/g, "")
+              .replace(/&rdquo;/g, "")
+              .replace(/&ldquo;/g, "");
+            // &ldquo;
+            this.listDataOne[index].content = this.listDataOne[index].content
+              .replace(/<[^>]+>/g, "")
+              .replace(/(\n)/g, "");
           }
-         
+
           // this.listDataOne[0].content
           // console.log(this.listDataOne[0].content);
         }
@@ -208,6 +224,29 @@ export default {
           console.log(this.videoItems);
         }
       });
+    },
+    classroomMore() {
+      // if(this.location == 1){
+      let params = {
+        current: 1,
+        location: this.location,
+        size: 6,
+      };
+      getvideo(params).then((res) => {
+        if (res.code == 200) {
+          this.show = false;
+          console.log(res.data.records);
+          console.log(res.data.records[0].updateTime);
+          // this.videoList = res.data.records;
+          // console.log(this.videoList);
+          // this.videoItems = this.videoList[0];
+          // console.log(this.videoItems);
+          this.listData = res.data.records;
+        }
+      });
+
+      // }
+      console.log(1);
     },
     // 分页
     handleCurrentChange(val) {
@@ -243,7 +282,7 @@ export default {
     videoItemData(val) {
       console.log(val);
       // this.videoItems = val;
-      this.$router.push({path:'/detail?id=' + '' ,query:val})
+      this.$router.push({ path: "/detail?id=" + "", query: val });
     },
   },
 };
@@ -254,7 +293,7 @@ export default {
 .news {
   @include maxWidth;
   min-height: 70vh;
-  .videoitem{
+  .videoitem {
     width: 100%;
   }
   .block {
@@ -279,6 +318,13 @@ export default {
       border-radius: 10px;
       display: flex;
       justify-content: space-between;
+      .classroom span {
+        float: right;
+        font-size: 18px;
+        color: #2f7f87;
+        line-height: 2;
+        cursor: pointer;
+      }
       // 健康讲堂 健康科普
       .classroom,
       .science {

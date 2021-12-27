@@ -303,9 +303,9 @@ export default {
       this.nowIdName = oId[0];
       if (oId[0] == "doctorId") {
         physicianId(oId[1]).then((res) => {
-          // console.log(res);
+          console.log(res.data.visitTime);
           if (res.code == 200) {
-            if (res.data.professionalTitle != null) {
+            if (res.data.professionalTitle != null||res.data.briefInformation !='') {
               res.data.professionalTitle = res.data.professionalTitle.replace(
                 /\n\n/g,
                 "、"
@@ -315,10 +315,13 @@ export default {
                 "、"
               );
               //   "<br/>"
-            } else {
-              console.log(1);
             }
-            // console.log(res.data.professionalTitle);
+            if(res.data.briefInformation !=null ||res.data.briefInformation !=''){
+               res.data.briefInformation = res.data.briefInformation.replace(/<[^>]+>/g, "").replace(/(\n)/g, "");  //去掉标签 去掉了换行<br/>
+               res.data.briefInformation =res.data.briefInformation .replace(/&rdquo;/g, '')
+               res.data.briefInformation =res.data.briefInformation .replace(/&ldquo;/g, '')
+            }
+            console.log(res.data.briefInformation);
             this.data = res.data;
             console.log(res.data);
           }
@@ -427,7 +430,7 @@ export default {
       // 简介
       .intro {
         margin-left: 0px;
-        font-size: 12px;
+        font-size: 14px;
         //   overflow: hidden; //超出文本隐藏
         // text-overflow: ellipsis; ///超出部分省略号显示
         // display: -webkit-box; //弹性盒模型
