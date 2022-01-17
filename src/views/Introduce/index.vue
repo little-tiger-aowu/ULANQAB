@@ -486,7 +486,7 @@ export default {
   .search {
     // @include width800;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     margin: -30px auto 0;
     background-color: #fff;
     padding: 10px;
