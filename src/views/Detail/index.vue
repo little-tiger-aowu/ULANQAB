@@ -327,14 +327,14 @@ export default {
               res.data.briefInformation = res.data.briefInformation
                 .replace(/<[^>]+>/g, "")
                 .replace(/(\n)/g, ""); //去掉标签 去掉了换行<br/>
-              res.data.briefInformation = res.data.briefInformation.replace(
-                /&rdquo;/g,
-                ""
-              );
-              res.data.briefInformation = res.data.briefInformation.replace(
-                /&ldquo;/g,
-                ""
-              );
+              // res.data.briefInformation = res.data.briefInformation.replace(
+              //   /&rdquo;/g,
+              //   ""
+              // );
+              // res.data.briefInformation = res.data.briefInformation.replace(
+              //   /&ldquo;/g,
+              //   ""
+              // );
             }
             console.log(res.data.briefInformation);
             this.data = res.data;
