@@ -15,9 +15,10 @@
         </div>
       </div>
       <div v-else>
-          <el-page-header @back="goBack" :content="videoItems.name"> </el-page-header>
-          <div id="title">{{ videoItems.name }}</div>
-          <video :src="videoItems.videoUrl" controls muted width="1000px"></video>
+        <el-page-header @back="goBack" :content="videoItems.name">
+        </el-page-header>
+        <div id="title">{{ videoItems.name }}</div>
+        <video :src="videoItems.videoUrl" controls muted width="1000px"></video>
       </div>
     </div>
     <!-- 医师信息 -->
@@ -305,21 +306,35 @@ export default {
         physicianId(oId[1]).then((res) => {
           console.log(res.data.visitTime);
           if (res.code == 200) {
-            if (res.data.professionalTitle != null||res.data.briefInformation !='') {
+            if (
+              res.data.professionalTitle != null ||
+              res.data.briefInformation != ""
+            ) {
               res.data.professionalTitle = res.data.professionalTitle.replace(
                 /\n\n/g,
-                "、"
+                "<br/>"
               );
               res.data.professionalTitle = res.data.professionalTitle.replace(
                 /\n/g,
-                "、"
+                "<br/>"
               );
               //   "<br/>"
             }
-            if(res.data.briefInformation !=null ||res.data.briefInformation !=''){
-               res.data.briefInformation = res.data.briefInformation.replace(/<[^>]+>/g, "").replace(/(\n)/g, "");  //去掉标签 去掉了换行<br/>
-               res.data.briefInformation =res.data.briefInformation .replace(/&rdquo;/g, '')
-               res.data.briefInformation =res.data.briefInformation .replace(/&ldquo;/g, '')
+            if (
+              res.data.briefInformation != null ||
+              res.data.briefInformation != ""
+            ) {
+              res.data.briefInformation = res.data.briefInformation
+                .replace(/<[^>]+>/g, "")
+                .replace(/(\n)/g, ""); //去掉标签 去掉了换行<br/>
+              res.data.briefInformation = res.data.briefInformation.replace(
+                /&rdquo;/g,
+                ""
+              );
+              res.data.briefInformation = res.data.briefInformation.replace(
+                /&ldquo;/g,
+                ""
+              );
             }
             console.log(res.data.briefInformation);
             this.data = res.data;
