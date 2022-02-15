@@ -119,8 +119,9 @@
               v-show="data.achievement != '' && data.achievement != null"
               style="margin: 0; margin-left: 0px"
             >
-              {{ data.achievement }}
+              <!-- {{ data.achievement }} -->
             </p>
+            <div v-html="data.achievement"></div>
             <p
               class="bold"
               v-show="
@@ -318,6 +319,7 @@ export default {
                 /\n/g,
                 "<br/>"
               );
+
               //   "<br/>"
             }
             if (
@@ -326,7 +328,7 @@ export default {
             ) {
               res.data.briefInformation = res.data.briefInformation
                 .replace(/<[^>]+>/g, "")
-                .replace(/(\n)/g, ""); //去掉标签 去掉了换行<br/>
+                .replace(/(\n)/g, "<br/>"); //去掉标签 去掉了换行<br/>
               // res.data.briefInformation = res.data.briefInformation.replace(
               //   /&rdquo;/g,
               //   ""
@@ -335,6 +337,16 @@ export default {
               //   /&ldquo;/g,
               //   ""
               // );
+            }
+            if (res.data.achievement != null || res.data.achievement != "") {
+              res.data.achievement = res.data.achievement.replace(
+                /\n\n/g,
+                "<br/>"
+              );
+              res.data.achievement = res.data.achievement.replace(
+                /\n/g,
+                "<br/>"
+              );
             }
             console.log(res.data.briefInformation);
             this.data = res.data;
