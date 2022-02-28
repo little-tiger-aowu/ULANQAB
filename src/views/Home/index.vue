@@ -334,7 +334,7 @@
             </el-row>
             <el-row class="purple-item">
               <el-col :span="7"><strong>预约挂号电话:</strong></el-col>
-              <el-col :span="15">0474-2263985 0474-2324120</el-col>
+              <el-col :span="15">0474-2263875</el-col>  
             </el-row>
           </div>
         </el-col>
@@ -364,7 +364,7 @@
               <el-col :span="7"> <strong>咨询电话:</strong> </el-col>
               <el-col :span="15">0474–2313113 </el-col>
             </el-row>
-          
+
           </div></el-col
         >
       </el-row>
@@ -506,8 +506,8 @@ export default {
   methods: {
     // 跳转
     clad(){
-      window.location.assign("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
-      //  window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8") 
+      window.location.assign("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8")
+      //  window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8")
     },
     _getphysicianInfo(type) {
       this.keType = type;
