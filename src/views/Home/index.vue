@@ -3,7 +3,11 @@
     <!-- banner -->
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide>
-        <img src="@/assets/images/index/banner.jpg" width="100%" id="swiperImg" />
+        <img
+          src="@/assets/images/index/banner.jpg"
+          width="100%"
+          id="swiperImg"
+        />
       </swiper-slide>
       <!-- 中秋图 -->
       <!-- <swiper-slide>
@@ -11,8 +15,11 @@
       </swiper-slide> -->
       <swiper-slide>
         <router-link to="/about"
-          ><img src="@/assets/images/about/banner.png" width="100%"
-        id="swiperImg" /></router-link>
+          ><img
+            src="@/assets/images/about/banner.png"
+            width="100%"
+            id="swiperImg"
+        /></router-link>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
       <div class="swiper-scrollbar" slot="scrollbar"></div>
@@ -75,7 +82,10 @@
               </router-link>
             </li>
             <li>
-              <router-link  tag="div" :to="{ path: '/guide', query: { option: 2 }}" >
+              <router-link
+                tag="div"
+                :to="{ path: '/guide', query: { option: 2 } }"
+              >
                 <img src="@/assets/images/index/icon-wenti.png" />
                 <p>医保服务</p>
                 <span>Medical Insurance Service</span>
@@ -128,10 +138,10 @@
             <span class="proTitle">医院院报</span>
             <!-- to="/news/list?id=2&name=医院院报&menu=news" -->
             <!-- <router-link to=''> -->
-              <el-button @click="clad" type="text" class="button"
-                >更多>></el-button
-              >
-              <!-- </router-link
+            <el-button @click="clad" type="text" class="button"
+              >更多>></el-button
+            >
+            <!-- </router-link
             > -->
             <div style="padding: 14px">
               <ul class="list" v-for="(item, index) in reportList" :key="index">
@@ -322,19 +332,20 @@
             class="bg-purple"
             @click="$router.push({ path: '/message', query: { top: 2 } })"
           >
-            <img src="@/assets/images/home-c.png"   style="height: 200px;"/>
+            <img src="@/assets/images/home-c.png" style="height: 200px" />
             <el-row class="purple-item">
               <el-col :span="7"><strong>地址：</strong> </el-col>
               <el-col :span="15">乌兰察布市集宁区解放大街157号。</el-col>
             </el-row>
             <el-row class="purple-item">
               <el-col :span="7"> <strong>乘车路线:</strong> </el-col>
-              <el-col :span="15">乘1、4、11路公交车中心医院站下车即到。乘5路公交车虎山公园站下车向北100米即可到达</el-col
+              <el-col :span="15"
+                >乘1、4、11路公交车中心医院站下车即到。乘5路公交车虎山公园站下车向北100米即可到达</el-col
               >
             </el-row>
             <el-row class="purple-item">
               <el-col :span="7"><strong>预约挂号电话:</strong></el-col>
-              <el-col :span="15">0474-2263875</el-col>  
+              <el-col :span="15">0474-2263875</el-col>
             </el-row>
           </div>
         </el-col>
@@ -343,7 +354,7 @@
             class="bg-purples"
             @click="$router.push({ path: '/message', query: { top: 1 } })"
           >
-            <img src="@/assets/images/home-c-2.jpg"  style="height: 200px;"/>
+            <img src="@/assets/images/home-c-2.jpg" style="height: 200px" />
             <el-row class="purple-item">
               <el-col :span="7"><strong>地址：</strong> </el-col>
               <el-col :span="15"
@@ -358,13 +369,12 @@
             </el-row>
             <el-row class="purple-item">
               <el-col :span="7"><strong>预约挂号电话:</strong></el-col>
-              <el-col :span="10">0474-2313126  </el-col>
+              <el-col :span="10">0474-2313126 </el-col>
             </el-row>
             <el-row class="purple-item">
               <el-col :span="7"> <strong>咨询电话:</strong> </el-col>
               <el-col :span="15">0474–2313113 </el-col>
             </el-row>
-
           </div></el-col
         >
       </el-row>
@@ -505,8 +515,10 @@ export default {
   },
   methods: {
     // 跳转
-    clad(){
-      window.location.assign("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8")
+    clad() {
+      window.location.assign(
+        "http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8"
+      );
       //  window.location.replace("http://wlcbyy.ihwrm.com/?openid=oE4NCuHpboBug_94y882Z20Sxdq8")
     },
     _getphysicianInfo(type) {
@@ -631,20 +643,19 @@ export default {
       });
     },
   },
-
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/css/base.scss";
 @import "@/assets/css/mixin.scss";
 .home {
-  #swiperImg{
-   height: 767px;
+  #swiperImg {
+    height: 767px;
   }
-  .swiper-container{
+  .swiper-container {
     height: 797px;
   }
-  .swiper-pagination{
+  .swiper-pagination {
     margin-top: 10px;
   }
   .iconKeshi {

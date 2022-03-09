@@ -16,13 +16,53 @@
               <a href="#">内蒙古自治区乌兰察布市中医蒙医医院</a>
             </el-col> -->
             <el-col :span="12" :offset="8" class="nav-ewm">
-              <span style="padding-left:40px">友情链接：</span>
-              <a href="http://wjw.nmg.gov.cn/">自治区卫生健康委员会  </a>
-               <a href="http://wjw.wulanchabu.gov.cn/">乌兰察布市卫生健康委员会</a>
+              <span style="padding-left: 40px">友情链接：</span>
+              <a href="http://wjw.nmg.gov.cn/">自治区卫生健康委员会 </a>
+              <a href="http://wjw.wulanchabu.gov.cn/"
+                >乌兰察布市卫生健康委员会</a
+              >
               <!-- <h2>关于我们</h2> -->
               <!-- <router-link tag="span" :to="{path:'/message',query:{top:0}}">联系我们</router-link> -->
-              
-              <p> <router-link tag="span" :to="{path:'/message'}">联系我们</router-link>  | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 | 帮助信息</p>
+
+              <p>
+                <router-link tag="span" :to="{ path: '/message' }"
+                  >联系我们</router-link
+                >
+                | 院长信箱 | 咨询投诉 | 人才招聘 | 法律声明 | 网站地图 |
+                帮助信息
+              </p>
+              <div style="width: 35vw; margin: 0 auto; padding: 15px 0">
+                <a
+                  target="_blank"
+                  href=" "
+                  style="
+                    display: inline-block;
+                    text-decoration: none;
+                    height: 20px;
+                    line-height: 20px;
+                  "
+                >
+                  <img
+                    src="../../assets/images/footer/foot-beian.png"
+                    style="
+                      float: left;
+                      height: 20px;
+                      background-color: transparent;
+                    "
+                  />
+                  <p
+                    style="
+                      float: left;
+                      height: 20px;
+                      line-height: 20px;
+                      margin: 5px 0px 0px 5px;
+                      color: #fff;
+                    "
+                  >
+                    蒙公网安备 15090202000220号
+                  </p>
+                </a>
+              </div>
             </el-col>
             <!-- <el-col :span="3" class="nav-ewm center">
               <img src="@/assets/images/footer/footer-ewm.png" />
@@ -40,7 +80,12 @@
           <!-- <el-col :span="6" :offset="1">网站地图 / 法律声明 / 联系我们</el-col> -->
           <el-col :span="16" :offset="8">
             Copyright © 2018 乌兰察布市中心医院网站. All Rights Reserved
-           <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#fff">蒙ICP备19003220号-2</a> 
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              style="color: #fff"
+              >蒙ICP备19003220号-2</a
+            >
           </el-col>
         </el-row>
       </div>
@@ -97,9 +142,7 @@ export default {
     // console.log(this.$route.path);
     this.nowRoutePath = this.$route.path;
   },
-  methods:{
-    
-  },
+  methods: {},
   watch: {
     "$route.path"(newVal) {
       console.log(newVal);
@@ -183,9 +226,8 @@ export default {
         }
         p {
           margin: 0;
-          span{
+          span {
             cursor: pointer;
-            
           }
         }
         h2 {
