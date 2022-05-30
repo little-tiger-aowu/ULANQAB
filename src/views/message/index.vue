@@ -65,13 +65,13 @@
       </ul>
       <h5>中心医院新区分院(乌兰察布市中医蒙医医院)乘车路线</h5>
       <ul>
-        <li>乘车路线：乘10路、11路、21路、33路、36路公交均可到达</li>
+        <li>乘车路线：乘10路、11路、21路、33路、36路、51路公交均可到达</li>
       </ul>
       <h5>中心医院新区分院(乌兰察布市中医蒙医医院)地图</h5>
       <!-- 地图 -->
       <div class="footer-map">
         <baidu-map
-          :center="centers"
+
           :zoom="zoom"
           @ready="handlers"
           style="width: 100%; height: 370px"
@@ -89,8 +89,8 @@ import mapIcon from "@/assets/images/yihua-icon-fill.png";
 export default {
   data() {
     return {
-      centers: { lng: 113.143078, lat: 41.03531 },
-      center: { lng: 113.120003, lat: 41.036747 },
+      centers: { lng: 113.143078, lat: 41.03531 }, // 41.0254161129368, 113.13644385416195
+      // center: { lng: 113.120003, lat: 41.036747 },
       zoom: 15,
       top: this.$route.query.top,
       showMap: false,
@@ -144,8 +144,8 @@ export default {
     },
     handlers({ BMap, map }) {
       // 初始化地图,设置中心点坐标
-      var point = new BMap.Point(113.143078, 41.03531);
-      //12592519.133403657,4989464.545,16.28
+      var point = new BMap.Point(113.14859995434568, 40.97698087070914);
+      //12592519.133403657,4989464.545,16.28  113.142185  40.97163
       map.centerAndZoom(point, 17);
       // 添加鼠标滚动缩放
       map.enableScrollWheelZoom();
@@ -165,7 +165,7 @@ export default {
       //设置标注的图标
       var icon = new BMap.Icon(mapIcon, new BMap.Size(20, 25));
       //设置标注的经纬度
-      var marker = new BMap.Marker(new BMap.Point(113.143078, 41.03531), {
+      var marker = new BMap.Marker(new BMap.Point(113.14859995434568, 40.97698087070914), {
         icon: icon,
       });
       //把标注添加到地图上

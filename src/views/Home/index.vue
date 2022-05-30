@@ -2,13 +2,14 @@
   <div class="home">
     <!-- banner -->
     <swiper ref="mySwiper" :options="swiperOptions">
-      <swiper-slide>
+    <!-- 共产党成立一百周年图 -->
+      <!-- <swiper-slide>
         <img
           src="@/assets/images/index/banner.jpg"
           width="100%"
           id="swiperImg"
         />
-      </swiper-slide>
+      </swiper-slide> -->
       <!-- 中秋图 -->
       <!-- <swiper-slide>
         <img src="@/assets/images/mid-autumn.jpg"  width="100%" id="swiperImg" />
@@ -364,7 +365,7 @@
             <el-row class="purple-item">
               <el-col :span="7"> <strong>乘车路线:</strong> </el-col>
               <el-col :span="15"
-                >乘10路、11路、21路、33路、36路公交均可到达</el-col
+                >乘10路、11路、21路、33路、36路、51路公交均可到达</el-col
               >
             </el-row>
             <el-row class="purple-item">
@@ -1197,7 +1198,7 @@ export default {
       .purple-item {
         text-align: left;
         padding: 0 10px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
     .bg-purple {

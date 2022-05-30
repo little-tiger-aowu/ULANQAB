@@ -134,7 +134,7 @@
           <p style="margin-bottom: 10px">乘车路线：</p>
           <ul>
             <li style="margin-bottom: 5px; padding-left: 72px; font-size: 16px">
-              乘10路、11路、21路、33路、36路公交均可到达
+              乘10路、11路、21路、33路、36路、51路公交均可到达
             </li>
           </ul>
         </div>
