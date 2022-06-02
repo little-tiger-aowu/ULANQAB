@@ -10,6 +10,14 @@
           id="swiperImg"
         />
       </swiper-slide> -->
+      <!-- 端午图 -->
+      <swiper-slide>
+        <img
+          src="@/assets/images/duanwu.jpg"
+          width="100%"
+          id="swiperImg"
+        />
+      </swiper-slide>
       <!-- 中秋图 -->
       <!-- <swiper-slide>
         <img src="@/assets/images/mid-autumn.jpg"  width="100%" id="swiperImg" />
